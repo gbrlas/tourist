@@ -105,7 +105,7 @@
             </a>
         </div>
         <div class="col-md-5">
-            <h3>Project Two</h3>
+            <h3>Goran 2</h3>
             <h4>Subheading</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
             <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
