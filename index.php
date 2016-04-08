@@ -77,13 +77,13 @@
     <div class="row">
         <div class="col-md-7">
             <a href="#">
-                <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+                <img class="img-responsive" src="http://static.kigo.net/1810/images/slider/6.jpg" alt="">
             </a>
         </div>
         <div class="col-md-5">
             <h3>
                 <?php
-                    $goran = "Goran";
+                    $goran = "Barcelona";
                     echo $goran;
                 ?>
 
