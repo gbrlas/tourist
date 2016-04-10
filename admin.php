@@ -259,7 +259,7 @@
         <div class=\"form-group\">
             <label for=\"description\" class=\"col-sm-2 control-label\">Description</label>
             <div class=\"col-sm-9\">
-                <input name=\"description\" class=\"form-control\" id=\"description\" placeholder=\"Location description\">
+                <textarea name=\"description\" class=\"form-control\" rows=\"4\" placeholder=\"Location description\"></textarea>
             </div>
         </div>
         <div class=\"form-group\">
@@ -313,7 +313,7 @@
         <div class=\"form-group\">
             <label for=\"description\" class=\"col-sm-2 control-label\">Description</label>
             <div class=\"col-sm-9\">
-                <input name=\"description\" class=\"form-control\" id=\"description\" placeholder=\"Location description\">
+                <textarea name=\"description\" class=\"form-control\" rows=\"4\" placeholder=\"Accomodation description\"></textarea>
             </div>
         </div>
         <div class=\"form-group\">
@@ -369,7 +369,7 @@
         <div class=\"form-group\">
             <label for=\"description\" class=\"col-sm-2 control-label\">Description</label>
             <div class=\"col-sm-9\">
-                <input name=\"description\" class=\"form-control\" id=\"description\" placeholder=\"Tour description\">
+                <textarea name=\"description\" class=\"form-control\" rows=\"4\" placeholder=\"Tour description\"></textarea>
             </div>
         </div>
         <div class=\"form-group\">
