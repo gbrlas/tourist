@@ -202,7 +202,7 @@
     <footer>
         <div class="row">
             <div class="col-lg-12">
-                <p>Copyright &copy; Goran Brlas 2016</p>
+                <p>Copyright &copy; 2016 Goran Brlas. All rights reserved.</p>
             </div>
         </div>
         <!-- /.row -->
