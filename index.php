@@ -82,12 +82,7 @@
             </a>
         </div>
         <div class="col-md-5">
-            <h3>
-                <?php
-                    $goran = "Barcelona";
-                    echo $goran;
-                ?>
-
+            <h3>Barcelona
             </h3>
             <h4>Subheading</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
