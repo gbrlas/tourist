@@ -99,7 +99,7 @@
     <?php
     if (!isset($_GET) || empty($_GET)) {
         echo "
-             <!-- Page Heading -->
+    <!-- Page Heading -->
     <div class=\"row\">
         <div class=\"col-lg-12\">
             <h1 class=\"page-header\">Page Heading
@@ -111,12 +111,12 @@
 
     <!-- Project One -->
     <div class=\"row\">
-        <div class=\"col-md-7\">
+        <div class=\"col-md-6\">
             <a href=\"#\">
                 <img class=\"img-responsive\" src=\"http://static.kigo.net/1810/images/slider/6.jpg\" alt=\"\">
             </a>
         </div>
-        <div class=\"col-md-5\">
+        <div class=\"col-md-6\">
             <h3>Barcelona
             </h3>
             <h4>Subheading</h4>
@@ -130,12 +130,12 @@
 
     <!-- Project Two -->
     <div class=\"row\">
-        <div class=\"col-md-7\">
+        <div class=\"col-md-6\">
             <a href=\"#\">
-                <img class=\"img-responsive\" src=\"http://placehold.it/700x300\" alt=\"\">
+                <img class=\"img-responsive\" src=\"http://placehold.it/600x300\" alt=\"\">
             </a>
         </div>
-        <div class=\"col-md-5\">
+        <div class=\"col-md-6\">
             <h3>Goran 2</h3>
             <h4>Subheading</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
@@ -148,12 +148,12 @@
 
     <!-- Project Three -->
     <div class=\"row\">
-        <div class=\"col-md-7\">
+        <div class=\"col-md-6\">
             <a href=\"#\">
-                <img class=\"img-responsive\" src=\"http://placehold.it/700x300\" alt=\"\">
+                <img class=\"img-responsive\" src=\"http://placehold.it/600x300\" alt=\"\">
             </a>
         </div>
-        <div class=\"col-md-5\">
+        <div class=\"col-md-6\">
             <h3>Project Three</h3>
             <h4>Subheading</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, temporibus, dolores, at, praesentium ut unde repudiandae voluptatum sit ab debitis suscipit fugiat natus velit excepturi amet commodi deleniti alias possimus!</p>
@@ -167,12 +167,12 @@
     <!-- Project Four -->
     <div class=\"row\">
 
-        <div class=\"col-md-7\">
+        <div class=\"col-md-6\">
             <a href=\"#\">
-                <img class=\"img-responsive\" src=\"http://placehold.it/700x300\" alt=\"\">
+                <img class=\"img-responsive\" src=\"http://placehold.it/600x300\" alt=\"\">
             </a>
         </div>
-        <div class=\"col-md-5\">
+        <div class=\"col-md-6\">
             <h3>Project Four</h3>
             <h4>Subheading</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, quidem, consectetur, officia rem officiis illum aliquam perspiciatis aspernatur quod modi hic nemo qui soluta aut eius fugit quam in suscipit?</p>
@@ -185,12 +185,12 @@
 
     <!-- Project Five -->
     <div class=\"row\">
-        <div class=\"col-md-7\">
+        <div class=\"col-md-6\">
             <a href=\"#\">
-                <img class=\"img-responsive\" src=\"http://placehold.it/700x300\" alt=\"\">
+                <img class=\"img-responsive\" src=\"http://placehold.it/600x300\" alt=\"\">
             </a>
         </div>
-        <div class=\"col-md-5\">
+        <div class=\"col-md-6\">
             <h3>Project Five</h3>
             <h4>Subheading</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, quo, minima, inventore voluptatum saepe quos nostrum provident ex quisquam hic odio repellendus atque porro distinctio quae id laboriosam facilis dolorum.</p>
@@ -233,15 +233,6 @@
 
     <hr>
 
-    <!-- Footer -->
-    <footer>
-        <div class=\"row\">
-            <div class=\"col-lg-12\">
-                <p>Copyright &copy; Goran Brlas 2016</p>
-            </div>
-        </div>
-        <!-- /.row -->
-    </footer>
 
         ";
     }
@@ -309,13 +300,14 @@
     <!-- /.row -->
     <form class=\"form-horizontal\" action=\"./admin/addAccomodations.php\" method=\"post\">
         <div class=\"form-group\">
-            <label for=\"hotel\" class=\"col-sm-2 control-label\">Hotel</label>
-            <div class=\"radio\">
-            <label><input type=\"radio\" name=\"type\"></label>
-            </div>
-            <label for=\"apartman\" class=\"col-sm-2 control-label\">Apartman</label>
-            <div class=\"radio\">
-            <label><input type=\"radio\" name=\"type\"></label>
+            <label for=\"hotel\" class=\"col-sm-2 control-label\">Tip</label>
+            <div class=\"col-sm-9\">
+                <div class=\"radio-inline\">
+                    <label><input type=\"radio\" name=\"type\" value=\"hotel\">Hotel</label>
+                </div>
+                <div class=\"radio-inline\">
+                    <label><input type=\"radio\" name=\"type\" value=\"apartman\">Apartman</label>
+                </div>
             </div>
         </div>       
         <div class=\"form-group\">
@@ -331,7 +323,7 @@
             </div>
         </div>
         <div class=\"form-group\">
-            <label for=\"classification\" class=\"col-sm-2 control-label\">clasification</label>
+            <label for=\"classification\" class=\"col-sm-2 control-label\">Clasification</label>
             <div class=\"col-sm-9\">
                 <input name=\"classification\" class=\"form-control\" id=\"classification\" placeholder=\"Accomodation classification\">
             </div>
