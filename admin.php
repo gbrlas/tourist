@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>1 Col Portfolio - Start Bootstrap Template</title>
+    <title>Tourist Agency</title>
 
     <link href="css/custom.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
