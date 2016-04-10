@@ -240,6 +240,8 @@ th {
   }
   .navbar {
     display: none;
+    background-color: #ffffff;
+    border-color: #0066ff;
   }
   .btn > .caret,
   .dropup > .btn > .caret {
