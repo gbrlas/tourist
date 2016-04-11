@@ -41,7 +41,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/admin.php">Admin</a>
+            <a class="navbar-brand" href="../admin.php">Admin</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -50,38 +50,38 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Locations
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/admin.php?value=addLocation">Add locations</a></li>
-                        <li><a href="/admin.php?value=removeLocation">Remove locations</a></li>
-                        <li><a href="/admin.php?value=editLocation">Edit locations</a></li>
+                        <li><a href="../admin.php?value=addLocation">Add locations</a></li>
+                        <li><a href="../admin.php?value=removeLocation">Remove locations</a></li>
+                        <li><a href="../admin.php?value=editLocation">Edit locations</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Accomodations
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/admin.php?value=addAccomodation">Add accomodations</a></li>
-                        <li><a href="/admin.php?value=removeAccomodation">Remove accomodations</a></li>
-                        <li><a href="/admin.php?value=editAccomodation">Edit accomodations</a></li>
+                        <li><a href="../admin.php?value=addAccomodation">Add accomodations</a></li>
+                        <li><a href="../admin.php?value=removeAccomodation">Remove accomodations</a></li>
+                        <li><a href="../admin.php?value=editAccomodation">Edit accomodations</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tours
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/admin.php?value=addTour">Add tours</a></li>
-                        <li><a href="/admin.php?value=removeTour">Remove tours</a></li>
-                        <li><a href="/admin.php?value=editTour">Edit tours</a></li>
+                        <li><a href="../admin.php?value=addTour">Add tours</a></li>
+                        <li><a href="../admin.php?value=removeTour">Remove tours</a></li>
+                        <li><a href="../admin.php?value=editTour">Edit tours</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Other
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/tourist/admin.php?value=addImage">Add image</a></li>
-                        <li><a href="/admin.php?value=addRoom">Add room</a></li>
-                        <li><a href="/admin.php?value=addHotelContent">Add hotel content</a></li>
-                        <li><a href="/admin.php?value=addAction">Add discount</a></li>
-                        <li><a href="/admin.php?value=addCustomer">Add customer</a></li>
+                        <li><a href="../tourist/admin.php?value=addImage">Add image</a></li>
+                        <li><a href="../admin.php?value=addRoom">Add room</a></li>
+                        <li><a href="../admin.php?value=addHotelContent">Add hotel content</a></li>
+                        <li><a href="../admin.php?value=addAction">Add discount</a></li>
+                        <li><a href="../admin.php?value=addCustomer">Add customer</a></li>
                     </ul>
                 </li>
             </ul>
@@ -100,12 +100,17 @@
                 include 'spajanje_na_bazu.php';
                 include 'funkcije.php';
 
-                if (isset($_POST['saveForm'])) {
-                    $img = $_POST['slika1'];
-                    echo "$img";
-                } else {
-                    echo "nothing posted";
-                }
+                echo $_POST['slika1'];
+                /*if (isset($_POST['saveForm'])) {
+                    $img = navodnici($_POST['slika1']);
+                    $upit = "INSERT INTO slika (url) VALUES ($img)";
+                    mysqli_query ($veza, $upit) or die (mysqli_error($veza));
+                    echo "
+                    <div class=\"col-md-6\">
+                        <h4>Image added: $img</h4>
+                    </div>
+                    ";
+                }*/
                 ?>
             </h4>
         </div>
