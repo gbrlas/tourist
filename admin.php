@@ -309,6 +309,14 @@
 
     } ?>
 
+    <?php
+
+        if (isset($_GET['value'])) {
+            $test = $_GET['value']; } else {
+            $test = "";
+        }
+    ?>
+
     <?php if($test === "addTour") : ?>
         <div class="row">
             <div class="col-lg-12">
@@ -348,24 +356,24 @@
             </div>
             <div class="form-group">
                 <label for="location" class="col-sm-2 control-label">Location</label>
-                <div class="col-sm-9">
+                <div class="col-sm-2">
                     <input name="location" class="form-control" id="location" placeholder="Location ID">
                 </div>
             </div>
             <div class="form-group">
                 <label for="discount" class="col-sm-2 control-label">Discount</label>
-                <div class="col-sm-9">
+                <div class="col-sm-2">
                     <input name="discount" class="form-control" id="discount" placeholder="Tour discount">
                 </div>
             </div>
             <div class="form-group">
-                <label for="guide" class="col-sm-2 control-label">Discount</label>
+                <label for="guide" class="col-sm-2 control-label">Guide</label>
                 <div class="col-sm-1">
                     <input name="guide" class="form-control" id="guide" placeholder="Guide">
                 </div>
             </div>
             <div class="form-group">
-                <label for="meal" class="col-sm-2 control-label">Discount</label>
+                <label for="meal" class="col-sm-2 control-label">Meal</label>
                 <div class="col-sm-1">
                     <input name="meal" class="form-control" id="meal" placeholder="Meal">
                 </div>
@@ -493,32 +501,32 @@
         <form class="form-horizontal" action="./admin/addRooms.php" method="post">
             <div class="form-group">
                 <label for="number" class="col-sm-2 control-label">Number</label>
-                <div class="col-sm-9">
+                <div class="col-sm-4">
                     <input name="number" class="form-control" id="number" placeholder="Room number">
                 </div>
             </div>
             <div class="form-group">
-                <label for="size" class="col-sm-2 control-label">size</label>
-                <div class="col-sm-9">
+                <label for="size" class="col-sm-2 control-label">Size</label>
+                <div class="col-sm-4">
                     <input name="size" class="form-control" id="size" placeholder="Room size">
                 </div>
             </div>
             <div class="form-group">
-                <label for="type" class="col-sm-2 control-label">Type</label>
-                <div class="col-sm-9">
-                    <input name="type" class="form-control" id="type" placeholder="Room type">
-                </div>
-            </div>
-            <div class="form-group">
                 <label for="price" class="col-sm-2 control-label">Price</label>
-                <div class="col-sm-9">
+                <div class="col-sm-4">
                     <input name="price" class="form-control" id="price" placeholder="Price per day">
                 </div>
             </div>
             <div class="form-group">
                 <label for="accomodation" class="col-sm-2 control-label">Accomodation</label>
-                <div class="col-sm-9">
+                <div class="col-sm-2">
                     <input name="accomodation" class="form-control" id="accomodation" placeholder="Accomodation ID">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="type" class="col-sm-2 control-label">Type</label>
+                <div class="col-sm-1">
+                    <input name="type" class="form-control" id="type" placeholder="Room type">
                 </div>
             </div>
             <div class="form-group">
@@ -546,8 +554,8 @@
         <form class="form-horizontal" action="./admin/addHotelContent.php" method="post">
             <div class="form-group">
                 <label for="content" class="col-sm-2 control-label">Content</label>
-                <div class="col-sm-9">
-                    <input name="content" class="form-control" id="content" placeholder="Hotel content description">
+                <div class="col-sm-4">
+                    <input name="content" class="form-control" id="content" placeholder="Hotel content name">
                 </div>
             </div>
 
@@ -592,7 +600,7 @@
         <form class="form-horizontal" action="./admin/addCountry.php" method='post'>
             <div class="form-group">
                 <label for="country" class="col-sm-2 control-label">Image</label>
-                <div class="col-sm-9">
+                <div class="col-sm-4">
                     <input id="country" name="country" type="text" class="form-control" placeholder="Country name">
                 </div>
             </div>
@@ -633,13 +641,13 @@
             </div>
             <div class="form-group">
                 <label for="year" class="col-sm-2 control-label">Year</label>
-                <div class="col-sm-9">
+                <div class="col-sm-3">
                     <input name="year" class="form-control" id="year" placeholder="Year of birth">
                 </div>
             </div>
             <div class="form-group">
                 <label for="number" class="col-sm-2 control-label">Number</label>
-                <div class="col-sm-9">
+                <div class="col-sm-3">
                     <input name="number" class="form-control" id="number" placeholder="Phone number">
                 </div>
             </div>
@@ -662,7 +670,7 @@
         <form class="form-horizontal" action="./admin/addActions.php" method='post'>
             <div class="form-group">
                 <label for="action" class="col-sm-2 control-label">Image</label>
-                <div class="col-sm-9">
+                <div class="col-sm-4">
                     <input id="action" name="action" type="text" class="form-control" placeholder="Discount percentage">
                 </div>
             </div>
