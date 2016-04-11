@@ -502,28 +502,6 @@
                 </div>
             </form>
             ";
-        } else if ($test === "addImage") {
-            echo "
-            <div class=\"row\">
-                <div class=\"col-lg-12\">
-                    <h1 class=\"page-header\">Add image</h1>
-                </div>
-            </div>
-            <form class=\"form-horizontal\" action=\"./admin/addImages.php\" method=\"post\">
-                <div class=\"form-group\">
-                    <label for=\"slika\" class=\"col-sm-2 control-label\">Image</label>
-                    <div class=\"col-sm-9\">
-                        <input name=\"slika\" class=\"form-control\" id=\"slika\" placeholder=\"Image URL\">
-                    </div>
-                </div>
-
-                <div class=\"form-group\">
-                    <div class=\"col-sm-offset-2 col-sm-10\">
-                    <button name=\"submit\" class=\"btn btn-success\">Add image</button>
-                    </div>
-                </div>
-            </form>
-            ";
         } else if ($test === "addRoom") {
             echo "
             <div class=\"row\">
@@ -666,7 +644,30 @@
             ";
         }
 
+    } ?>
 
+    <?php if($test === "addImage") : ?>
+        <form class="form-horizontal" action="" method='post'>
+            <div class="form-group">
+                <label for="slika1" class="col-sm-2 control-label">Image</label>
+                <div class="col-sm-9">
+                    <input id="slika1" name="slika1" type="text" class="form-control" placeholder="Image URL">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button name='saveForm' type="submit" class="btn btn-success">Add image</button>
+                </div>
+            </div>
+        </form>
+    <?php endif; ?>
+
+    <?php if (isset($_POST['saveForm'])) {
+        $img = $_POST['slika1'];
+        echo "$img";
+    } else {
+        echo "nothing posted";
     }
     ?>
 
