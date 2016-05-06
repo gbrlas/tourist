@@ -48,7 +48,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Tourist Agency</a>
+            <a class="navbar-brand" href="./index.php">Tourist Agency</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -75,55 +75,77 @@
 <!-- Page Content -->
 <div class="container">
 
-    <!-- Page Heading -->
-    <div class="row">
-        <div class="col-lg-12">
-            <h2 class="page-header">TOP DESTINATIONS</h2>
-        </div>
-    </div>
-    <!-- /.row -->
-
     <!-- Project One -->
     <?php
-        include './admin/spajanje_na_bazu.php';
-        include './admin/funkcije.php';
-        $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM LOKACIJA";
-        $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
+        if (isset($_GET['type'])) {
+            $temp = $_GET['type'];
+            $type;
 
-        while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
-            $lokacija = $redak['idLokacija'];
-            $ime = $redak['ime'];
-            $opis = $redak['opis'];
-            $tip = $redak['tip'];
+            if ($temp == "summer") {
+                echo "
+                    <div class=\"row\">
+        <div class=\"col-lg-12\">
+            <h2 class=\"page-header\">SUMMER DESTINATIONS</h2>
+        </div>
+    </div>";
+                $type = 1;
+            } elseif ($temp == "winter") {
+                echo "
+                    <div class=\"row\">
+        <div class=\"col-lg-12\">
+            <h2 class=\"page-header\">WINTER DESTINATIONS</h2>
+        </div>
+    </div>";
+                $type = 2;
+            } else if ($temp == "cities") {
+                echo "
+                    <div class=\"row\">
+        <div class=\"col-lg-12\">
+            <h2 class=\"page-header\">CITY DESTINATIONS</h2>
+        </div>
+    </div>";
+                $type = 3;
+            }
 
-            $upit2 = "SELECT idSlika FROM SLIKE_LOKACIJA WHERE idLokacija = $lokacija";
-            $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
-            $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
-            $idSlika = $redak2['idSlika'];
+            include './admin/spajanje_na_bazu.php';
+            include './admin/funkcije.php';
+            $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM LOKACIJA WHERE tip = $type";
+            $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
-            $upit3 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
-            $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
-            $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
-            $url = $redak3['url'];
+            while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
+                $lokacija = $redak['idLokacija'];
+                $ime = $redak['ime'];
+                $opis = $redak['opis'];
+                $tip = $redak['tip'];
 
-            echo "<div class=\"row\">";
-            echo "
+                $upit2 = "SELECT idSlika FROM SLIKE_LOKACIJA WHERE idLokacija = $lokacija";
+                $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
+                $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
+                $idSlika = $redak2['idSlika'];
+
+                $upit3 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+                $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
+                $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
+                $url = $redak3['url'];
+
+                echo "<div class=\"row\">";
+                echo "
                     <div class=\"col-md-6\">
-                        <a href=\"#\">
                             <img class=\"img-responsive\" src=\"$url\" width=\"600\" height=\"300\" alt=\"\">
-                        </a>
                     </div>";
 
-            echo "<div class=\"col-md-6\">
+                echo "<div class=\"col-md-6\">
                         <h3>$ime</h3>
                             <p>$opis</p>
                         <a class=\"btn btn-primary\" href=\"./learnMore.php?#value=$lokacija\">Learn more <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                    </div>";
 
-            echo "</div>";
-            echo "<hr>";
-        };
-            ?>
+                echo "</div>";
+                echo "<hr>";
+            };
+
+        }
+    ?>
 
     <!-- Footer -->
     <footer>

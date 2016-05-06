@@ -9,8 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>1 Col Portfolio - Start Bootstrap Template</title>
+    <title>Tourist Agency</title>
 
+    <link href="css/custom.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -44,11 +45,18 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Top destinations</a></li>
-                <li><a href="#">Summer 2</a></li>
-                <li><a href="#">Winter</a></li>
-                <li><a href="#">Tours</a></li>
-                <li><a href="#">Other</a></li>
+                <li>
+                    <a href="/destinations.php?type=summer">Summer destinations</a>
+                </li>
+                <li>
+                    <a href="/destinations.php?type=winter">Winter resorts</a>
+                </li>
+                <li>
+                    <a href="/destinations.php?type=cities">City-breaks</a>
+                </li>
+                <li>
+                    <a href="/tours.php">Tours</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -71,18 +79,13 @@
 
     <!-- Project One -->
     <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-6">
             <a href="#">
                 <img class="img-responsive" src="http://static.kigo.net/1810/images/slider/6.jpg" alt="">
             </a>
         </div>
-        <div class="col-md-5">
-            <h3>
-                <?php
-                $goran = "Barcelona";
-                echo $goran;
-                ?>
-
+        <div class="col-md-6">
+            <h3>Barcelona
             </h3>
             <h4>Subheading</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
@@ -90,6 +93,113 @@
         </div>
     </div>
     <!-- /.row -->
+
+    <hr>
+
+    <!-- Project Two -->
+    <div class="row">
+        <div class="col-md-6">
+            <a href="#">
+                <img class="img-responsive" src="http://placehold.it/600x300" alt="">
+            </a>
+        </div>
+        <div class="col-md-6">
+            <h3>Goran 2</h3>
+            <h4>Subheading</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
+            <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+    <!-- Project Three -->
+    <div class="row">
+        <div class="col-md-6">
+            <a href="#">
+                <img class="img-responsive" src="http://placehold.it/600x300" alt="">
+            </a>
+        </div>
+        <div class="col-md-6">
+            <h3>Project Three</h3>
+            <h4>Subheading</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, temporibus, dolores, at, praesentium ut unde repudiandae voluptatum sit ab debitis suscipit fugiat natus velit excepturi amet commodi deleniti alias possimus!</p>
+            <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+    <!-- Project Four -->
+    <div class="row">
+
+        <div class="col-md-6">
+            <a href="#">
+                <img class="img-responsive" src="http://placehold.it/600x300" alt="">
+            </a>
+        </div>
+        <div class="col-md-6">
+            <h3>Project Four</h3>
+            <h4>Subheading</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, quidem, consectetur, officia rem officiis illum aliquam perspiciatis aspernatur quod modi hic nemo qui soluta aut eius fugit quam in suscipit?</p>
+            <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+    <!-- Project Five -->
+    <div class="row">
+        <div class="col-md-6">
+            <a href="#">
+                <img class="img-responsive" src="http://placehold.it/600x300" alt="">
+            </a>
+        </div>
+        <div class="col-md-6">
+            <h3>Project Five</h3>
+            <h4>Subheading</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, quo, minima, inventore voluptatum saepe quos nostrum provident ex quisquam hic odio repellendus atque porro distinctio quae id laboriosam facilis dolorum.</p>
+            <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+    <!-- Pagination -->
+    <div class="row text-center">
+        <div class="col-lg-12">
+            <ul class="pagination">
+                <li>
+                    <a href="#">&laquo;</a>
+                </li>
+                <li class="active">
+                    <a href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                </li>
+                <li>
+                    <a href="#">4</a>
+                </li>
+                <li>
+                    <a href="#">5</a>
+                </li>
+                <li>
+                    <a href="#">&raquo;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
 
     <!-- Footer -->
     <footer>
