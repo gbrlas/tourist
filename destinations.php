@@ -11,13 +11,21 @@
             border-radius: 50px;
         }
     </style>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tourist Agency</title>
+
+    <?php
+    if (isset($_GET['type'])) {
+        $temp = ucfirst($_GET['type']);
+
+        echo "<title>Tourist Agency - $temp</title>";
+    }
+    ?>
 
     <link href="css/custom.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
@@ -137,7 +145,7 @@
                 echo "<div class=\"col-md-6\">
                         <h3>$ime</h3>
                             <p>$opis</p>
-                        <a class=\"btn btn-primary\" href=\"./learnMore.php?#value=$lokacija\">Learn more <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a class=\"btn btn-primary\" href=\"./learnMoreDest.php?#value=$lokacija\">Learn more <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                    </div>";
 
                 echo "</div>";
