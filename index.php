@@ -65,6 +65,9 @@
                 <li>
                     <a href="./tours.php">Tours</a>
                 </li>
+                <li>
+                    <a href="./accomodations.php">Accomodations</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -76,19 +79,22 @@
 <div class="container">
 
     <!-- Page Heading -->
-    <div class="row">
-        <div class="col-lg-12">
-            <h2 class="page-header">TOP DESTINATIONS</h2>
-        </div>
-    </div>
     <!-- /.row -->
 
     <!-- Project One -->
     <?php
         include './admin/spajanje_na_bazu.php';
         include './admin/funkcije.php';
-        $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM LOKACIJA";
+    
+        echo "<div class=\"row\">
+        <div class=\"col-lg-12\">
+            <h2 class=\"page-header\">TOP DESTINATIONS</h2>
+        </div>
+    </div>";
+        $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM LOKACIJA ORDER BY ime ASC";
         $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
+
+        $num = mysql_num_rows($rezultat) / 10 + 1;
 
         while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
             $lokacija = $redak['idLokacija'];
@@ -121,7 +127,7 @@
             echo "<div class=\"col-md-6\">
                         <h3>$ime</h3>
                             <p>$opis</p>
-                        <a class=\"btn btn-primary\" href=\"./learnMore.php?#value=$lokacija\">Learn more <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a class=\"btn btn-primary\" href=\"./learnMoreDest.php?value=$lokacija\">Learn more <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                    </div>";
 
             echo "</div>";

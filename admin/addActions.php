@@ -84,6 +84,9 @@
                         <li><a href="/admin.php?value=addCustomer">Add customer</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="./index.php">Web-page</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

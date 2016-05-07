@@ -2,7 +2,15 @@
 <html lang="en">
 
 <head>
-
+    <style>
+        div img {
+            height:  = 100%;
+            max-height: 300px;
+            width = 600px;
+            border: 2px solid ghostwhite;
+            border-radius: 50px;
+        }
+    </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -86,6 +94,9 @@
 
                     </ul>
                 </li>
+                <li>
+                    <a href="./index.php">Web-page</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -100,143 +111,48 @@
 
     <?php
     if (!isset($_GET) || empty($_GET)) {
-        echo "
-    <!-- Page Heading -->
-    <div class=\"row\">
-        <div class=\"col-lg-12\">
-            <h1 class=\"page-header\">Page Heading
-                <small>Secondary Text</small>
-            </h1>
-        </div>
-    </div>
-    <!-- /.row -->
+        include './admin/spajanje_na_bazu.php';
+        include './admin/funkcije.php';
+        $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM LOKACIJA";
+        $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
-    <!-- Project One -->
-    <div class=\"row\">
-        <div class=\"col-md-6\">
-            <a href=\"#\">
-                <img class=\"img-responsive\" src=\"http://static.kigo.net/1810/images/slider/6.jpg\" alt=\"\">
-            </a>
-        </div>
-        <div class=\"col-md-6\">
-            <h3>Barcelona
-            </h3>
-            <h4>Subheading</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
-            <a class=\"btn btn-primary\" href=\"#\">View Project <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
-        </div>
-    </div>
-    <!-- /.row -->
+        while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
+            $lokacija = $redak['idLokacija'];
+            $ime = $redak['ime'];
+            $opis = $redak['opis'];
+            $tip = $redak['tip'];
 
-    <hr>
+            if ($tip == 5) {
+                continue;
+            }
 
-    <!-- Project Two -->
-    <div class=\"row\">
-        <div class=\"col-md-6\">
-            <a href=\"#\">
-                <img class=\"img-responsive\" src=\"http://placehold.it/600x300\" alt=\"\">
-            </a>
-        </div>
-        <div class=\"col-md-6\">
-            <h3>Goran 2</h3>
-            <h4>Subheading</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
-            <a class=\"btn btn-primary\" href=\"#\">View Project <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
-        </div>
-    </div>
-    <!-- /.row -->
+            $upit2 = "SELECT idSlika FROM SLIKE_LOKACIJA WHERE idLokacija = $lokacija";
+            $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
+            $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
+            $idSlika = $redak2['idSlika'];
 
-    <hr>
+            $upit3 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+            $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
+            $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
+            $url = $redak3['url'];
 
-    <!-- Project Three -->
-    <div class=\"row\">
-        <div class=\"col-md-6\">
-            <a href=\"#\">
-                <img class=\"img-responsive\" src=\"http://placehold.it/600x300\" alt=\"\">
-            </a>
-        </div>
-        <div class=\"col-md-6\">
-            <h3>Project Three</h3>
-            <h4>Subheading</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, temporibus, dolores, at, praesentium ut unde repudiandae voluptatum sit ab debitis suscipit fugiat natus velit excepturi amet commodi deleniti alias possimus!</p>
-            <a class=\"btn btn-primary\" href=\"#\">View Project <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
-        </div>
-    </div>
-    <!-- /.row -->
+            echo "<div class=\"row\">";
+            echo "
+                    <div class=\"col-md-6\">
+                        <a href=\"#\">
+                            <img class=\"img-responsive\" src=\"$url\" width=\"600\" height=\"300\" alt=\"\">
+                        </a>
+                    </div>";
 
-    <hr>
+            echo "<div class=\"col-md-6\">
+                        <h3>$ime</h3>
+                            <p>$opis</p>
+                        <a class=\"btn btn-primary\" href=\"./learnMore.php?#value=$lokacija\">Learn more <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                   </div>";
 
-    <!-- Project Four -->
-    <div class=\"row\">
-
-        <div class=\"col-md-6\">
-            <a href=\"#\">
-                <img class=\"img-responsive\" src=\"http://placehold.it/600x300\" alt=\"\">
-            </a>
-        </div>
-        <div class=\"col-md-6\">
-            <h3>Project Four</h3>
-            <h4>Subheading</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, quidem, consectetur, officia rem officiis illum aliquam perspiciatis aspernatur quod modi hic nemo qui soluta aut eius fugit quam in suscipit?</p>
-            <a class=\"btn btn-primary\" href=\"#\">View Project <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
-        </div>
-    </div>
-    <!-- /.row -->
-
-    <hr>
-
-    <!-- Project Five -->
-    <div class=\"row\">
-        <div class=\"col-md-6\">
-            <a href=\"#\">
-                <img class=\"img-responsive\" src=\"http://placehold.it/600x300\" alt=\"\">
-            </a>
-        </div>
-        <div class=\"col-md-6\">
-            <h3>Project Five</h3>
-            <h4>Subheading</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, quo, minima, inventore voluptatum saepe quos nostrum provident ex quisquam hic odio repellendus atque porro distinctio quae id laboriosam facilis dolorum.</p>
-            <a class=\"btn btn-primary\" href=\"#\">View Project <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
-        </div>
-    </div>
-    <!-- /.row -->
-
-    <hr>
-
-    <!-- Pagination -->
-    <div class=\"row text-center\">
-        <div class=\"col-lg-12\">
-            <ul class=\"pagination\">
-                <li>
-                    <a href=\"#\">&laquo;</a>
-                </li>
-                <li class=\"active\">
-                    <a href=\"#\">1</a>
-                </li>
-                <li>
-                    <a href=\"#\">2</a>
-                </li>
-                <li>
-                    <a href=\"#\">3</a>
-                </li>
-                <li>
-                    <a href=\"#\">4</a>
-                </li>
-                <li>
-                    <a href=\"#\">5</a>
-                </li>
-                <li>
-                    <a href=\"#\">&raquo;</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- /.row -->
-
-    <hr>
-
-
-        ";
+            echo "</div>";
+            echo "<hr>";
+        };
     }
 
     if (isset($_GET['value'])) {
