@@ -10,6 +10,14 @@
             border: 2px solid ghostwhite;
             border-radius: 50px;
         }
+
+        .nova {
+            height:  = 100%;
+            max-height: 180px;
+            width = 300px;
+            border: 2px solid ghostwhite;
+            border-radius: 50px;
+        }
     </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -120,15 +128,17 @@
     $url = $redak3['url'];
 
     echo "<div class=\"row\">";
-    echo "
-                <div class=\"col-md-12\">
+    echo "        
+            <div class=\"col-md-2\"></div>
+                <div class=\"col-md-8\">
                     <a href=\"#\">
                         <img class=\"img-responsive\" src=\"$url\" width=\"1200\" height=\"400\" alt=\"\">
                     </a>
-                </div>";
+                </div>
+                <div class=\"col-md-2\"></div>";
 
     echo "</div>";
-    echo "<hr>";
+
 
     echo "<div class=\"row\">
         <div class=\"col-lg-12\">
@@ -174,10 +184,20 @@
             $klasifikacija = $redak['klasifikacija'];
         }
 
+        $upit5 = "SELECT idSlika FROM SLIKE_SMJESTAJ WHERE idSmjestaj = $idSmjestaj";
+        $rezultat5 = mysqli_query($veza, $upit5) or die ("2" . mysqli_error($veza));
+        $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
+        $idSlika = $redak5['idSlika'];
+
+        $upit5 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+        $rezultat5 = mysqli_query($veza, $upit5) or die ("3" .   mysqli_error($veza));
+        $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
+        $url = $redak5['url'];
+
         echo "
                     <div class=\"col-md-3\">
                     <a href=\"#\">
-                <img class=\"img-responsive\" src=\"$url\" width =\"200\" height =\"100\" alt =\"\">
+                <img class=\"img-responsive nova\" src=\"$url\" width =\"200\" max-height =\"100\" alt =\"\">
                     </a>
                 </div>
                 <div class=\"col-md-3\">
@@ -190,7 +210,7 @@
                 }
 
                 echo "</p>
-                    <a class=\"btn btn-primary\" href=\"./learnMoreAccomodation.php?value = $idSmjestaj\">Learn more <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                    <a class=\"btn btn-primary\" href=\"./learnMoreAccomodation.php?value=$idSmjestaj\">Learn more <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                </div>";
 
         $i++;

@@ -5,8 +5,16 @@
     <style>
         div img {
             height:  = 100%;
-            max-height: 100px;
-            width = 200px;
+            max-height: 200px;
+            width = 300px;
+            border: 2px solid ghostwhite;
+            border-radius: 50px;
+        }
+
+        .nova {
+            height:  = 100%;
+            max-height: 180px;
+            width = 300px;
             border: 2px solid ghostwhite;
             border-radius: 50px;
         }
@@ -119,6 +127,13 @@
             $upit = "SELECT idSmjestaj, tip, opis, adresa, klasifikacija, idLokacija, idAkcija FROM SMJESTAJ WHERE $lokacija = idLokacija ORDER BY tip ASC";
             $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
+            $num =  mysql_num_rows($rezultat);
+
+            if ($num == 0) {
+                echo "<div class=\"col-md-12\">
+                    <h4>Unfortunately, there are no available accomodations for this location.</h4></div>";
+            }
+
             $i = 0;
 
             while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
@@ -147,10 +162,20 @@
                     $klasifikacija = $redak['klasifikacija'];
                 }
 
+                $upit5 = "SELECT idSlika FROM SLIKE_SMJESTAJ WHERE idSmjestaj = $idSmjestaj";
+                $rezultat5 = mysqli_query($veza, $upit5) or die ("2" . mysqli_error($veza));
+                $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
+                $idSlika = $redak5['idSlika'];
+
+                $upit5 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+                $rezultat5 = mysqli_query($veza, $upit5) or die ("3" .   mysqli_error($veza));
+                $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
+                $url = $redak5['url'];
+
                 echo "
                     <div class=\"col-md-3\">
                     <a href=\"#\">
-                <img class=\"img-responsive\" src=\"$url\" width =\"200\" height =\"100\" alt =\"\">
+                <img class=\"img-responsive nova\" src=\"$url\" width =\"300\" height =\"200\" alt =\"\">
                     </a>
                 </div>
                 <div class=\"col-md-3\">
