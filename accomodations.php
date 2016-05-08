@@ -73,7 +73,7 @@
                 <li>
                     <a href="./tours.php?page=1">TOURS</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="./accomodations.php">ACCOMODATIONS</a>
                 </li>
             </ul>
