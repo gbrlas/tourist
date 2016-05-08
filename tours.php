@@ -146,7 +146,7 @@
                         <h3>$ime</h3>
                             <p>$opis</p>
                         <a class=\"btn btn-primary\" href=\"./learnMoreTour.php?value=$izlet\">Learn more <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
-                        <a style='margin-left: 25px' class=\"btn btn-success\" href=\"./reserveTour.php?value=$izlet\">Reserve tour <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a style='margin-left: 25px' class=\"btn btn-success\" href=\"./customerInfo.php?value=$izlet&type=tour\">Reserve tour <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                    </div>";
 
         echo "</div>";
