@@ -99,18 +99,24 @@
 
 
 
-    $upit = "SELECT idSmjestaj, tip, opis, adresa, klasifikacija, idLokacija, idAkcija FROM SMJESTAJ WHERE idSmjestaj = $id";
+    $upit = "SELECT idIzlet, naziv, opis, vrijemePolaska, trajanje, cijenaPoOsobi, ukljucenVodic, ukljucenObrok, ukljuceneUlaznice, nazivKompanije, idLokacija, idAkcija FROM IZLET WHERE idIzlet = $id";
     $rezultat = mysqli_query($veza, $upit) or die ("1" . mysqli_error($veza));
 
     $redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
 
-    $idLokacija = $redak['idLokacija'];
     $opis = $redak['opis'];
-    $adresa = $redak['adresa'];
-    $klasifikacija = $redak['klasifikacija'];
+    $naziv = $redak['naziv'];
+    $vrijemePolaska = $redak['vrijemePolaska'];
+    $trajanje = $redak['trajanje'];
+    $cijenaPoOsobi = $redak['cijenaPoOsobi'];
+    $ukljucenVodic = $redak['ukljucenVodic'];
+    $ukljucenObrok = $redak['ukljucenObrok'];
+    $ukljuceneUlaznice = $redak['ukljuceneUlaznice'];
+    $nazivKompanije = $redak['nazivKompanije'];
+    $idLokacija = $redak['idLokacija'];
     $idAkcija = $redak['idAkcija'];
 
-    $upit5 = "SELECT idSlika FROM SLIKE_SMJESTAJ WHERE idSmjestaj = $id";
+    $upit5 = "SELECT idSlika FROM SLIKE_IZLET WHERE idIzlet = $id";
     $rezultat5 = mysqli_query($veza, $upit5) or die ("2" . mysqli_error($veza));
     $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
     $idSlika = $redak5['idSlika'];
@@ -120,25 +126,9 @@
     $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
     $url = $redak5['url'];
 
-    if ($redak['tip'] == 1) {
-        $tip = "Hotel";
-
-        $upit2 = "SELECT naziv, kapacitetHotela, brojObroka FROM HOTEL WHERE idSmjestaj = $id";
-        $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
-        $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
-
-        $ime = $redak2['naziv'];
-        $kapacitet = $redak2['kapacitetHotela'];
-        $brojObroka = $redak2['brojObroka'];
-
-        $upit7 = "SELECT ime FROM LOKACIJA WHERE idLokacija = $idLokacija";
-        $rezultat7 = mysqli_query($veza, $upit7) or die ("3" .   mysqli_error($veza));
-        $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
-        $imeLokacije = $redak7['ime'];
-
         echo "<div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">$ime, <a href=\"./learnMoreDest.php?value=$idLokacija\">$imeLokacije</a></h2>
+            <h2 class=\"page-header\">$naziv</h2>
         </div>
     </div>";
 
@@ -155,7 +145,7 @@
             <p>$opis</p>
             
             <p>
-            <a style='margin-left: 160px; margin-top: 25px' class=\"btn btn-success\" href=\"./reserveAccomodations.php?value=$id\">Reserve your room<span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+            <a style='margin-left: 160px; margin-top: 25px' class=\"btn btn-success\" href=\"./reserveTour.php?value=$id\">Reserve tour <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
 </p>
         </div>";
 
@@ -164,25 +154,35 @@
 
         echo "<div class=\"row\">";
 
-
-        $upit6 = "SELECT idSadrzaj FROM HOTEL_NUDI WHERE idSmjestaj = $id";
-        $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
-
         echo "
-        <div class=\"col-lg-2\">
-            <h2 class=\"page-header\">Hotel offers: </h2>";
+        <div class=\"col-lg-4\">
+            <h2 class=\"page-header\">Additional info: </h2>";
 
-        while ($redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC)) {
-            $idSadrzaj = $redak6['idSadrzaj'];
-
-            $upit7 = "SELECT naziv FROM SADRZAJ WHERE idSadrzaj = $idSadrzaj";
-            $rezultat7 = mysqli_query($veza, $upit7) or die (mysqli_error($veza));
-            $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
-
-            $sadrzaj = $redak7['naziv'];
-
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $sadrzaj</p>";
+        if ($ukljucenVodic == 1) {
+            $vodic = "<span class=\"glyphicon glyphicon-ok\"></span>";
+        } else if ($ukljucenVodic == 2) {
+            $vodic = "<span class=\"glyphicon glyphicon-remove\"></span>";
         }
+
+        if ($ukljucenObrok == 1) {
+            $obrok = "<span class=\"glyphicon glyphicon-ok\"></span>";
+        } else if ($ukljucenObrok == 2) {
+            $obrok = "<span class=\"glyphicon glyphicon-remove\"></span>";
+        }
+
+        if ($ukljuceneUlaznice == 1) {
+            $ulaznice = "<span class=\"glyphicon glyphicon-ok\"></span>";
+        } else if ($ukljuceneUlaznice == 2) {
+            $ulaznice = "<span class=\"glyphicon glyphicon-remove\"></span>";
+        }
+
+        echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Starting date and time:</b> $vrijemePolaska</p>";
+        echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Duration:</b> $trajanje hours</p>";
+        echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Price per person:</b> $cijenaPoOsobi €</p>";
+        echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Tour Guide included:</b> $vodic</p>";
+        echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Meal included:</b> $obrok</p>";
+        echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>All tickets included:</b> $ulaznice</p>";
+        echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Company name:</b> $nazivKompanije</p>";
 
         echo "
         </div>
@@ -194,56 +194,7 @@
         </div>
     </div>
     <hr> ";
-
-    } else {
-        $tip = "Apartman";
-
-        $upit2 = "SELECT naziv, brojOsoba, cijenaPoDanu, brojApartmana FROM APARTMAN WHERE idSmjestaj = $id";
-        $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
-        $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
-
-        $ime = $redak2['naziv'];
-        $brojOsoba = $redak2['brojOsoba'];
-        $brojObroka = $redak2['brojApartmana'];
-        $cijenaPoDanu = $redak2['cijenaPoDanu'];
-
-        $upit7 = "SELECT ime FROM LOKACIJA WHERE idLokacija = $idLokacija";
-        $rezultat7 = mysqli_query($veza, $upit7) or die ("3" .   mysqli_error($veza));
-        $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
-        $imeLokacije = $redak7['ime'];
-
-        echo "<div class=\"row\">
-        <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">$ime, <a href=\"./learnMoreDest.php?value=$idLokacija\">$imeLokacije</a></h2>
-        </div>
-    </div>";
-
-
-        echo "<div class=\"row\">";
-        echo " <div class=\"col-md-6\">
-                    <a href=\"#\">
-                        <img class=\"img-responsive nova\" src=\"$url\" width=\"1200\" height=\"400\" alt=\"\">
-                    </a>
-                 
-                </div>
-                
-                <div class=\"col-md-6\">
-            <h2>Description: </h2>
-            <p>$opis</p>
-            
-            <p>
-            <a style='margin-left: 160px; margin-top: 25px' class=\"btn btn-success\" href=\"./reserveAccomodations.php?value=$id\">Reserve your room<span class=\"glyphicon glyphicon-chevron-right\"></span></a>
-</p>
-        </div>";
     
-        echo "<div class=\"row\">
-        <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Additional photos: </h2>
-        </div>
-    </div>
-    <hr>";
-
-    }
     ?>
 
     <!-- Footer -->

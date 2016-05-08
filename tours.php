@@ -48,25 +48,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="./index.php">Tourist Agency</a>
+            <a class="navbar-brand" href="./index.php">TOURIST AGENCY</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./destinations.php?type=summer">Summer destinations</a>
+                    <a href="./destinations.php?type=summer">SUMMER DESTINATIONS</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=winter">Winter resorts</a>
+                    <a href="./destinations.php?type=winter">WINTER RESORTS</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=cities">City-breaks</a>
+                    <a href="./destinations.php?type=cities">CITY-BREAKS</a>
                 </li>
                 <li>
-                    <a href="./tours.php">Tours</a>
+                    <a href="./tours.php">TOURS</a>
                 </li>
                 <li>
-                    <a href="./accomodations.php">Accomodations</a>
+                    <a href="./accomodations.php">ACCOMODATIONS</a>
                 </li>
             </ul>
         </div>
@@ -119,8 +119,8 @@
         echo "<div class=\"col-md-6\">
                         <h3>$ime</h3>
                             <p>$opis</p>
-                        <a class=\"btn btn-primary\" href=\"./learnMoreTour.php?#value=$izlet\">Learn more <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
-                        <a style='margin-left: 25px' class=\"btn btn-success\" href=\"./reserveTour.php?#value=$izlet\">Reserve tour <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a class=\"btn btn-primary\" href=\"./learnMoreTour.php?value=$izlet\">Learn more <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a style='margin-left: 25px' class=\"btn btn-success\" href=\"./reserveTour.php?value=$izlet\">Reserve tour <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                    </div>";
 
         echo "</div>";

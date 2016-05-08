@@ -56,25 +56,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="./index.php">Tourist Agency</a>
+            <a class="navbar-brand" href="./index.php">TOURIST AGENCY</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./destinations.php?type=summer">Summer destinations</a>
+                    <a href="./destinations.php?type=summer">SUMMER DESTINATIONS</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=winter">Winter resorts</a>
+                    <a href="./destinations.php?type=winter">WINTER RESORTS</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=cities">City-breaks</a>
+                    <a href="./destinations.php?type=cities">CITY-BREAKS</a>
                 </li>
                 <li>
-                    <a href="./tours.php">Tours</a>
+                    <a href="./tours.php">TOURS</a>
                 </li>
                 <li>
-                    <a href="./accomodations.php">Accomodations</a>
+                    <a href="./accomodations.php">ACCOMODATIONS</a>
                 </li>
             </ul>
         </div>
@@ -124,10 +124,21 @@
             include './admin/spajanje_na_bazu.php';
             include './admin/funkcije.php';
 
+            $upit7 = "SELECT ime FROM LOKACIJA WHERE idLokacija = $lokacija";
+            $rezultat7 = mysqli_query($veza, $upit7) or die ("3" .   mysqli_error($veza));
+            $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
+            $imeLokacije = $redak7['ime'];
+
+            echo "<div class=\"row\">
+        <div class=\"col-lg-12\">
+            <h2 class=\"page-header\"><a href='./learnMoreDest.php?value=$lokacija'>$imeLokacije</a></h2>
+        </div>
+    </div>";
+
             $upit = "SELECT idSmjestaj, tip, opis, adresa, klasifikacija, idLokacija, idAkcija FROM SMJESTAJ WHERE $lokacija = idLokacija ORDER BY tip ASC";
             $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
-            $num =  mysql_num_rows($rezultat);
+            $num =  mysqli_num_rows($rezultat);
 
             if ($num == 0) {
                 echo "<div class=\"col-md-12\">
