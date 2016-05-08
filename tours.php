@@ -96,10 +96,10 @@
 
     $page = $_GET['page'];
 
-    if (mysqli_num_rows($rezultat) % 2 == 0) {
-        $numberOfPages = intval(mysqli_num_rows($rezultat) / 2);
+    if (mysqli_num_rows($rezultat) % 5 == 0) {
+        $numberOfPages = intval(mysqli_num_rows($rezultat) / 5);
     } else {
-        $numberOfPages = intval(mysqli_num_rows($rezultat) / 2) + 1;
+        $numberOfPages = intval(mysqli_num_rows($rezultat) / 5) + 1;
     }
 
     $skip = 0;
