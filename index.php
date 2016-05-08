@@ -54,16 +54,16 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./destinations.php?type=summer">SUMMER DESTINATIONS</a>
+                    <a href="./destinations.php?type=summer&page=1">SUMMER DESTINATIONS</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=winter">WINTER RESORTS</a>
+                    <a href="./destinations.php?type=winter&page=1">WINTER RESORTS</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=cities">CITY-BREAKS</a>
+                    <a href="./destinations.php?type=cities&page=1">CITY-BREAKS</a>
                 </li>
                 <li>
-                    <a href="./tours.php">TOURS</a>
+                    <a href="./tours.php?page=1">TOURS</a>
                 </li>
                 <li>
                     <a href="./accomodations.php">ACCOMODATIONS</a>
@@ -88,23 +88,23 @@
     
         echo "<div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">TOP DESTINATIONS</h2>
+            <h2 class=\"page-header\">TOP 5 DESTINATIONS</h2>
         </div>
     </div>";
-        $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM LOKACIJA ORDER BY ime ASC";
+        $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM LOKACIJA WHERE tip != 5 ORDER BY ime ASC";
         $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
-        $num = mysql_num_rows($rezultat) / 10 + 1;
+        $i = 0;
 
         while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
+            if ($i >= 5) {
+                break;
+            }
+
             $lokacija = $redak['idLokacija'];
             $ime = $redak['ime'];
             $opis = $redak['opis'];
             $tip = $redak['tip'];
-
-            if ($tip == 5) {
-                continue;
-            }
 
             $upit2 = "SELECT idSlika FROM SLIKE_LOKACIJA WHERE idLokacija = $lokacija";
             $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
@@ -132,6 +132,8 @@
 
             echo "</div>";
             echo "<hr>";
+
+            $i++;
         };
             ?>
 

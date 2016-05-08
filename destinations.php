@@ -62,16 +62,16 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./destinations.php?type=summer">SUMMER DESTINATIONS</a>
+                    <a href="./destinations.php?type=summer&page=1">SUMMER DESTINATIONS</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=winter">WINTER RESORTS</a>
+                    <a href="./destinations.php?type=winter&page=1">WINTER RESORTS</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=cities">CITY-BREAKS</a>
+                    <a href="./destinations.php?type=cities&page=1">CITY-BREAKS</a>
                 </li>
                 <li>
-                    <a href="./tours.php">TOURS</a>
+                    <a href="./tours.php?page=1">TOURS</a>
                 </li>
                 <li>
                     <a href="./accomodations.php">ACCOMODATIONS</a>
@@ -90,6 +90,7 @@
     <?php
         if (isset($_GET['type'])) {
             $temp = $_GET['type'];
+            $page = $_GET['page'];
             $type;
 
             if ($temp == "summer") {
@@ -123,7 +124,30 @@
             $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM LOKACIJA WHERE tip = $type";
             $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
+            if (mysqli_num_rows($rezultat) % 2 == 0) {
+                $numberOfPages = intval(mysqli_num_rows($rezultat) / 2);
+            } else {
+                $numberOfPages = intval(mysqli_num_rows($rezultat) / 2) + 1;
+            }
+
+            $skip = 0;
+
+            if ($page != 1) {
+                $skip = ($page - 1) * $numberOfPages;
+            }
+
+            $itemsPerPage = ceil(mysqli_num_rows($rezultat) / $numberOfPages);
+            $number == 0;
             while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
+                if ($skip != 0) {
+                    $skip--;
+                    continue;
+                }
+
+                if ($number == $itemsPerPage) {
+                    break;
+                }
+
                 $lokacija = $redak['idLokacija'];
                 $ime = $redak['ime'];
                 $opis = $redak['opis'];
@@ -153,7 +177,48 @@
 
                 echo "</div>";
                 echo "<hr>";
+
+                $number++;
             };
+
+            echo "<div class=\"row text-center\">
+        <div class=\"col-lg-12\">
+            <ul class=\"pagination\">
+                <li>";
+
+                    if ($page > 1) {
+                        $before = $page - 1;
+                    } else {
+                        $before = $page;
+                    }
+
+                   echo " <a href=\"./destinations.php?type=cities&page=$before\">&laquo;</a></li>";
+
+                    for ($j = 1; $j <= $numberOfPages; $j++) {
+                        $z = $j;
+
+                        if ($page == $z) {
+                            echo "<li class=\"active\">
+                            <a href=\"./destinations.php?type=cities&page=$z\">$z</a>
+                            </li>";
+                        } else {
+                            echo "<li>
+                            <a href=\"./destinations.php?type=cities&page=$z\">$z</a>
+                            </li>";
+                        }
+                    };
+
+                    if ($page == $numberOfPages) {
+                        $after = $page;
+                    } else {
+                        $after = $page + 1;
+                    }
+
+                    echo "<li><a href=\"./destinations.php?type=cities&page=$after\">&raquo;</a>
+                </li>
+            </ul>
+        </div>
+    </div>";
 
         }
     ?>

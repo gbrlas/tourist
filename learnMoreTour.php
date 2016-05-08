@@ -62,16 +62,16 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./destinations.php?type=summer">SUMMER DESTINATIONS</a>
+                    <a href="./destinations.php?type=summer&page=1">SUMMER DESTINATIONS</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=winter">WINTER RESORTS</a>
+                    <a href="./destinations.php?type=winter&page=1">WINTER RESORTS</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=cities">CITY-BREAKS</a>
+                    <a href="./destinations.php?type=cities&page=1">CITY-BREAKS</a>
                 </li>
                 <li>
-                    <a href="./tours.php">TOURS</a>
+                    <a href="./tours.php?page=1">TOURS</a>
                 </li>
                 <li>
                     <a href="./accomodations.php">ACCOMODATIONS</a>
@@ -99,7 +99,7 @@
 
 
 
-    $upit = "SELECT idIzlet, naziv, opis, vrijemePolaska, trajanje, cijenaPoOsobi, ukljucenVodic, ukljucenObrok, ukljuceneUlaznice, nazivKompanije, idLokacija, idAkcija FROM IZLET WHERE idIzlet = $id";
+    $upit = "SELECT idIzlet, naziv, opis, trajanje, cijenaPoOsobi, ukljucenVodic, ukljucenObrok, ukljuceneUlaznice, nazivKompanije, idLokacija, idAkcija FROM IZLET WHERE idIzlet = $id";
     $rezultat = mysqli_query($veza, $upit) or die ("1" . mysqli_error($veza));
 
     $redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
@@ -155,7 +155,7 @@
         echo "<div class=\"row\">";
 
         echo "
-        <div class=\"col-lg-4\">
+        <div class=\"col-lg-6\">
             <h2 class=\"page-header\">Additional info: </h2>";
 
         if ($ukljucenVodic == 1) {
@@ -176,7 +176,6 @@
             $ulaznice = "<span class=\"glyphicon glyphicon-remove\"></span>";
         }
 
-        echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Starting date and time:</b> $vrijemePolaska</p>";
         echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Duration:</b> $trajanje hours</p>";
         echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Price per person:</b> $cijenaPoOsobi €</p>";
         echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Tour Guide included:</b> $vodic</p>";
@@ -185,6 +184,20 @@
         echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Company name:</b> $nazivKompanije</p>";
 
         echo "
+        </div>
+        
+        <div class=\"col-lg-6\">
+            <h2 class='page-header'>Starting dates and times:</h2>";
+
+            $upit = "SELECT vrijemePolazak FROM IZLET_POLAZAK WHERE idIzlet = $id";
+            $rezultat = mysqli_query($veza, $upit) or die ("1" . mysqli_error($veza));
+
+            while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
+                $vrijemePolaska = $redak['vrijemePolazak'];
+                echo "<p><i class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></i> $vrijemePolaska</p>";
+            }
+
+            echo "
         </div>
         </div>
         

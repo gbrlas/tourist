@@ -62,16 +62,16 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./destinations.php?type=summer">SUMMER DESTINATIONS</a>
+                    <a href="./destinations.php?type=summer&page=1">SUMMER DESTINATIONS</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=winter">WINTER RESORTS</a>
+                    <a href="./destinations.php?type=winter&page=1">WINTER RESORTS</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=cities">CITY-BREAKS</a>
+                    <a href="./destinations.php?type=cities&page=1">CITY-BREAKS</a>
                 </li>
                 <li>
-                    <a href="./tours.php">TOURS</a>
+                    <a href="./tours.php?page=1">TOURS</a>
                 </li>
                 <li>
                     <a href="./accomodations.php">Accomodations</a>

@@ -62,16 +62,16 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./destinations.php?type=summer">SUMMER DESTINATIONS</a>
+                    <a href="./destinations.php?type=summer&page=1">SUMMER DESTINATIONS</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=winter">WINTER RESORTS</a>
+                    <a href="./destinations.php?type=winter&page=1">WINTER RESORTS</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=cities">CITY-BREAKS</a>
+                    <a href="./destinations.php?type=cities&page=1">CITY-BREAKS</a>
                 </li>
                 <li>
-                    <a href="./tours.php">TOURS</a>
+                    <a href="./tours.php?page=1">TOURS</a>
                 </li>
                 <li>
                     <a href="./accomodations.php">ACCOMODATIONS</a>
@@ -169,7 +169,7 @@
         $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
 
         echo "
-        <div class=\"col-lg-2\">
+        <div class=\"col-lg-6\">
             <h2 class=\"page-header\">Hotel offers: </h2>";
 
         while ($redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC)) {
@@ -185,8 +185,22 @@
         }
 
         echo "
-        </div>
-        </div>
+        </div>";
+
+        $upit6 = "SELECT tip FROM SOBA WHERE idSmjestaj = $id ORDER BY cijenaPoDanu DESC";
+        $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
+
+        echo "
+        <div class=\"col-lg-6\">
+            <h2 class=\"page-header\">Available room types: </h2>";
+
+        while ($redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC)) {
+            $roomType = $redak6['tip'];
+
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $roomType</p>";
+        }
+
+        echo " </div>
         
         <div class=\"row\">
         <div class=\"col-lg-12\">
