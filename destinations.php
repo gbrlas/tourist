@@ -192,18 +192,18 @@
                         $before = $page;
                     }
 
-                   echo " <a href=\"./destinations.php?type=cities&page=$before\">&laquo;</a></li>";
+                   echo " <a href=\"./destinations.php?type=$temp&page=$before\">&laquo;</a></li>";
 
                     for ($j = 1; $j <= $numberOfPages; $j++) {
                         $z = $j;
 
                         if ($page == $z) {
                             echo "<li class=\"active\">
-                            <a href=\"./destinations.php?type=cities&page=$z\">$z</a>
+                            <a href=\"./destinations.php?type=$temp&page=$z\">$z</a>
                             </li>";
                         } else {
                             echo "<li>
-                            <a href=\"./destinations.php?type=cities&page=$z\">$z</a>
+                            <a href=\"./destinations.php?type=$temp&page=$z\">$z</a>
                             </li>";
                         }
                     };
@@ -214,7 +214,7 @@
                         $after = $page + 1;
                     }
 
-                    echo "<li><a href=\"./destinations.php?type=cities&page=$after\">&raquo;</a>
+                    echo "<li><a href=\"./destinations.php?type=$temp&page=$after\">&raquo;</a>
                 </li>
             </ul>
         </div>
