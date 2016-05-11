@@ -142,7 +142,7 @@
 
             if ($num == 0) {
                 echo "<div class=\"col-md-12\">
-                    <h4>Unfortunately, there are no available accomodations for this location.</h4></div>";
+                    <h4 class>Unfortunately, there are no available accomodations for this location.</h4></div><hr>";
             }
 
             $i = 0;

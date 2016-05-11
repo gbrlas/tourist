@@ -155,7 +155,7 @@
             <p>$opis</p>
             
             <p>
-            <a style='margin-left: 160px; margin-top: 25px' class=\"btn btn-success\" href=\"./customerInfo.php?value=$id&type=accomodation\">Reserve your room<span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+            <a style='margin-left: 160px; margin-top: 25px' class=\"btn btn-success\" href=\"./addAccomodationCustomer.php?accomodationID=$id&type=hotel\">Reserve your room<span class=\"glyphicon glyphicon-chevron-right\"></span></a>
 </p>
         </div>";
 
@@ -246,7 +246,7 @@
             <p>$opis</p>
             
             <p>
-            <a style='margin-left: 160px; margin-top: 25px' class=\"btn btn-success\" href=\"./reserveAccomodations.php?value=$id\">Reserve your room<span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+            <a style='margin-left: 160px; margin-top: 25px' class=\"btn btn-success\" href=\"./addAccomodationCustomer.php?accomodationID=$id&type=apartment\">Reserve your room<span class=\"glyphicon glyphicon-chevron-right\"></span></a>
 </p>
         </div>";
     

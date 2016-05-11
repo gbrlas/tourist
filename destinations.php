@@ -137,7 +137,7 @@
             }
 
             $itemsPerPage = ceil(mysqli_num_rows($rezultat) / $numberOfPages);
-            $number == 0;
+            $number = 0;
             while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
                 if ($skip != 0) {
                     $skip--;

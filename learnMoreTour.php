@@ -106,7 +106,6 @@
 
     $opis = $redak['opis'];
     $naziv = $redak['naziv'];
-    $vrijemePolaska = $redak['vrijemePolaska'];
     $trajanje = $redak['trajanje'];
     $cijenaPoOsobi = $redak['cijenaPoOsobi'];
     $ukljucenVodic = $redak['ukljucenVodic'];
@@ -145,7 +144,7 @@
             <p>$opis</p>
             
             <p>
-            <a style='margin-left: 160px; margin-top: 25px' class=\"btn btn-success\" href=\"./customerInfo.php?value=$id&type=tour\">Reserve tour <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+            <a style='margin-left: 160px; margin-top: 25px' class=\"btn btn-success\" href=\"./addTourCustomer.php?value=$id\">Reserve tour <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
 </p>
         </div>";
 

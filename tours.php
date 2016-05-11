@@ -90,50 +90,39 @@
     <?php
     include './admin/spajanje_na_bazu.php';
     include './admin/funkcije.php';
-
     $upit = "SELECT idIzlet, naziv, opis FROM IZLET";
     $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
-
     $page = $_GET['page'];
-
     if (mysqli_num_rows($rezultat) % 5 == 0) {
         $numberOfPages = intval(mysqli_num_rows($rezultat) / 5);
     } else {
         $numberOfPages = intval(mysqli_num_rows($rezultat) / 5) + 1;
     }
-
     $skip = 0;
-
     if ($page != 1) {
         $skip = ($page - 1) * $numberOfPages;
     }
-
     $itemsPerPage = ceil(mysqli_num_rows($rezultat) / $numberOfPages);
-    $number == 0;
+    $number = 0;
     while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
         if ($skip != 0) {
             $skip--;
             continue;
         }
-
         if ($number == $itemsPerPage) {
             break;
         }
-
         $izlet = $redak['idIzlet'];
         $ime = $redak['naziv'];
         $opis = $redak['opis'];
-
         $upit2 = "SELECT idSlika FROM SLIKE_IZLET WHERE idIzlet = $izlet";
         $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
         $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
         $idSlika = $redak2['idSlika'];
-
         $upit3 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
         $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
         $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
         $url = $redak3['url'];
-
         echo "<div class=\"row\">";
         echo "
                     <div class=\"col-md-6\">
@@ -141,36 +130,28 @@
                             <img class=\"img-responsive\" src=\"$url\" width=\"600\" height=\"300\" alt=\"\">
                         </a>
                     </div>";
-
         echo "<div class=\"col-md-6\">
                         <h3>$ime</h3>
                             <p>$opis</p>
                         <a class=\"btn btn-primary\" href=\"./learnMoreTour.php?value=$izlet\">Learn more <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
-                        <a style='margin-left: 25px' class=\"btn btn-success\" href=\"./customerInfo.php?value=$izlet&type=tour\">Reserve tour <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a style='margin-left: 25px' class=\"btn btn-success\" href=\"./addTourCustomer.php?value=$izlet\">Reserve tour <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                    </div>";
-
         echo "</div>";
         echo "<hr>";
-
         $number++;
     };
-
     echo "<div class=\"row text-center\">
         <div class=\"col-lg-12\">
             <ul class=\"pagination\">
                 <li>";
-
     if ($page > 1) {
         $before = $page - 1;
     } else {
         $before = $page;
     }
-
     echo " <a href=\"./tours.php?page=$before\">&laquo;</a></li>";
-
     for ($j = 1; $j <= $numberOfPages; $j++) {
         $z = $j;
-
         if ($page == $z) {
             echo "<li class=\"active\">
                             <a href=\"./tours.php?page=$z\">$z</a>
@@ -181,7 +162,6 @@
                             </li>";
         }
     };
-
     if ($page == $numberOfPages) {
         $after = $page;
     } else {
