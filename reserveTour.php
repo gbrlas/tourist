@@ -10,6 +10,10 @@
             border: 2px solid ghostwhite;
             border-radius: 50px;
         }
+
+        body {
+            background-image: url(./images/gplaypattern_@2X.png);
+        }
     </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -153,7 +157,7 @@
         echo "<div class=\"row\">";
         echo " <div class=\"col-md-6\">
                     <a href=\"#\">
-                        <img class=\"img-responsive nova\" src=\"$url\" width=\"1200\" height=\"400\" alt=\"\">
+                        <img class=\"img-responsive nova\" src=\"./images/$url\" width=\"1200\" height=\"400\" alt=\"\">
                     </a>
                  
                 </div>
@@ -315,7 +319,7 @@
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Starting date and time:</b> $vrijemePolazak</p>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of reserved seats:</b> $number</p>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Total price:</b> $totalPrice €</p><br>
-                <p><b>If you wish to reserve your seats, press CONTINUE, otherwise press CANCEL.<b></b></p>
+                <p><b>If you wish to make a reservation press CONTINUE, otherwise press CANCEL.<b></b></p>
                 <a style='margin-left: 120px; margin-top: 25px' class=\"btn btn-success\" href=\"./reserveTour.php?reserved=true&tourID=$idIzlet&number=$number&polazak=$idIzletPolazak&customerID=$customerID&totalPrice=$totalPrice\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                 <a style='margin-left: 20px; margin-top: 25px' class=\"btn btn-danger\" href=\"./learnMoreTour.php?value=$id\">Cancel <span class=\"glyphicon glyphicon-chevron-right\"></span></a></div>
                 </div>

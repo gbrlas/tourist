@@ -10,6 +10,10 @@
             border: 2px solid ghostwhite;
             border-radius: 50px;
         }
+
+        body {
+            background-image: url(./images/gplaypattern_@2X.png);
+        }
     </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

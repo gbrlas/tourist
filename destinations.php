@@ -10,6 +10,10 @@
             border: 2px solid ghostwhite;
             border-radius: 50px;
         }
+
+        body {
+            background-image: url(./images/gplaypattern_@2X.png);
+        }
     </style>
 
     <meta charset="utf-8">
@@ -166,7 +170,7 @@
                 echo "<div class=\"row\">";
                 echo "
                     <div class=\"col-md-6\">
-                            <img class=\"img-responsive\" src=\"$url\" width=\"600\" height=\"300\" alt=\"\">
+                            <img class=\"img-responsive\" src=\"./images/$url\" width=\"600\" height=\"300\" alt=\"\">
                     </div>";
 
                 echo "<div class=\"col-md-6\">
