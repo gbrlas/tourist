@@ -104,11 +104,11 @@
                     <div class=\"col-md-6\">
                         <h4 style='color: limegreen'>Seats successfully reserved.</h4>
                         <br>
-                        <h4>Please press the button below to return to home page: </h4><br></div></div>";
+                        <h4>Please press the button below to return to tour page: </h4><br></div></div>";
 
         echo "<div class=\"row\">
                         <div class=\"col-md-6\">
-                        <a class=\"btn btn-success\" href=\"./index.php\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a class=\"btn btn-success\" href=\"./learnMoreTour.php?value=$idIzlet\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                    </div></div>";
 
     } else {

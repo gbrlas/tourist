@@ -90,7 +90,7 @@
     <?php
     include './admin/spajanje_na_bazu.php';
     include './admin/funkcije.php';
-    $upit = "SELECT idIzlet, naziv, opis FROM IZLET";
+    $upit = "SELECT idIzlet, naziv, opis FROM IZLET ORDER BY naziv ASC";
     $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
     $page = $_GET['page'];
     if (mysqli_num_rows($rezultat) % 5 == 0) {

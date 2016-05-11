@@ -187,17 +187,18 @@
         echo "
         </div>";
 
-        $upit6 = "SELECT tip FROM SOBA WHERE idSmjestaj = $id ORDER BY cijenaPoDanu DESC";
+        $upit6 = "SELECT tip, brojSlobodnih FROM SOBA WHERE idSmjestaj = $id ORDER BY cijenaPoDanu DESC";
         $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
 
         echo "
         <div class=\"col-lg-6\">
-            <h2 class=\"page-header\">Available room types: </h2>";
+            <h2 class=\"page-header\">Room types: </h2>";
 
         while ($redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC)) {
             $roomType = $redak6['tip'];
+            $brojSlobodnih = $redak6['brojSlobodnih'];
 
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $roomType</p>";
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $roomType, $brojSlobodnih rooms available</p>";
         }
 
         echo " </div>

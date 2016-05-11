@@ -188,12 +188,13 @@
         <div class=\"col-lg-6\">
             <h2 class='page-header'>Starting dates and times:</h2>";
 
-            $upit = "SELECT vrijemePolazak FROM IZLET_POLAZAK WHERE idIzlet = $id";
+            $upit = "SELECT vrijemePolazak, slobodnoMjesta FROM IZLET_POLAZAK WHERE idIzlet = $id";
             $rezultat = mysqli_query($veza, $upit) or die ("1" . mysqli_error($veza));
 
             while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
                 $vrijemePolaska = $redak['vrijemePolazak'];
-                echo "<p><i class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></i> $vrijemePolaska</p>";
+                $slobodnoMjesta = $redak['slobodnoMjesta'];
+                echo "<p><i class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></i> $vrijemePolaska, $slobodnoMjesta seats available</p>";
             }
 
             echo "
