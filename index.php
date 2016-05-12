@@ -10,10 +10,13 @@
             border: 2px solid ghostwhite;
             border-radius: 50px;
         }
-        
+
         body {
-            background-image: url(./images/gplaypattern_@2X.png);
+            background-image: url(./images/background-grey100.png);
+            background:
         }
+
+
     </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,7 +55,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">TOURIST AGENCY</a>
+            <a class="navbar-brand" href="./index.php">TOURIST AGENCY</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

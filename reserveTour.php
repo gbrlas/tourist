@@ -12,7 +12,7 @@
         }
 
         body {
-            background-image: url(./images/gplaypattern_@2X.png);
+            background-image: url(./images/background-grey100.png);
         }
     </style>
     <meta charset="utf-8">
