@@ -5,8 +5,16 @@
     <style>
         div img {
             height:  = 100%;
-            max-height: 300px;
-            width = 600px;
+            max-height: 400px;
+            width = 1200px;
+            border: 2px solid ghostwhite;
+            border-radius: 50px;
+        }
+
+        .nova {
+            height:  = 100%;
+            max-height: 400px;
+            width = 300px;
             border: 2px solid ghostwhite;
             border-radius: 50px;
         }
@@ -83,6 +91,7 @@
 <div class="container">
 
     <!-- Page Heading -->
+
     <!-- /.row -->
 
     <!-- Project One -->
@@ -91,15 +100,15 @@
     include './admin/funkcije.php';
 
     if (isset($_GET['reserved'])) {
-        $hotelID = $_GET['hotelID'];
+        $apartmentID = $_GET['apartmentID'];
         $number = $_GET['number'];
         $date = $_GET['date'];
         $customerID = $_GET['customerID'];
         $totalPrice = $_GET['totalPrice'];
-        $tipRezervacije = 1;
+        $tipRezervacije = 2;
         $roomID = $_GET['roomID'];
 
-        $upit = "INSERT INTO smjestaj_rezervacija (tipRezervacije, idRezervirano, datumOd, brojDana, ukupnaCijena, idSmjestaj, idKupac) VALUES (1, $roomID, '$date', $number, $totalPrice, $hotelID, $customerID)";
+        $upit = "INSERT INTO smjestaj_rezervacija (tipRezervacije, idRezervirano, datumOd, brojDana, ukupnaCijena, idSmjestaj, idKupac) VALUES (2, $roomID, '$date', $number, $totalPrice, $apartmentID, $customerID)";
         mysqli_query ($veza, $upit) or die ("1" . mysqli_error($veza));
 
         $upit = "SELECT brojSlobodnih FROM soba WHERE idSoba = $roomID";
@@ -144,14 +153,14 @@
 
             echo "<div class=\"row\">
                         <div class=\"col-md-6\">
-                        <a class=\"btn btn-success\" href=\"./learnMoreAccomodation.php?value=$hotelID\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a class=\"btn btn-success\" href=\"./learnMoreAccomodation.php?value=$apartmentID\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                    </div></div>";
         } else {
             echo "<div class=\"row\">
                     <div class=\"col-md-6\">
                         <h4 style='color: red'>No available rooms of that type during selected period.</h4>
                         <br>
-                        <h4>Please press the button below to return to the hotel page and try another room type or date: </h4><br></div></div>";
+                        <h4>Please press the button below to return to the apartment page and try another room or date: </h4><br></div></div>";
 
             echo "<div class=\"row\">
                         <div class=\"col-md-6\">
@@ -161,10 +170,10 @@
 
 
 
-
     } else {
         $id = $_GET['value'];
-        $customerID = $_GET['customerID'];
+
+
 
         $upit = "SELECT idSmjestaj, tip, opis, adresa, klasifikacija, idLokacija, idAkcija FROM SMJESTAJ WHERE idSmjestaj = $id";
         $rezultat = mysqli_query($veza, $upit) or die ("1" . mysqli_error($veza));
@@ -187,25 +196,28 @@
         $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
         $url = $redak5['url'];
 
-        $upit2 = "SELECT naziv, kapacitetHotela, brojObroka FROM HOTEL WHERE idSmjestaj = $id";
+        $tip = "Apartman";
+
+        $upit2 = "SELECT naziv, brojOsoba, cijenaPoDanu, brojSoba FROM APARTMAN WHERE idSmjestaj = $id";
         $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
         $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
 
         $ime = $redak2['naziv'];
-        $kapacitet = $redak2['kapacitetHotela'];
-        $brojObroka = $redak2['brojObroka'];
+        $brojOsoba = $redak2['brojOsoba'];
+        $brojSoba = $redak2['brojSoba'];
+        $cijenaPoDanu = $redak2['cijenaPoDanu'];
 
         $upit7 = "SELECT ime FROM LOKACIJA WHERE idLokacija = $idLokacija";
         $rezultat7 = mysqli_query($veza, $upit7) or die ("3" .   mysqli_error($veza));
         $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
         $imeLokacije = $redak7['ime'];
 
-
         echo "<div class=\"row\">
         <div class=\"col-lg-12\">
             <h2 class=\"page-header\">$ime, <a href=\"./learnMoreDest.php?value=$idLokacija\">$imeLokacije</a></h2>
         </div>
     </div>";
+
 
         echo "<div class=\"row\">";
         echo " <div class=\"col-md-6\">
@@ -214,15 +226,19 @@
                     </a>
                  
                 </div>
+                
                ";
 
         if (! isset($_GET['selectedRoom']) && ! isset($_GET['selectedDate'])) {
+            $id = $_GET['value'];
+            $customerID = $_GET['customerID'];
+
             echo "<div class='col-md-6' align='center'> <div class=\"dropdown\">
             <button style='margin-top: 100px;' class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">
   Select preferred room type</button>
-  <ul style='margin-left: 179px;' class=\"dropdown-menu\">";
+  <ul style='margin-left: 180px;' class=\"dropdown-menu\">";
 
-            $upit = "SELECT idSoba, tip, cijenaPoDanu FROM SOBA WHERE idSmjestaj = $id";
+            $upit = "SELECT idSoba, tip, cijenaPoDanu FROM soba WHERE idSmjestaj = $id";
             $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
             while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
@@ -230,65 +246,16 @@
                 $tipSobe = $redak['tip'];
                 $cijenaPoDanu = $redak['cijenaPoDanu'];
 
-                echo "<li><a href=\"reserveHotel.php?value=$id&customerID=$customerID&idSoba=$idSoba&selectedRoom=true\">$tipSobe, $cijenaPoDanu € per night</a></li>";
+                echo "<li><a href=\"reserveApartment.php?value=$id&customerID=$customerID&idSoba=$idSoba&selectedRoom=true\">$tipSobe, $cijenaPoDanu € per night</a></li>";
+
             }
 
-            echo "  </ul>
-</div></div></div>";
-
-            echo "<div class=\"row\">";
-
-            echo "
-        <div class=\"col-lg-6\">
-        <h2 class=\"page-header\">Description: </h2>
-            <p>$opis</p>
-        </div>";
-
-            echo "
-        <div class=\"col-lg-3\">
-            <h2 class=\"page-header\">Hotel offers: </h2>";
-
-            $upit6 = "SELECT idSadrzaj FROM HOTEL_NUDI WHERE idSmjestaj = $id";
-            $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
-
-            while ($redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC)) {
-                $idSadrzaj = $redak6['idSadrzaj'];
-
-                $upit7 = "SELECT naziv FROM SADRZAJ WHERE idSadrzaj = $idSadrzaj";
-                $rezultat7 = mysqli_query($veza, $upit7) or die (mysqli_error($veza));
-                $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
-
-                $sadrzaj = $redak7['naziv'];
-
-                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $sadrzaj</p>";
-            }
-
-            $upit6 = "SELECT SUM(brojSlobodnih) AS slobodne FROM SOBA WHERE idSmjestaj = $id";
-            $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
-            $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
-
-            $kapacitet = $redak6['slobodne'];
-
-            echo "
-        </div><div class=\"col-lg-3\">
-            <h2 class=\"page-header\">Additional info: </h2>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Hotel capacity: $kapacitet rooms</p>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Number of meals: $brojObroka</p></div>";
-            echo "
-        
-        </div>
-        
-        <div class=\"row\">
-        <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Additional photos: </h2>
-        </div>
-    </div>
-    <hr> ";
-
+            echo "  </ul></div>";
         }
 
         if (isset($_GET['selectedRoom'])) {
             $roomID = $_GET['idSoba'];
+            $customerID = $_GET['customerID'];
 
             $upit = "SELECT tip, brojSlobodnih FROM SOBA WHERE idSoba = $roomID";
             $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
@@ -301,9 +268,9 @@
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Selected room type:</b> $tipSobe</p>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Currently available rooms:</b> $brojSlobodnih</p>";
 
-            echo "<form class=\"form-horizontal\" action=\"reserveHotel.php?value=$id&customerID=$customerID&idSoba=$roomID&selectedDate=true\" method=\"post\">
+            echo "<form class=\"form-horizontal\" action=\"reserveApartment.php?value=$id&customerID=$customerID&idSoba=$roomID&selectedDate=true\" method=\"post\">
         <div class=\"form-group\">
-            <label style='margin-top: 15px;'  for=\"date\" class=\"col-sm-2 control-label\">Date</label>
+            <label style='margin-top: 15px;' for=\"date\" class=\"col-sm-2 control-label\">Date</label>
             <div style='margin-top: 15px;' class=\"col-sm-6\">
                 <input name=\"date\" class=\"form-control\" id=\"date\" placeholder=\"yyyy-mm-dd\" required=\"true\"> 
             </div>
@@ -321,146 +288,109 @@
                 <button name=\"saveForm\" type=\"submit\" class=\"btn btn-success\">Continue</button>
             </div>
         </div>
-    </form></div>";
+    </form></div></div>";
 
-            echo "
-</div>";
-
-            echo "<div class=\"row\">";
-
-            echo "
-        <div class=\"col-lg-6\">
+            echo "<div class=\"row\">
+        <div class='col-lg-6'>
         <h2 class=\"page-header\">Description: </h2>
             <p>$opis</p>
-        </div>";
-
-            echo "
-        <div class=\"col-lg-3\">
-            <h2 class=\"page-header\">Hotel offers: </h2>";
-
-            $upit6 = "SELECT idSadrzaj FROM HOTEL_NUDI WHERE idSmjestaj = $id";
-            $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
-
-            while ($redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC)) {
-                $idSadrzaj = $redak6['idSadrzaj'];
-
-                $upit7 = "SELECT naziv FROM SADRZAJ WHERE idSadrzaj = $idSadrzaj";
-                $rezultat7 = mysqli_query($veza, $upit7) or die (mysqli_error($veza));
-                $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
-
-                $sadrzaj = $redak7['naziv'];
-
-                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $sadrzaj</p>";
-            }
-
-            $upit6 = "SELECT SUM(brojSlobodnih) AS slobodne FROM SOBA WHERE idSmjestaj = $id";
-            $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
-            $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
-
-            $kapacitet = $redak6['slobodne'];
-
-            echo "
-        </div><div class=\"col-lg-3\">
-            <h2 class=\"page-header\">Additional info: </h2>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Hotel capacity: $kapacitet rooms</p>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Number of meals: $brojObroka</p></div>";
-            echo "
-        
+</div>
+        <div class=\"col-lg-6\">
+            <h2 class=\"page-header\">Additional information: </h2>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of rooms:</b> $brojSoba</p>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Max. people per room:</b> $brojOsoba </p>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Price per day:</b> $cijenaPoDanu </p>
         </div>
-        
-        <div class=\"row\">
+    </div>";
+
+            echo "<div class=\"row\">
         <div class=\"col-lg-12\">
             <h2 class=\"page-header\">Additional photos: </h2>
         </div>
     </div>
-    <hr> ";
+    <hr>";
         }
 
         if (isset($_GET['selectedDate'])) {
-            if (isset($_POST['saveForm'])) {
-                $number = $_POST['number'];
-                $startingDate = $_POST['date'];
-                $roomID = $_GET['idSoba'];
-                $hotelID = $_GET['value'];
+            $number = $_POST['number'];
+            $startingDate = $_POST['date'];
+            $roomID = $_GET['idSoba'];
+            $apartmentID = $_GET['value'];
+            $customerID = $_GET['customerID'];
 
-                $upit7 = "SELECT cijenaPoDanu FROM SOBA WHERE idSoba = $roomID";
-                $rezultat7 = mysqli_query($veza, $upit7) or die (mysqli_error($veza));
-                $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
+            $upit7 = "SELECT cijenaPoDanu FROM SOBA WHERE idSoba = $roomID";
+            $rezultat7 = mysqli_query($veza, $upit7) or die (mysqli_error($veza));
+            $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
 
-                $cijenaPoOsobi = $redak7['cijenaPoDanu'];
+            $cijenaPoOsobi = $redak7['cijenaPoDanu'];
 
-                $totalPrice = $number * $cijenaPoOsobi;
+            $totalPrice = $number * $cijenaPoOsobi;
 
 
-                $upit = "SELECT tip, brojSlobodnih FROM SOBA WHERE idSoba = $roomID";
-                $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
-                $redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
+            $upit = "SELECT tip, brojSlobodnih FROM SOBA WHERE idSoba = $roomID";
+            $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
+            $redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
 
-                $tipSobe = $redak['tip'];
-                $brojSlobodnih = $redak['brojSlobodnih'];
+            $tipSobe = $redak['tip'];
+            $brojSlobodnih = $redak['brojSlobodnih'];
 
-                echo "<div class='col-md-6'>
+            echo "<div class='col-md-6'>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Selected room type:</b> $tipSobe</p>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Starting date:</b> $startingDate</p>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of days:</b> $number</p>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Total price:</b> $totalPrice €</p><br>
                 <p><b>If you wish to make a reservation press CONTINUE, otherwise press CANCEL.</b></p>
-                <a style='margin-left: 120px; margin-top: 25px' class=\"btn btn-success\" href=\"./reserveHotel.php?reserved=true&hotelID=$hotelID&number=$number&date=$startingDate&customerID=$customerID&totalPrice=$totalPrice&roomID=$roomID\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
-                <a style='margin-left: 20px; margin-top: 25px' class=\"btn btn-danger\" href=\"./learnMoreAccomodation.php?value=$hotelID\">Cancel <span class=\"glyphicon glyphicon-chevron-right\"></span></a></div>
-                </div>";
+                <a style='margin-left: 120px; margin-top: 25px' class=\"btn btn-success\" href=\"./reserveApartment.php?reserved=true&apartmentID=$apartmentID&number=$number&date=$startingDate&customerID=$customerID&totalPrice=$totalPrice&roomID=$roomID\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                <a style='margin-left: 20px; margin-top: 25px' class=\"btn btn-danger\" href=\"./learnMoreAccomodation.php?value=$apartmentID\">Cancel <span class=\"glyphicon glyphicon-chevron-right\"></span></a></div>
+                </div>
 
+            </div>";
 
-                echo "<div class=\"row\">";
-
-                echo "
-        <div class=\"col-lg-6\">
+            echo "<div class=\"row\">
+        <div class='col-lg-6'>
         <h2 class=\"page-header\">Description: </h2>
             <p>$opis</p>
-        </div>";
-
-                echo "
-        <div class=\"col-lg-3\">
-            <h2 class=\"page-header\">Hotel offers: </h2>";
-
-                $upit6 = "SELECT idSadrzaj FROM HOTEL_NUDI WHERE idSmjestaj = $id";
-                $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
-
-                while ($redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC)) {
-                    $idSadrzaj = $redak6['idSadrzaj'];
-
-                    $upit7 = "SELECT naziv FROM SADRZAJ WHERE idSadrzaj = $idSadrzaj";
-                    $rezultat7 = mysqli_query($veza, $upit7) or die (mysqli_error($veza));
-                    $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
-
-                    $sadrzaj = $redak7['naziv'];
-
-                    echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $sadrzaj</p>";
-                }
-
-                $upit6 = "SELECT SUM(brojSlobodnih) AS slobodne FROM SOBA WHERE idSmjestaj = $id";
-                $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
-                $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
-
-                $kapacitet = $redak6['slobodne'];
-
-                echo "
-        </div><div class=\"col-lg-3\">
-            <h2 class=\"page-header\">Additional info: </h2>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Hotel capacity: $kapacitet rooms</p>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Number of meals: $brojObroka</p></div>";
-                echo "
-        
+</div>
+        <div class=\"col-lg-6\">
+            <h2 class=\"page-header\">Additional information: </h2>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of rooms:</b> $brojSoba</p>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Max. people per room:</b> $brojOsoba </p>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Price per day:</b> $cijenaPoDanu </p>
         </div>
-        
-        <div class=\"row\">
+    </div>";
+
+            echo "<div class=\"row\">
         <div class=\"col-lg-12\">
             <h2 class=\"page-header\">Additional photos: </h2>
         </div>
     </div>
-    <hr> ";
-            }
+    <hr>";
         }
+        
+        echo "</div></div>";
+
+        echo "<div class=\"row\">
+        <div class='col-lg-6'>
+        <h2 class=\"page-header\">Description: </h2>
+            <p>$opis</p>
+</div>
+        <div class=\"col-lg-6\">
+            <h2 class=\"page-header\">Additional information: </h2>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of rooms:</b> $brojSoba</p>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Max. people per room:</b> $brojOsoba </p>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Price per day:</b> $cijenaPoDanu </p>
+        </div>
+    </div>";
+
+        echo "<div class=\"row\">
+        <div class=\"col-lg-12\">
+            <h2 class=\"page-header\">Additional photos: </h2>
+        </div>
+    </div>
+    <hr>";
     }
+
+
 
     ?>
 

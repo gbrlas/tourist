@@ -229,13 +229,13 @@
     } else {
         $tip = "Apartman";
 
-        $upit2 = "SELECT naziv, brojOsoba, cijenaPoDanu, brojApartmana FROM APARTMAN WHERE idSmjestaj = $id";
+        $upit2 = "SELECT naziv, brojOsoba, cijenaPoDanu, brojSoba FROM APARTMAN WHERE idSmjestaj = $id";
         $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
         $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
 
         $ime = $redak2['naziv'];
         $brojOsoba = $redak2['brojOsoba'];
-        $brojObroka = $redak2['brojApartmana'];
+        $brojSoba = $redak2['brojSoba'];
         $cijenaPoDanu = $redak2['cijenaPoDanu'];
 
         $upit7 = "SELECT ime FROM LOKACIJA WHERE idLokacija = $idLokacija";
@@ -265,8 +265,17 @@
             <p>
             <a style='margin-left: 160px; margin-top: 25px' class=\"btn btn-success\" href=\"./addAccomodationCustomer.php?accomodationID=$id&type=Apartment\">Reserve your room<span class=\"glyphicon glyphicon-chevron-right\"></span></a>
 </p>
-        </div>";
-    
+        </div></div>";
+
+        echo "<div class=\"row\">
+        <div class=\"col-lg-6\">
+            <h2 class=\"page-header\">Additional information: </h2>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of rooms:</b> $brojSoba</p>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Max. people per room:</b> $brojOsoba </p>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Price per day:</b> $cijenaPoDanu </p>
+        </div>
+    </div>";
+
         echo "<div class=\"row\">
         <div class=\"col-lg-12\">
             <h2 class=\"page-header\">Additional photos: </h2>

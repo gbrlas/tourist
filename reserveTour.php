@@ -271,8 +271,8 @@
 
             echo "<form class=\"form-horizontal\" action=\"reserveTour.php?value=$id&customerID=$customerID&polazak=$idIzletPolazak&selectedPeople=true\" method=\"post\">
         <div class=\"form-group\">
-            <label for=\"number\" class=\"col-sm-2 control-label\">Number</label>
-            <div class=\"col-sm-6\">
+            <label style='margin-top: 15px;' for=\"number\" class=\"col-sm-2 control-label\">Number</label>
+            <div style='margin-top: 15px;' class=\"col-sm-6\">
                 <input name=\"number\" class=\"form-control\" id=\"number\" placeholder=\"Number of people - max. 4\" required=\"true\"> 
             </div>
         </div>
