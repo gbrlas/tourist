@@ -97,7 +97,7 @@
             <h2 class=\"page-header\">Please provide your information</h2>
         </div>
     </div>
-    <form class=\"form-horizontal\" action=\"./addAccomodationCustomer.php?accomodationID=$accomodationID&addCustomer=true&type=$type\" method=\"post\">
+    <form class=\"form-horizontal\" action=\"./addAccomodationCustomer.php?accomodationID=$accomodationID&type=$type&addCustomer=true\" method=\"post\">
         <div class=\"form-group\">
             <label for=\"name\" class=\"col-sm-2 control-label\">First name</label>
             <div class=\"col-sm-9\">
@@ -169,7 +169,7 @@
 
             echo "<div class=\"row\">
                         <div class=\"col-md-6\">
-                        <a class=\"btn btn-success\" href=\"./reserveAccomodations.php?value=$idAccomodation&customerID=$idKupac&type=$type\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a class=\"btn btn-success\" href=\"./reserve$type.php?value=$idAccomodation&customerID=$idKupac\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                    </div></div>";
         }
     }

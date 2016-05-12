@@ -91,78 +91,24 @@
     include './admin/funkcije.php';
 
     if (isset($_GET['reserved'])) {
-        $number = $_GET['number'];
-        $totalPrice = $_GET['totalPrice'];
-        $customerID = $_GET['customerID'];
-        $idIzletPolazak = $_GET['polazak'];
-        $idIzlet = $_GET['tourID'];
-
-        $upit = "INSERT INTO izlet_rezervacija (brojOsoba, ukupnaCijena, idIzlet, idIzletPolazak, idKupac) VALUES ($number, $totalPrice, $idIzlet, $idIzletPolazak, $customerID)";
-        mysqli_query ($veza, $upit) or die (mysqli_error($veza));
-
-        $upit3 = "SELECT slobodnoMjesta FROM izlet_polazak WHERE idIzletPolazak = $idIzletPolazak";
-        $rezultat3 = mysqli_query ($veza, $upit3) or die ("3" . mysqli_error($veza));
-        $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
-
-        $test = true;
-        $temp = $redak3['slobodnoMjesta'];
-
-        if ($temp - $number < 0) {
-            echo "<div class=\"row\">
-                    <div class=\"col-md-6\">
-                        <h4 style='color: red'>The number of selected seats is greater than possible, please try another starting date or lower the number.</h4>
-                        <br>
-                        <h4>Please press the button below to return to the tour page: </h4><br></div></div>";
-
-            echo "<div class=\"row\">
-                        <div class=\"col-md-6\">
-                        <a class=\"btn btn-success\" href=\"./learnMoreTour.php?value=$idIzlet\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
-                   </div></div>";
-        } else {
-            $upit = "UPDATE izlet_polazak SET slobodnoMjesta = slobodnoMjesta - $number WHERE idIzletPolazak = $idIzletPolazak";
-            mysqli_query ($veza, $upit) or die (mysqli_error($veza));
-
-
-
-            echo "<div class=\"row\">
-                <div class=\"col-md-6\">
-                    <h4 style='color: limegreen'>Seats successfully reserved.</h4>
-                    <br>
-                    <h4>Please press the button below to return to the tour page: </h4><br></div></div>";
-
-            echo "<div class=\"row\">
-                    <div class=\"col-md-6\">
-                    <a class=\"btn btn-success\" href=\"./learnMoreTour.php?value=$idIzlet\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
-               </div></div>";
-        }
-
-
-
 
     } else {
         $id = $_GET['value'];
         $customerID = $_GET['customerID'];
+        $type = $_GET['type'];
 
-
-
-        $upit = "SELECT idIzlet, naziv, opis, trajanje, cijenaPoOsobi, ukljucenVodic, ukljucenObrok, ukljuceneUlaznice, nazivKompanije, idLokacija, idAkcija FROM IZLET WHERE idIzlet = $id";
+        $upit = "SELECT idSmjestaj, tip, opis, adresa, klasifikacija, idLokacija, idAkcija FROM SMJESTAJ WHERE idSmjestaj = $id";
         $rezultat = mysqli_query($veza, $upit) or die ("1" . mysqli_error($veza));
 
         $redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
 
-        $opis = $redak['opis'];
-        $naziv = $redak['naziv'];
-        $trajanje = $redak['trajanje'];
-        $cijenaPoOsobi = $redak['cijenaPoOsobi'];
-        $ukljucenVodic = $redak['ukljucenVodic'];
-        $ukljucenObrok = $redak['ukljucenObrok'];
-        $ukljuceneUlaznice = $redak['ukljuceneUlaznice'];
-        $nazivKompanije = $redak['nazivKompanije'];
         $idLokacija = $redak['idLokacija'];
+        $opis = $redak['opis'];
+        $adresa = $redak['adresa'];
+        $klasifikacija = $redak['klasifikacija'];
         $idAkcija = $redak['idAkcija'];
 
-
-        $upit5 = "SELECT idSlika FROM SLIKE_IZLET WHERE idIzlet = $id";
+        $upit5 = "SELECT idSlika FROM SLIKE_SMJESTAJ WHERE idSmjestaj = $id";
         $rezultat5 = mysqli_query($veza, $upit5) or die ("2" . mysqli_error($veza));
         $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
         $idSlika = $redak5['idSlika'];
@@ -171,7 +117,8 @@
         $rezultat5 = mysqli_query($veza, $upit5) or die ("3" .   mysqli_error($veza));
         $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
         $url = $redak5['url'];
-
+        
+        
         echo "<div class=\"row\">
         <div class=\"col-lg-12\">
             <h2 class=\"page-header\">$naziv</h2>
@@ -187,21 +134,21 @@
                 </div>
                ";
 
-        if (! isset($_GET['selectedDate']) && ! isset($_GET['selectedPeople'])) {
+        if (! isset($_GET['selectedRoom']) && ! isset($_GET['selectedDate'])) {
             echo "<div class='col-md-6' align='center'> <div class=\"dropdown\">
             <button style='margin-top: 100px;' class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">
   Select starting date and time</button>
   <ul style='margin-left: 175px;' class=\"dropdown-menu\">";
 
-            $upit = "SELECT idIzletPolazak, vrijemePolazak, slobodnoMjesta FROM IZLET_POLAZAK WHERE idIzlet = $id AND slobodnoMjesta > 0";
+            $upit = "SELECT idSoba, tip, brojSlobodnih FROM SOBA WHERE idSmjestaj = $id";
             $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
             while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
-                $idIzletPolazak = $redak['idIzletPolazak'];
-                $vrijemePolazak = $redak['vrijemePolazak'];
-                $slobodnoMjesta = $redak['slobodnoMjesta'];
+                $idSoba = $redak['idSoba'];
+                $tipSobe = $redak['tip'];
+                $brojSlobodnih = $redak['tip'];
 
-                echo "<li><a href=\"reserveTour.php?value=$id&customerID=$customerID&polazak=$idIzletPolazak&selectedDate=true\">$vrijemePolazak, $slobodnoMjesta seats available</a></li>";
+                echo "<li><a href=\"reserveTour.php?value=$id&customerID=$customerID&idSoba=$idSoba&selectedRoom=true\">$tipSobe, $brojSlobodnih rooms available</a></li>";
             }
 
             echo "  </ul>
@@ -209,34 +156,42 @@
 
             echo "<div class=\"row\">";
 
+
+            $upit6 = "SELECT idSadrzaj FROM HOTEL_NUDI WHERE idSmjestaj = $id";
+            $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
+
             echo "
         <div class=\"col-lg-6\">
-            <h2 class=\"page-header\">Additional info: </h2>";
+            <h2 class=\"page-header\">Hotel offers: </h2>";
 
-            if ($ukljucenVodic == 1) {
-                $vodic = "<span class=\"glyphicon glyphicon-ok\"></span>";
-            } else if ($ukljucenVodic == 2) {
-                $vodic = "<span class=\"glyphicon glyphicon-remove\"></span>";
+            while ($redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC)) {
+                $idSadrzaj = $redak6['idSadrzaj'];
+
+                $upit7 = "SELECT naziv FROM SADRZAJ WHERE idSadrzaj = $idSadrzaj";
+                $rezultat7 = mysqli_query($veza, $upit7) or die (mysqli_error($veza));
+                $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
+
+                $sadrzaj = $redak7['naziv'];
+
+                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $sadrzaj</p>";
             }
 
-            if ($ukljucenObrok == 1) {
-                $obrok = "<span class=\"glyphicon glyphicon-ok\"></span>";
-            } else if ($ukljucenObrok == 2) {
-                $obrok = "<span class=\"glyphicon glyphicon-remove\"></span>";
-            }
+            echo "
+        </div>";
 
-            if ($ukljuceneUlaznice == 1) {
-                $ulaznice = "<span class=\"glyphicon glyphicon-ok\"></span>";
-            } else if ($ukljuceneUlaznice == 2) {
-                $ulaznice = "<span class=\"glyphicon glyphicon-remove\"></span>";
-            }
+            $upit6 = "SELECT tip, brojSlobodnih FROM SOBA WHERE idSmjestaj = $id ORDER BY cijenaPoDanu DESC";
+            $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
 
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Duration:</b> $trajanje hours</p>";
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Price per person:</b> $cijenaPoOsobi €</p>";
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Tour Guide included:</b> $vodic</p>";
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Meal included:</b> $obrok</p>";
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>All tickets included:</b> $ulaznice</p>";
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Company name:</b> $nazivKompanije</p>";
+            echo "
+        <div class=\"col-lg-6\">
+            <h2 class=\"page-header\">Room types: </h2>";
+
+            while ($redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC)) {
+                $roomType = $redak6['tip'];
+                $brojSlobodnih = $redak6['brojSlobodnih'];
+
+                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $roomType, $brojSlobodnih rooms available</p>";
+            }
 
             echo "
         </div>
@@ -351,7 +306,7 @@
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Starting date and time:</b> $vrijemePolazak</p>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of reserved seats:</b> $number</p>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Total price:</b> $totalPrice €</p><br>
-                <p><b>If you wish to make a reservation press CONTINUE, otherwise press CANCEL.</b></p>
+                <p><b>If you wish to make a reservation press CONTINUE, otherwise press CANCEL.<b></b></p>
                 <a style='margin-left: 120px; margin-top: 25px' class=\"btn btn-success\" href=\"./reserveTour.php?reserved=true&tourID=$idIzlet&number=$number&polazak=$idIzletPolazak&customerID=$customerID&totalPrice=$totalPrice\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                 <a style='margin-left: 20px; margin-top: 25px' class=\"btn btn-danger\" href=\"./learnMoreTour.php?value=$id\">Cancel <span class=\"glyphicon glyphicon-chevron-right\"></span></a></div>
                 </div>
