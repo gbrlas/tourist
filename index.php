@@ -98,7 +98,7 @@
             <h2 class=\"page-header\">TOP 5 DESTINATIONS</h2>
         </div>
     </div>";
-        $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM LOKACIJA WHERE tip != 5 ORDER BY ime ASC";
+        $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM LOKACIJA WHERE tip != 5 ORDER BY pregledi DESC";
         $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
         $i = 0;

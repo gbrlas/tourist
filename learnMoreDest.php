@@ -101,6 +101,9 @@
 
     $id = $_GET['value'];
 
+    $upit2 = "UPDATE lokacija SET pregledi = pregledi + 1 WHERE idLokacija = $id";
+    mysqli_query($veza, $upit2) or die ("2" . mysqli_error($veza));
+
 
 
     $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM LOKACIJA WHERE idLokacija = $id";
