@@ -238,8 +238,25 @@
             echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>All tickets included:</b> $ulaznice</p>";
             echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Company name:</b> $nazivKompanije</p>";
 
-            echo "
-        </div>
+            $upit6 = "SELECT idAkcija FROM izlet WHERE idIzlet = $id";
+            $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
+            $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
+            $idAkcija = $redak6['idAkcija'];
+
+            if (sizeof($redak6['idAkcija']) != 0) {
+                $idAkcija = $redak6['idAkcija'];
+
+                $upit6 = "SELECT popust FROM akcija WHERE idAkcija = $idAkcija";
+                $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
+                $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
+
+                $popust = 100 - $redak6['popust'] * 100;
+
+                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Discount: $popust %</span></p>";
+
+            }
+
+            echo "</div>
         <div class=\"col-lg-6\">
         <h2 class=\"page-header\">Description: </h2>
             <p>$opis</p>
@@ -315,8 +332,25 @@
             echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>All tickets included:</b> $ulaznice</p>";
             echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Company name:</b> $nazivKompanije</p>";
 
-            echo "
-        </div>
+            $upit6 = "SELECT idAkcija FROM izlet WHERE idIzlet = $id";
+            $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
+            $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
+            $idAkcija = $redak6['idAkcija'];
+
+            if (sizeof($redak6['idAkcija']) != 0) {
+                $idAkcija = $redak6['idAkcija'];
+
+                $upit6 = "SELECT popust FROM akcija WHERE idAkcija = $idAkcija";
+                $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
+                $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
+
+                $popust = 100 - $redak6['popust'] * 100;
+
+                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Discount: $popust %</span></p>";
+
+            }
+
+            echo "</div>
         <div class=\"col-lg-6\">
         <h2 class=\"page-header\">Description: </h2>
             <p>$opis</p>
@@ -335,7 +369,24 @@
         if (isset($_GET['selectedPeople'])) {
             if (isset($_POST['saveForm'])) {
                 $number = $_POST['number'];
-                $totalPrice = $number * $cijenaPoOsobi;
+
+                $upit6 = "SELECT idAkcija FROM izlet WHERE idIzlet = $id";
+                $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
+                $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
+                $idAkcija = $redak6['idAkcija'];
+                $popust = 1;
+
+                if (sizeof($redak6['idAkcija']) != 0) {
+                    $idAkcija = $redak6['idAkcija'];
+
+                    $upit6 = "SELECT popust FROM akcija WHERE idAkcija = $idAkcija";
+                    $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
+                    $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
+
+                    $popust = $redak6['popust'];
+                }
+
+                $totalPrice = $number * $cijenaPoOsobi * $popust;
                 $customerID = $_GET['customerID'];
                 $idIzletPolazak = $_GET['polazak'];
                 $idIzlet = $_GET['value'];
@@ -388,8 +439,25 @@
                 echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>All tickets included:</b> $ulaznice</p>";
                 echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Company name:</b> $nazivKompanije</p>";
 
-                echo "
-        </div>
+                $upit6 = "SELECT idAkcija FROM izlet WHERE idIzlet = $id";
+                $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
+                $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
+                $idAkcija = $redak6['idAkcija'];
+
+                if (sizeof($redak6['idAkcija']) != 0) {
+                    $idAkcija = $redak6['idAkcija'];
+
+                    $upit6 = "SELECT popust FROM akcija WHERE idAkcija = $idAkcija";
+                    $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
+                    $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
+
+                    $popust = 100 - $redak6['popust'] * 100;
+
+                    echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Discount: $popust %</span></p>";
+
+                }
+
+                echo "</div>
         <div class=\"col-lg-6\">
         <h2 class=\"page-header\">Description: </h2>
             <p>$opis</p>

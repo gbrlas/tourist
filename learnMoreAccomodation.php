@@ -200,7 +200,27 @@
         echo "<div class=\"col-lg-4\">
             <h2 class=\"page-header\">Additional info: </h2>
             <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Hotel capacity: $kapacitet rooms</p>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Number of meals: $brojObroka</p></div>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Number of meals: $brojObroka</p>";
+
+        $upit6 = "SELECT idAkcija FROM smjestaj WHERE idSmjestaj = $id";
+        $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
+        $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
+        $idAkcija = $redak6['idAkcija'];
+
+        if (sizeof($redak6['idAkcija']) != 0) {
+            $idAkcija = $redak6['idAkcija'];
+
+            $upit6 = "SELECT popust FROM akcija WHERE idAkcija = $idAkcija";
+            $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
+            $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
+
+            $popust = 100 - $redak6['popust'] * 100;
+
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Discount: $popust %</span></p>";
+
+        }
+
+        echo "</div>
             ";
 
         $upit6 = "SELECT tip, cijenaPoDanu FROM SOBA WHERE idSmjestaj = $id ORDER BY cijenaPoDanu DESC";
@@ -272,9 +292,28 @@
             <h2 class=\"page-header\">Additional information: </h2>
             <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of rooms:</b> $brojSoba</p>
             <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Max. people per room:</b> $brojOsoba </p>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Price per day:</b> $cijenaPoDanu </p>
-        </div>
-    </div>";
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Price per day:</b> $cijenaPoDanu </p>";
+
+        $upit6 = "SELECT idAkcija FROM smjestaj WHERE idSmjestaj = $id";
+        $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
+        $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
+        $idAkcija = $redak6['idAkcija'];
+
+        if (sizeof($redak6['idAkcija']) != 0) {
+            $idAkcija = $redak6['idAkcija'];
+
+            $upit6 = "SELECT popust FROM akcija WHERE idAkcija = $idAkcija";
+            $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
+            $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
+
+            $popust = 100 - $redak6['popust'] * 100;
+
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Discount: $popust %</span></p>";
+
+        }
+
+        echo "</div></div>
+            ";
 
         echo "<div class=\"row\">
         <div class=\"col-lg-12\">
