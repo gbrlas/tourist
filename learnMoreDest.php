@@ -78,7 +78,7 @@
                     <a href="./tours.php?page=1">TOURS</a>
                 </li>
                 <li>
-                    <a href="./accomodations.php">Accomodations</a>
+                    <a href="./accomodations.php">ACCOMODATIONS</a>
                 </li>
             </ul>
         </div>
@@ -201,7 +201,7 @@
         echo "
                     <div class=\"col-md-3\">
                     <a href=\"#\">
-                <img class=\"img-responsive nova\" src=\"$url\" width =\"200\" max-height =\"100\" alt =\"\">
+                <img class=\"img-responsive nova\" src=\"./images/$url\" width =\"200\" max-height =\"100\" alt =\"\">
                     </a>
                 </div>
                 <div class=\"col-md-3\">

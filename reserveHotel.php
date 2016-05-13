@@ -217,91 +217,8 @@
                ";
 
         if (! isset($_GET['selectedRoom']) && ! isset($_GET['selectedDate'])) {
-            echo "<div class='col-md-6' align='center'> <div class=\"dropdown\">
-            <button style='margin-top: 100px;' class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">
-  Select preferred room type</button>
-  <ul style='margin-left: 179px;' class=\"dropdown-menu\">";
-
-            $upit = "SELECT idSoba, tip, cijenaPoDanu FROM SOBA WHERE idSmjestaj = $id";
-            $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
-
-            while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
-                $idSoba = $redak['idSoba'];
-                $tipSobe = $redak['tip'];
-                $cijenaPoDanu = $redak['cijenaPoDanu'];
-
-                echo "<li><a href=\"reserveHotel.php?value=$id&customerID=$customerID&idSoba=$idSoba&selectedRoom=true\">$tipSobe, $cijenaPoDanu € per night</a></li>";
-            }
-
-            echo "  </ul>
-</div></div></div>";
-
-            echo "<div class=\"row\">";
-
-            echo "
-        <div class=\"col-lg-6\">
-        <h2 class=\"page-header\">Description: </h2>
-            <p>$opis</p>
-        </div>";
-
-            echo "
-        <div class=\"col-lg-3\">
-            <h2 class=\"page-header\">Hotel offers: </h2>";
-
-            $upit6 = "SELECT idSadrzaj FROM HOTEL_NUDI WHERE idSmjestaj = $id";
-            $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
-
-            while ($redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC)) {
-                $idSadrzaj = $redak6['idSadrzaj'];
-
-                $upit7 = "SELECT naziv FROM SADRZAJ WHERE idSadrzaj = $idSadrzaj";
-                $rezultat7 = mysqli_query($veza, $upit7) or die (mysqli_error($veza));
-                $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
-
-                $sadrzaj = $redak7['naziv'];
-
-                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $sadrzaj</p>";
-            }
-
-            $upit6 = "SELECT SUM(brojSlobodnih) AS slobodne FROM SOBA WHERE idSmjestaj = $id";
-            $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
-            $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
-
-            $kapacitet = $redak6['slobodne'];
-
-            echo "
-        </div><div class=\"col-lg-3\">
-            <h2 class=\"page-header\">Additional info: </h2>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Hotel capacity: $kapacitet rooms</p>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Number of meals: $brojObroka</p></div>";
-            echo "
-        
-        </div>
-        
-        <div class=\"row\">
-        <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Additional photos: </h2>
-        </div>
-    </div>
-    <hr> ";
-
-        }
-
-        if (isset($_GET['selectedRoom'])) {
-            $roomID = $_GET['idSoba'];
-
-            $upit = "SELECT tip, brojSlobodnih FROM SOBA WHERE idSoba = $roomID";
-            $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
-            $redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
-
-            $tipSobe = $redak['tip'];
-            $brojSlobodnih = $redak['brojSlobodnih'];
-
             echo "<div class='col-md-6'>
-                <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Selected room type:</b> $tipSobe</p>
-                <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Currently available rooms:</b> $brojSlobodnih</p>";
-
-            echo "<form class=\"form-horizontal\" action=\"reserveHotel.php?value=$id&customerID=$customerID&idSoba=$roomID&selectedDate=true\" method=\"post\">
+            <form class=\"form-horizontal\" action=\"reserveHotel.php?value=$id&customerID=$customerID&selectedDate=true\" method=\"post\">
         <div class=\"form-group\">
             <label style='margin-top: 15px;'  for=\"date\" class=\"col-sm-2 control-label\">Date</label>
             <div style='margin-top: 15px;' class=\"col-sm-6\">
@@ -313,6 +230,13 @@
             <label for=\"number\" class=\"col-sm-2 control-label\">Days</label>
             <div class=\"col-sm-6\">
                 <input name=\"number\" class=\"form-control\" id=\"number\" placeholder=\"Number of days - max. 10\" required=\"true\"> 
+            </div>
+        </div>
+        
+        <div class=\"form-group\">
+            <label for=\"people\" class=\"col-sm-2 control-label\">People</label>
+            <div class=\"col-sm-6\">
+                <input name=\"people\" class=\"form-control\" id=\"people\" placeholder=\"Number of people - max. 4\" required=\"true\"> 
             </div>
         </div>
 
@@ -376,39 +300,124 @@
     <hr> ";
         }
 
-        if (isset($_GET['selectedDate'])) {
-            if (isset($_POST['saveForm'])) {
-                $number = $_POST['number'];
-                $startingDate = $_POST['date'];
-                $roomID = $_GET['idSoba'];
-                $hotelID = $_GET['value'];
-
-                $upit7 = "SELECT cijenaPoDanu FROM SOBA WHERE idSoba = $roomID";
-                $rezultat7 = mysqli_query($veza, $upit7) or die (mysqli_error($veza));
-                $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
-
-                $cijenaPoOsobi = $redak7['cijenaPoDanu'];
-
-                $totalPrice = $number * $cijenaPoOsobi;
+        if (isset($_GET['selectedRoom'])) {
+            $number = $_GET['number'];
+            $startingDate = $_GET['date'];
+            $roomID = $_GET['idSoba'];
+            $hotelID = $_GET['value'];
+            $people = $_GET['people'];
 
 
-                $upit = "SELECT tip, brojSlobodnih FROM SOBA WHERE idSoba = $roomID";
-                $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
-                $redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
+            $upit7 = "SELECT cijenaPoDanu FROM SOBA WHERE idSoba = $roomID";
+            $rezultat7 = mysqli_query($veza, $upit7) or die (mysqli_error($veza));
+            $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
+            $cijenaPoOsobi = $redak7['cijenaPoDanu'];
+            $totalPrice = $number * $cijenaPoOsobi;
 
-                $tipSobe = $redak['tip'];
-                $brojSlobodnih = $redak['brojSlobodnih'];
 
-                echo "<div class='col-md-6'>
+            $upit = "SELECT tip, brojSlobodnih FROM SOBA WHERE idSoba = $roomID";
+            $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
+            $redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
+            $tipSobe = $redak['tip'];
+            $brojSlobodnih = $redak['brojSlobodnih'];
+
+
+            echo "<div class='col-md-6'>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Selected room type:</b> $tipSobe</p>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Starting date:</b> $startingDate</p>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of days:</b> $number</p>
+                <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of people:</b> $people</p>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Total price:</b> $totalPrice €</p><br>
                 <p><b>If you wish to make a reservation press CONTINUE, otherwise press CANCEL.</b></p>
                 <a style='margin-left: 120px; margin-top: 25px' class=\"btn btn-success\" href=\"./reserveHotel.php?reserved=true&hotelID=$hotelID&number=$number&date=$startingDate&customerID=$customerID&totalPrice=$totalPrice&roomID=$roomID\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                 <a style='margin-left: 20px; margin-top: 25px' class=\"btn btn-danger\" href=\"./learnMoreAccomodation.php?value=$hotelID\">Cancel <span class=\"glyphicon glyphicon-chevron-right\"></span></a></div>
                 </div>";
+            echo "<div class=\"row\">";
+            echo "
+        <div class=\"col-lg-6\">
+        <h2 class=\"page-header\">Description: </h2>
+            <p>$opis</p>
+        </div>";
+            echo "
+        <div class=\"col-lg-3\">
+            <h2 class=\"page-header\">Hotel offers: </h2>";
+            $upit6 = "SELECT idSadrzaj FROM HOTEL_NUDI WHERE idSmjestaj = $id";
+            $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
+            while ($redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC)) {
+                $idSadrzaj = $redak6['idSadrzaj'];
+                $upit7 = "SELECT naziv FROM SADRZAJ WHERE idSadrzaj = $idSadrzaj";
+                $rezultat7 = mysqli_query($veza, $upit7) or die (mysqli_error($veza));
+                $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
+                $sadrzaj = $redak7['naziv'];
+                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $sadrzaj</p>";
+            }
+            $upit6 = "SELECT SUM(brojSlobodnih) AS slobodne FROM SOBA WHERE idSmjestaj = $id";
+            $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
+            $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
+            $kapacitet = $redak6['slobodne'];
+            echo "
+        </div><div class=\"col-lg-3\">
+            <h2 class=\"page-header\">Additional info: </h2>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Hotel capacity: $kapacitet rooms</p>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Number of meals: $brojObroka</p></div>";
+            echo "
+        
+        </div>
+        
+        <div class=\"row\">
+        <div class=\"col-lg-12\">
+            <h2 class=\"page-header\">Additional photos: </h2>
+        </div>
+    </div>
+    <hr> ";
+        }
 
+        if (isset($_GET['selectedDate'])) {
+            if (isset($_POST['saveForm'])) {
+                $number = $_POST['number'];
+                $startingDate = $_POST['date'];
+                $people = $_POST['people'];
+                $hotelID = $_GET['value'];
+
+                echo "<div class='col-md-6' align='center'> <div class=\"dropdown\">
+            <button style='margin-top: 100px;' class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">
+  Select preferred room type</button>
+  <ul style='margin-left: 179px;' class=\"dropdown-menu\">";
+
+                $upit = "SELECT idSoba, tip, cijenaPoDanu, brojOsoba FROM SOBA WHERE idSmjestaj = $id AND brojOsoba >= $people ORDER BY cijenaPoDanu ASC";
+                $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
+
+                while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
+                    $idSoba = $redak['idSoba'];
+                    $tipSobe = $redak['tip'];
+                    $cijenaPoDanu = $redak['cijenaPoDanu'];
+                    $brojOsoba = $redak['brojOsoba'];
+
+                    $test = true;
+
+                    for ($i = 0; $i < $number; $i++) {
+                        $upit2 = "SELECT slobodno FROM soba_rezervacija WHERE idSoba = $idSoba";
+                        $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
+                        $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
+                        $temp = $redak2['slobodno'];
+
+                        if (mysqli_num_rows($rezultat2) == 0) {
+                            continue;
+                        } else if ($temp > 0) {
+                            continue;
+                        } else {
+                            $test = false;
+                            break;
+                        }
+                    }
+
+                    if ($test) {
+                        echo "<li><a href=\"reserveHotel.php?value=$id&customerID=$customerID&idSoba=$idSoba&number=$number&date=$startingDate&people=$people&selectedRoom=true\">$tipSobe, $cijenaPoDanu € per night, for $brojOsoba persons</a></li>";
+                    }
+                }
+
+                echo "  </ul>
+</div></div></div>";
 
                 echo "<div class=\"row\">";
 

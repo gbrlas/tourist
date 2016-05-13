@@ -93,7 +93,7 @@
     <?php
         if (!isset($_GET) || empty($_GET)) {
             echo "<div class=\"row\">
-                <div class=\"col-lg-12\">
+                <div class=\"col-lg-6\">
                     <h1 class=\"page-header\">Browse accomodations by location</h1>
                 </div>
             </div>
