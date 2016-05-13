@@ -237,14 +237,39 @@
             echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $roomType, $cijenaPoDanu € per night</p>";
         }
 
-        echo " </div>
-        
-        <div class=\"row\">
+        echo " </div>";
+
+        echo "<div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Additional photos: </h2>
-        </div>
+            <h2 class=\"page-header\">Additional photos: </h2>";
+            $upit2 = "SELECT idSlika FROM SLIKE_SMJESTAJ WHERE idSMJESTAJ = $id";
+            $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
+
+            $i = 0;
+            while ($redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC)) {
+                if ($i == 0) {
+                    $i++;
+                    continue;
+                }
+
+                $idSlika = $redak2['idSlika'];
+                $upit3 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+                $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
+                $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
+                $url = $redak3['url'];
+
+                echo "<div class=\"col-lg-4\">
+                    <a href=\"#\">
+        <img class=\"img-responsive nova2\" src = \"./images/$url\" alt=\"\" >
+                    </a >
+                </div >";
+            }
+
+
+
+            echo "</div>
     </div>
-    <hr> ";
+    <hr>";
 
     } else {
         $tip = "Apartman";
@@ -317,11 +342,35 @@
 
         echo "<div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Additional photos: </h2>
-        </div>
+            <h2 class=\"page-header\">Additional photos: </h2>";
+            $upit2 = "SELECT idSlika FROM SLIKE_SMJESTAJ WHERE idSMJESTAJ = $id";
+            $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
+
+            $i = 0;
+            while ($redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC)) {
+                if ($i == 0) {
+                    $i++;
+                    continue;
+                }
+
+                $idSlika = $redak2['idSlika'];
+                $upit3 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+                $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
+                $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
+                $url = $redak3['url'];
+
+                echo "<div class=\"col-lg-4\">
+                    <a href=\"#\">
+        <img class=\"img-responsive nova2\" src = \"./images/$url\" alt=\"\" >
+                    </a >
+                </div >";
+            }
+
+
+
+            echo "</div>
     </div>
     <hr>";
-
     }
     ?>
 
