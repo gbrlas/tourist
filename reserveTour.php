@@ -21,7 +21,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tourist Agency</title>
+    <title>Tourist Agency - Reserve Tour</title>
+    <link rel="icon" href="./images/holiday.jpg">
 
     <link href="css/custom.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->

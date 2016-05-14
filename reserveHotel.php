@@ -21,7 +21,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tourist Agency</title>
+    <title>Tourist Agency - Book Hotel Rooms</title>
+    <link rel="icon" href="./images/holiday.jpg">
 
     <link href="css/custom.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
@@ -138,7 +139,7 @@
         if ($test) {
             echo "<div class=\"row\">
                     <div class=\"col-md-6\">
-                        <h4 style='color: limegreen'>Room successfully reserved.</h4>
+                        <h4 style='color: limegreen'>Room successfully booked.</h4>
                         <br>
                         <h4>Please press the button below to return to the hotel page: </h4><br></div></div>";
 
@@ -386,7 +387,7 @@
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of days:</b> $number</p>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of people:</b> $people</p>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Total price:</b> $totalPrice €</p><br>
-                <p><b>If you wish to make a reservation press CONTINUE, otherwise press CANCEL.</b></p>
+                <p><b>If you wish to book this room, press CONTINUE, otherwise press CANCEL.</b></p>
                 <a style='margin-left: 120px; margin-top: 25px' class=\"btn btn-success\" href=\"./reserveHotel.php?reserved=true&hotelID=$hotelID&number=$number&date=$startingDate&customerID=$customerID&totalPrice=$totalPrice&roomID=$roomID\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                 <a style='margin-left: 20px; margin-top: 25px' class=\"btn btn-danger\" href=\"./learnMoreAccomodation.php?value=$hotelID\">Cancel <span class=\"glyphicon glyphicon-chevron-right\"></span></a></div>
                 </div>";

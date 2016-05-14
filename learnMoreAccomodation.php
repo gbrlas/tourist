@@ -29,7 +29,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tourist Agency</title>
+    <title>Tourist Agency - Learn More About Accomodations</title>
+    <link rel="icon" href="./images/holiday.jpg">
 
     <link href="css/custom.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
@@ -159,7 +160,7 @@
             <p>$opis</p>
             
             <p>
-            <a style='margin-left: 160px; margin-top: 25px' class=\"btn btn-success\" href=\"./addAccomodationCustomer.php?accomodationID=$id&type=Hotel\">Reserve your room<span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+            <a style='margin-left: 160px; margin-top: 25px' class=\"btn btn-success\" href=\"./addAccomodationCustomer.php?accomodationID=$id&type=Hotel\">Book your room<span class=\"glyphicon glyphicon-chevron-right\"></span></a>
 </p>
         </div>";
 

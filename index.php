@@ -26,6 +26,8 @@
 
     <title>Tourist Agency</title>
 
+    <link rel="icon" href="./images/holiday.jpg">
+
     <link href="css/custom.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -55,7 +57,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="./index.php">TOURIST AGENCY</a>
+            <a class="navbar-brand" href="./index.php">
+                TOURIST AGENCY</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
