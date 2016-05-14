@@ -94,7 +94,7 @@
     <?php
     include './admin/spajanje_na_bazu.php';
     include './admin/funkcije.php';
-    $upit = "SELECT idIzlet, naziv, opis FROM IZLET ORDER BY naziv ASC";
+    $upit = "SELECT idIzlet, naziv, opis FROM izlet ORDER BY naziv ASC";
     $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
     $page = $_GET['page'];
     if (mysqli_num_rows($rezultat) % 5 == 0) {
@@ -119,11 +119,11 @@
         $izlet = $redak['idIzlet'];
         $ime = $redak['naziv'];
         $opis = $redak['opis'];
-        $upit2 = "SELECT idSlika FROM SLIKE_IZLET WHERE idIzlet = $izlet";
+        $upit2 = "SELECT idSlika FROM slike_izlet WHERE idIzlet = $izlet";
         $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
         $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
         $idSlika = $redak2['idSlika'];
-        $upit3 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+        $upit3 = "SELECT url FROM slika WHERE idSlika = $idSlika";
         $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
         $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
         $url = $redak3['url'];

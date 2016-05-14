@@ -145,7 +145,7 @@
 
 
 
-        $upit = "SELECT idIzlet, naziv, opis, trajanje, cijenaPoOsobi, ukljucenVodic, ukljucenObrok, ukljuceneUlaznice, nazivKompanije, idLokacija, idAkcija FROM IZLET WHERE idIzlet = $id";
+        $upit = "SELECT idIzlet, naziv, opis, trajanje, cijenaPoOsobi, ukljucenVodic, ukljucenObrok, ukljuceneUlaznice, nazivKompanije, idLokacija, idAkcija FROM izlet WHERE idIzlet = $id";
         $rezultat = mysqli_query($veza, $upit) or die ("1" . mysqli_error($veza));
 
         $redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
@@ -162,12 +162,12 @@
         $idAkcija = $redak['idAkcija'];
 
 
-        $upit5 = "SELECT idSlika FROM SLIKE_IZLET WHERE idIzlet = $id";
+        $upit5 = "SELECT idSlika FROM slike_izlet WHERE idIzlet = $id";
         $rezultat5 = mysqli_query($veza, $upit5) or die ("2" . mysqli_error($veza));
         $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
         $idSlika = $redak5['idSlika'];
 
-        $upit5 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+        $upit5 = "SELECT url FROM slika WHERE idSlika = $idSlika";
         $rezultat5 = mysqli_query($veza, $upit5) or die ("3" .   mysqli_error($veza));
         $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
         $url = $redak5['url'];
@@ -193,7 +193,7 @@
   Select starting date and time</button>
   <ul style='margin-left: 175px;' class=\"dropdown-menu\">";
 
-            $upit = "SELECT idIzletPolazak, vrijemePolazak, slobodnoMjesta FROM IZLET_POLAZAK WHERE idIzlet = $id AND slobodnoMjesta > 0";
+            $upit = "SELECT idIzletPolazak, vrijemePolazak, slobodnoMjesta FROM izlet_polazak WHERE idIzlet = $id AND slobodnoMjesta > 0";
             $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
             while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
@@ -266,7 +266,7 @@
             echo "<div class=\"row\">
         <div class=\"col-lg-12\">
             <h2 class=\"page-header\">Additional photos: </h2>";
-            $upit2 = "SELECT idSlika FROM SLIKE_IZLET WHERE idIzlet = $id";
+            $upit2 = "SELECT idSlika FROM slike_izlet WHERE idIzlet = $id";
             $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
 
             $i = 0;
@@ -277,7 +277,7 @@
                 }
 
                 $idSlika = $redak2['idSlika'];
-                $upit3 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+                $upit3 = "SELECT url FROM slika WHERE idSlika = $idSlika";
                 $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
                 $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
                 $url = $redak3['url'];
@@ -300,7 +300,7 @@
         if (isset($_GET['selectedDate'])) {
             $idIzletPolazak = $_GET['polazak'];
 
-            $upit = "SELECT vrijemePolazak, slobodnoMjesta FROM IZLET_POLAZAK WHERE idIzletPolazak = $idIzletPolazak";
+            $upit = "SELECT vrijemePolazak, slobodnoMjesta FROM izlet_polazak WHERE idIzletPolazak = $idIzletPolazak";
             $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
             $redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
 
@@ -385,7 +385,7 @@
             echo "<div class=\"row\">
         <div class=\"col-lg-12\">
             <h2 class=\"page-header\">Additional photos: </h2>";
-            $upit2 = "SELECT idSlika FROM SLIKE_IZLET WHERE idIzlet = $id";
+            $upit2 = "SELECT idSlika FROM slike_izlet WHERE idIzlet = $id";
             $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
 
             $i = 0;
@@ -396,7 +396,7 @@
                 }
 
                 $idSlika = $redak2['idSlika'];
-                $upit3 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+                $upit3 = "SELECT url FROM slika WHERE idSlika = $idSlika";
                 $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
                 $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
                 $url = $redak3['url'];
@@ -441,7 +441,7 @@
                 $idIzletPolazak = $_GET['polazak'];
                 $idIzlet = $_GET['value'];
 
-                $upit = "SELECT vrijemePolazak, slobodnoMjesta FROM IZLET_POLAZAK WHERE idIzletPolazak = $idIzletPolazak";
+                $upit = "SELECT vrijemePolazak, slobodnoMjesta FROM izlet_polazak WHERE idIzletPolazak = $idIzletPolazak";
                 $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
                 $redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
 
@@ -517,7 +517,7 @@
           echo "<div class=\"row\">
         <div class=\"col-lg-12\">
             <h2 class=\"page-header\">Additional photos: </h2>";
-            $upit2 = "SELECT idSlika FROM SLIKE_Izlet WHERE idIzlet = $id";
+            $upit2 = "SELECT idSlika FROM slike_izlet WHERE idIzlet = $id";
             $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
 
             $i = 0;
@@ -528,7 +528,7 @@
                 }
 
                 $idSlika = $redak2['idSlika'];
-                $upit3 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+                $upit3 = "SELECT url FROM slika WHERE idSlika = $idSlika";
                 $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
                 $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
                 $url = $redak3['url'];

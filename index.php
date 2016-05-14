@@ -98,7 +98,7 @@
             <h2 class=\"page-header\">TOP 5 DESTINATIONS</h2>
         </div>
     </div>";
-        $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM LOKACIJA WHERE tip != 5 ORDER BY pregledi DESC";
+        $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM lokacija WHERE tip != 5 ORDER BY pregledi DESC";
         $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
         $i = 0;
@@ -113,12 +113,12 @@
             $opis = $redak['opis'];
             $tip = $redak['tip'];
 
-            $upit2 = "SELECT idSlika FROM SLIKE_LOKACIJA WHERE idLokacija = $lokacija";
+            $upit2 = "SELECT idSlika FROM slike_lokacija WHERE idLokacija = $lokacija";
             $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
             $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
             $idSlika = $redak2['idSlika'];
 
-            $upit3 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+            $upit3 = "SELECT url FROM slika WHERE idSlika = $idSlika";
             $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
             $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
             $url = $redak3['url'];

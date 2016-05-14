@@ -105,7 +105,7 @@
             include './admin/spajanje_na_bazu.php';
             include './admin/funkcije.php';
 
-            $upit = "SELECT idLokacija, ime, tip FROM LOKACIJA ORDER BY ime ASC";
+            $upit = "SELECT idLokacija, ime, tip FROM lokacija ORDER BY ime ASC";
             $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
             while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
@@ -128,7 +128,7 @@
             include './admin/spajanje_na_bazu.php';
             include './admin/funkcije.php';
 
-            $upit7 = "SELECT ime FROM LOKACIJA WHERE idLokacija = $lokacija";
+            $upit7 = "SELECT ime FROM lokacija WHERE idLokacija = $lokacija";
             $rezultat7 = mysqli_query($veza, $upit7) or die ("3" .   mysqli_error($veza));
             $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
             $imeLokacije = $redak7['ime'];
@@ -139,7 +139,7 @@
         </div>
     </div>";
 
-            $upit = "SELECT idSmjestaj, tip, opis, adresa, klasifikacija, idLokacija, idAkcija FROM SMJESTAJ WHERE $lokacija = idLokacija ORDER BY tip ASC";
+            $upit = "SELECT idSmjestaj, tip, opis, adresa, klasifikacija, idLokacija, idAkcija FROM smjestaj WHERE $lokacija = idLokacija ORDER BY tip ASC";
             $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
             $num =  mysqli_num_rows($rezultat);
@@ -160,7 +160,7 @@
                 if ($redak['tip'] == 1) {
                     $tip = "Hotel";
 
-                    $upit2 = "SELECT naziv, kapacitetHotela, brojObroka FROM HOTEL WHERE idSmjestaj = $idSmjestaj ORDER BY naziv ASC";
+                    $upit2 = "SELECT naziv, kapacitetHotela, brojObroka FROM hotel WHERE idSmjestaj = $idSmjestaj ORDER BY naziv ASC";
                     $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
                     $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
 
@@ -169,7 +169,7 @@
                 } else {
                     $tip = "Apartman";
 
-                    $upit2 = "SELECT naziv, brojOsoba, cijenaPoDanu FROM APARTMAN WHERE idSmjestaj = $idSmjestaj ORDER BY naziv ASC";
+                    $upit2 = "SELECT naziv, brojOsoba, cijenaPoDanu FROM apartman WHERE idSmjestaj = $idSmjestaj ORDER BY naziv ASC";
                     $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
                     $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
 
@@ -177,12 +177,12 @@
                     $klasifikacija = $redak['klasifikacija'];
                 }
 
-                $upit5 = "SELECT idSlika FROM SLIKE_SMJESTAJ WHERE idSmjestaj = $idSmjestaj";
+                $upit5 = "SELECT idSlika FROM slike_smjestaj WHERE idSmjestaj = $idSmjestaj";
                 $rezultat5 = mysqli_query($veza, $upit5) or die ("2" . mysqli_error($veza));
                 $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
                 $idSlika = $redak5['idSlika'];
 
-                $upit5 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+                $upit5 = "SELECT url FROM slika WHERE idSlika = $idSlika";
                 $rezultat5 = mysqli_query($veza, $upit5) or die ("3" .   mysqli_error($veza));
                 $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
                 $url = $redak5['url'];

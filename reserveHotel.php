@@ -166,7 +166,7 @@
         $id = $_GET['value'];
         $customerID = $_GET['customerID'];
 
-        $upit = "SELECT idSmjestaj, tip, opis, adresa, klasifikacija, idLokacija, idAkcija FROM SMJESTAJ WHERE idSmjestaj = $id";
+        $upit = "SELECT idSmjestaj, tip, opis, adresa, klasifikacija, idLokacija, idAkcija FROM smjestaj WHERE idSmjestaj = $id";
         $rezultat = mysqli_query($veza, $upit) or die ("1" . mysqli_error($veza));
 
         $redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
@@ -177,17 +177,17 @@
         $klasifikacija = $redak['klasifikacija'];
         $idAkcija = $redak['idAkcija'];
 
-        $upit5 = "SELECT idSlika FROM SLIKE_SMJESTAJ WHERE idSmjestaj = $id";
+        $upit5 = "SELECT idSlika FROM slike_smjestaj WHERE idSmjestaj = $id";
         $rezultat5 = mysqli_query($veza, $upit5) or die ("2" . mysqli_error($veza));
         $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
         $idSlika = $redak5['idSlika'];
 
-        $upit5 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+        $upit5 = "SELECT url FROM slika WHERE idSlika = $idSlika";
         $rezultat5 = mysqli_query($veza, $upit5) or die ("3" .   mysqli_error($veza));
         $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
         $url = $redak5['url'];
 
-        $upit2 = "SELECT naziv, kapacitetHotela, brojObroka FROM HOTEL WHERE idSmjestaj = $id";
+        $upit2 = "SELECT naziv, kapacitetHotela, brojObroka FROM hotel WHERE idSmjestaj = $id";
         $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
         $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
 
@@ -195,7 +195,7 @@
         $kapacitet = $redak2['kapacitetHotela'];
         $brojObroka = $redak2['brojObroka'];
 
-        $upit7 = "SELECT ime FROM LOKACIJA WHERE idLokacija = $idLokacija";
+        $upit7 = "SELECT ime FROM lokacija WHERE idLokacija = $idLokacija";
         $rezultat7 = mysqli_query($veza, $upit7) or die ("3" .   mysqli_error($veza));
         $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
         $imeLokacije = $redak7['ime'];
@@ -262,13 +262,13 @@
         <div class=\"col-lg-3\">
             <h2 class=\"page-header\">Hotel offers: </h2>";
 
-            $upit6 = "SELECT idSadrzaj FROM HOTEL_NUDI WHERE idSmjestaj = $id";
+            $upit6 = "SELECT idSadrzaj FROM hotel_nudi WHERE idSmjestaj = $id";
             $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
 
             while ($redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC)) {
                 $idSadrzaj = $redak6['idSadrzaj'];
 
-                $upit7 = "SELECT naziv FROM SADRZAJ WHERE idSadrzaj = $idSadrzaj";
+                $upit7 = "SELECT naziv FROM sadrzaj WHERE idSadrzaj = $idSadrzaj";
                 $rezultat7 = mysqli_query($veza, $upit7) or die (mysqli_error($veza));
                 $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
 
@@ -277,7 +277,7 @@
                 echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $sadrzaj</p>";
             }
 
-            $upit6 = "SELECT SUM(brojSlobodnih) AS slobodne FROM SOBA WHERE idSmjestaj = $id";
+            $upit6 = "SELECT SUM(brojSlobodnih) AS slobodne FROM soba WHERE idSmjestaj = $id";
             $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
             $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
 
@@ -313,7 +313,7 @@
         <div class=\"row\">
         <div class=\"col-lg-12\">
             <h2 class=\"page-header\">Additional photos: </h2>";
-            $upit2 = "SELECT idSlika FROM SLIKE_SMJESTAJ WHERE idSMJESTAJ = $id";
+            $upit2 = "SELECT idSlika FROM slike_smjestaj WHERE idSMJESTAJ = $id";
             $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
 
             $i = 0;
@@ -324,7 +324,7 @@
                 }
 
                 $idSlika = $redak2['idSlika'];
-                $upit3 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+                $upit3 = "SELECT url FROM slika WHERE idSlika = $idSlika";
                 $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
                 $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
                 $url = $redak3['url'];
@@ -366,14 +366,14 @@
                 $popust = $redak6['popust'];
             }
 
-            $upit7 = "SELECT cijenaPoDanu FROM SOBA WHERE idSoba = $roomID";
+            $upit7 = "SELECT cijenaPoDanu FROM soba WHERE idSoba = $roomID";
             $rezultat7 = mysqli_query($veza, $upit7) or die (mysqli_error($veza));
             $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
             $cijenaPoOsobi = $redak7['cijenaPoDanu'];
             $totalPrice = $number * $cijenaPoOsobi * $popust;
 
 
-            $upit = "SELECT tip, brojSlobodnih FROM SOBA WHERE idSoba = $roomID";
+            $upit = "SELECT tip, brojSlobodnih FROM soba WHERE idSoba = $roomID";
             $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
             $redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
             $tipSobe = $redak['tip'];
@@ -399,17 +399,17 @@
             echo "
         <div class=\"col-lg-3\">
             <h2 class=\"page-header\">Hotel offers: </h2>";
-            $upit6 = "SELECT idSadrzaj FROM HOTEL_NUDI WHERE idSmjestaj = $id";
+            $upit6 = "SELECT idSadrzaj FROM hotel_nudi WHERE idSmjestaj = $id";
             $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
             while ($redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC)) {
                 $idSadrzaj = $redak6['idSadrzaj'];
-                $upit7 = "SELECT naziv FROM SADRZAJ WHERE idSadrzaj = $idSadrzaj";
+                $upit7 = "SELECT naziv FROM sadrzaj WHERE idSadrzaj = $idSadrzaj";
                 $rezultat7 = mysqli_query($veza, $upit7) or die (mysqli_error($veza));
                 $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
                 $sadrzaj = $redak7['naziv'];
                 echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $sadrzaj</p>";
             }
-            $upit6 = "SELECT SUM(brojSlobodnih) AS slobodne FROM SOBA WHERE idSmjestaj = $id";
+            $upit6 = "SELECT SUM(brojSlobodnih) AS slobodne FROM soba WHERE idSmjestaj = $id";
             $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
             $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
             $kapacitet = $redak6['slobodne'];
@@ -443,7 +443,7 @@
         <div class=\"row\">
         <div class=\"col-lg-12\">
             <h2 class=\"page-header\">Additional photos: </h2>";
-            $upit2 = "SELECT idSlika FROM SLIKE_SMJESTAJ WHERE idSMJESTAJ = $id";
+            $upit2 = "SELECT idSlika FROM slike_smjestaj WHERE idSMJESTAJ = $id";
             $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
 
             $i = 0;
@@ -454,7 +454,7 @@
                 }
 
                 $idSlika = $redak2['idSlika'];
-                $upit3 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+                $upit3 = "SELECT url FROM slika WHERE idSlika = $idSlika";
                 $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
                 $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
                 $url = $redak3['url'];
@@ -485,7 +485,7 @@
   Select preferred room type</button>
   <ul style='margin-left: 179px;' class=\"dropdown-menu\">";
 
-                $upit = "SELECT idSoba, tip, cijenaPoDanu, brojOsoba FROM SOBA WHERE idSmjestaj = $id AND brojOsoba >= $people ORDER BY cijenaPoDanu ASC";
+                $upit = "SELECT idSoba, tip, cijenaPoDanu, brojOsoba FROM soba WHERE idSmjestaj = $id AND brojOsoba >= $people ORDER BY cijenaPoDanu ASC";
                 $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
                 while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
@@ -532,13 +532,13 @@
         <div class=\"col-lg-3\">
             <h2 class=\"page-header\">Hotel offers: </h2>";
 
-                $upit6 = "SELECT idSadrzaj FROM HOTEL_NUDI WHERE idSmjestaj = $id";
+                $upit6 = "SELECT idSadrzaj FROM hotel_nudi WHERE idSmjestaj = $id";
                 $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
 
                 while ($redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC)) {
                     $idSadrzaj = $redak6['idSadrzaj'];
 
-                    $upit7 = "SELECT naziv FROM SADRZAJ WHERE idSadrzaj = $idSadrzaj";
+                    $upit7 = "SELECT naziv FROM sadrzaj WHERE idSadrzaj = $idSadrzaj";
                     $rezultat7 = mysqli_query($veza, $upit7) or die (mysqli_error($veza));
                     $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
 
@@ -547,7 +547,7 @@
                     echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $sadrzaj</p>";
                 }
 
-                $upit6 = "SELECT SUM(brojSlobodnih) AS slobodne FROM SOBA WHERE idSmjestaj = $id";
+                $upit6 = "SELECT SUM(brojSlobodnih) AS slobodne FROM soba WHERE idSmjestaj = $id";
                 $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
                 $redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC);
 
@@ -583,7 +583,7 @@
         <div class=\"row\">
         <div class=\"col-lg-12\">
             <h2 class=\"page-header\">Additional photos: </h2>";
-            $upit2 = "SELECT idSlika FROM SLIKE_SMJESTAJ WHERE idSMJESTAJ = $id";
+            $upit2 = "SELECT idSlika FROM slike_smjestaj WHERE idSMJESTAJ = $id";
             $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
 
             $i = 0;
@@ -594,7 +594,7 @@
                 }
 
                 $idSlika = $redak2['idSlika'];
-                $upit3 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+                $upit3 = "SELECT url FROM slika WHERE idSlika = $idSlika";
                 $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
                 $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
                 $url = $redak3['url'];

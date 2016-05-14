@@ -175,7 +175,7 @@
 
 
 
-        $upit = "SELECT idSmjestaj, tip, opis, adresa, klasifikacija, idLokacija, idAkcija FROM SMJESTAJ WHERE idSmjestaj = $id";
+        $upit = "SELECT idSmjestaj, tip, opis, adresa, klasifikacija, idLokacija, idAkcija FROM smjestaj WHERE idSmjestaj = $id";
         $rezultat = mysqli_query($veza, $upit) or die ("1" . mysqli_error($veza));
 
         $redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
@@ -186,19 +186,19 @@
         $klasifikacija = $redak['klasifikacija'];
         $idAkcija = $redak['idAkcija'];
 
-        $upit5 = "SELECT idSlika FROM SLIKE_SMJESTAJ WHERE idSmjestaj = $id";
+        $upit5 = "SELECT idSlika FROM slike_smjestaj WHERE idSmjestaj = $id";
         $rezultat5 = mysqli_query($veza, $upit5) or die ("2" . mysqli_error($veza));
         $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
         $idSlika = $redak5['idSlika'];
 
-        $upit5 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+        $upit5 = "SELECT url FROM slika WHERE idSlika = $idSlika";
         $rezultat5 = mysqli_query($veza, $upit5) or die ("3" .   mysqli_error($veza));
         $redak5 = mysqli_fetch_array($rezultat5, MYSQLI_ASSOC);
         $url = $redak5['url'];
 
         $tip = "Apartman";
 
-        $upit2 = "SELECT naziv, brojOsoba, cijenaPoDanu, brojSoba FROM APARTMAN WHERE idSmjestaj = $id";
+        $upit2 = "SELECT naziv, brojOsoba, cijenaPoDanu, brojSoba FROM apartman WHERE idSmjestaj = $id";
         $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
         $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
 
@@ -207,7 +207,7 @@
         $brojSoba = $redak2['brojSoba'];
         $cijenaPoDanu = $redak2['cijenaPoDanu'];
 
-        $upit7 = "SELECT ime FROM LOKACIJA WHERE idLokacija = $idLokacija";
+        $upit7 = "SELECT ime FROM lokacija WHERE idLokacija = $idLokacija";
         $rezultat7 = mysqli_query($veza, $upit7) or die ("3" .   mysqli_error($veza));
         $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
         $imeLokacije = $redak7['ime'];
@@ -326,14 +326,14 @@
                 $popust = $redak6['popust'];
             }
 
-            $upit7 = "SELECT cijenaPoDanu FROM SOBA WHERE idSoba = $roomID";
+            $upit7 = "SELECT cijenaPoDanu FROM soba WHERE idSoba = $roomID";
             $rezultat7 = mysqli_query($veza, $upit7) or die (mysqli_error($veza));
             $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
             $cijenaPoOsobi = $redak7['cijenaPoDanu'];
             $totalPrice = $number * $cijenaPoOsobi * $popust;
 
 
-            $upit = "SELECT tip, brojSlobodnih FROM SOBA WHERE idSoba = $roomID";
+            $upit = "SELECT tip, brojSlobodnih FROM soba WHERE idSoba = $roomID";
             $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
             $redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
             $tipSobe = $redak['tip'];
@@ -402,7 +402,7 @@
   Select preferred room type</button>
   <ul style='margin-left: 180px;' class=\"dropdown-menu\">";
 
-            $upit = "SELECT idSoba, tip, cijenaPoDanu, brojOsoba FROM SOBA WHERE idSmjestaj = $id AND brojOsoba >= $people ORDER BY cijenaPoDanu ASC";
+            $upit = "SELECT idSoba, tip, cijenaPoDanu, brojOsoba FROM soba WHERE idSmjestaj = $id AND brojOsoba >= $people ORDER BY cijenaPoDanu ASC";
             $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
             while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {

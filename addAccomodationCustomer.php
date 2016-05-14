@@ -148,7 +148,7 @@
             $idAccomodation = $_GET['accomodationID'];
             $type = $_GET['type'];
 
-            $upit = "SELECT idKupac FROM KUPAC WHERE ime = $name AND prezime = $surname AND e_mail = $email AND godinaRodjenja = $year AND kontakt = $phone";
+            $upit = "SELECT idKupac FROM kupac WHERE ime = $name AND prezime = $surname AND e_mail = $email AND godinaRodjenja = $year AND kontakt = $phone";
             $rezultat = mysqli_query($veza, $upit) or die ("2" . mysqli_error($veza));
 
             if (mysqli_num_rows($rezultat) == 0) {
@@ -156,7 +156,7 @@
                 mysqli_query ($veza, $upit) or die (mysqli_error($veza));
             }
 
-            $upit = "SELECT idKupac FROM KUPAC WHERE ime = $name AND prezime = $surname AND e_mail = $email AND godinaRodjenja = $year AND kontakt = $phone";
+            $upit = "SELECT idKupac FROM kupac WHERE ime = $name AND prezime = $surname AND e_mail = $email AND godinaRodjenja = $year AND kontakt = $phone";
             $rezultat = mysqli_query($veza, $upit) or die ("2" . mysqli_error($veza));
             $redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
             $idKupac = $redak['idKupac'];
