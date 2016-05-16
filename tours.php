@@ -104,10 +104,12 @@
         $numberOfPages = intval(mysqli_num_rows($rezultat) / 5) + 1;
     }
     $skip = 0;
+
+    $itemsPerPage = 5;
     if ($page != 1) {
-        $skip = ($page - 1) * $numberOfPages;
+        $skip = ($page - 1) * $itemsPerPage;
     }
-    $itemsPerPage = ceil(mysqli_num_rows($rezultat) / $numberOfPages);
+
     $number = 0;
     while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
         if ($skip != 0) {

@@ -127,7 +127,7 @@
 
             include './admin/spajanje_na_bazu.php';
             include './admin/funkcije.php';
-            $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM lokacija WHERE tip = $type";
+            $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM lokacija WHERE tip = $type ORDER BY ime";
             $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
             if (mysqli_num_rows($rezultat) % 5 == 0) {
@@ -138,11 +138,13 @@
 
             $skip = 0;
 
+
+
+            $itemsPerPage = 5;
             if ($page != 1) {
-                $skip = ($page - 1) * $numberOfPages;
+                $skip = ($page - 1) * $itemsPerPage;
             }
 
-            $itemsPerPage = ceil(mysqli_num_rows($rezultat) / $numberOfPages);
             $number = 0;
             while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
                 if ($skip != 0) {
