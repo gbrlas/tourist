@@ -53,7 +53,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="./index.php">TOURIST AGENCY</a>
+            <a class="navbar-brand" href="./index.php">TRAVEL TIME</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -154,7 +154,7 @@
     } else {
         $before = $page;
     }
-    echo " <a href=\"./tours.php?page=$before\">&laquo;</a></li>";
+    echo " <a href=\"./tours.php?page=$before\"><b>&laquo;</b></a></li>";
     for ($j = 1; $j <= $numberOfPages; $j++) {
         $z = $j;
         if ($page == $z) {
@@ -172,7 +172,7 @@
     } else {
         $after = $page + 1;
     }
-    echo "<li><a href=\"./tours.php?page=$after\">&raquo;</a>
+    echo "<li><a href=\"./tours.php?page=$after\"><b>&raquo;</b></a>
                 </li>
             </ul>
         </div>
