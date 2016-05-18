@@ -22,6 +22,12 @@
         body {
             background-image: url(./images/background-grey100.png);
         }
+
+        .scrollable-menu {
+            height: auto;
+            max-height: 300px;
+            overflow-x: hidden;
+        }
     </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -102,7 +108,7 @@
             <div class=\"dropdown\">
             <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">
   Select location</button>
-  <ul class=\"dropdown-menu\">";
+  <ul class=\"dropdown-menu scrollable-menu\">";
             include './admin/spajanje_na_bazu.php';
             include './admin/funkcije.php';
 

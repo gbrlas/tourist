@@ -201,6 +201,11 @@
         $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
         $imeLokacije = $redak7['ime'];
 
+        $upit7 = "SELECT MAX(brojOsoba) AS max FROM soba WHERE idSmjestaj = $id";
+        $rezultat7 = mysqli_query($veza, $upit7) or die ("3" .   mysqli_error($veza));
+        $redak7 = mysqli_fetch_array($rezultat7, MYSQLI_ASSOC);
+        $max = $redak7['max'];
+
 
         echo "<div class=\"row\">
         <div class=\"col-lg-12\">
@@ -237,7 +242,7 @@
         <div class=\"form-group\">
             <label for=\"people\" class=\"col-sm-2 control-label\">People</label>
             <div class=\"col-sm-6\">
-                <input name=\"people\" class=\"form-control\" id=\"people\" placeholder=\"Number of people - max. 4\" required=\"true\"> 
+                <input name=\"people\" class=\"form-control\" id=\"people\" placeholder=\"Number of people - max. $max\" required=\"true\"> 
             </div>
         </div>
 
