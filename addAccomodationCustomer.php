@@ -88,7 +88,60 @@
     include "./admin/spajanje_na_bazu.php";
     include "./admin/funkcije.php";
 
-    if (! isset($_GET['addCustomer'])) {
+    if (!isset($_GET['customerType'])) {
+        $accomodationID = $_GET['accomodationID'];
+        $type = $_GET['type'];
+
+        echo "
+                <div class=\"row\">
+        <div class=\"col-lg-6\">
+        <h4>If you are a new customer, press the following button:</h4>
+            
+            <div class=\"col-md-4\">
+            </div>
+           <div class=\"col-md-6\">
+            <a class=\"btn btn-success\" href=\"./addAccomodationCustomer.php?value=$idAccomodation&customerType=2\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+           </div>
+        </div>
+        </div><br>";
+
+        echo "<div class=\"row\">
+        <div class=\"col-lg-12\">
+        <h4>Otherwise, enter your customer ID:</h4>
+        <br>
+        
+        
+        <form class=\"form-horizontal\" action=\"./addAccomodationCustomer.php?accomodationID=$accomodationID&type=$type&existing=true&customerType=1\" method=\"post\">
+        <div class=\"form-group\">
+            <label for=\"number\" class=\"col-sm-2 control-label\">ID</label>
+            <div class=\"col-sm-3\">
+                <input name=\"number\" class=\"form-control\" id=\"number\" placeholder=\"Customer ID\" required=\"true\"> 
+            </div>
+        </div>
+        <div class=\"form-group\">
+            <div class=\"col-sm-offset-2 col-sm-10\">
+                <button name=\"saveForm\" type=\"submit\" class=\"btn btn-success\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></button>
+            </div>
+        </div>
+    </form></div></div>";
+
+    } else if (isset($_GET['existing'])) {
+        $id = $_POST['number'];
+        $idAccomodation = $_GET['accomodationID'];
+        $type = $_GET['type'];
+
+        echo "<div class=\"row\">
+                    <div class=\"col-md-6\">
+                        <h4 style='color: limegreen'>Data succesfully entered.</h4>
+                        <br>
+                        <h4>Please press the button below to continue: </h4><br></div></div>";
+
+        echo "<div class=\"row\">
+                        <div class=\"col-md-6\">
+                        <a class=\"btn btn-success\" href=\"./reserve$type.php?value=$idAccomodation&customerID=$id\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                   </div></div>";
+
+    } else if (!isset($_GET['addCustomer'])) {
         $accomodationID = $_GET['accomodationID'];
         $type = $_GET['type'];
 
@@ -98,7 +151,7 @@
             <h2 class=\"page-header\">Please provide your information</h2>
         </div>
     </div>
-    <form class=\"form-horizontal\" action=\"./addAccomodationCustomer.php?accomodationID=$accomodationID&type=$type&addCustomer=true\" method=\"post\">
+    <form class=\"form-horizontal\" action=\"./addAccomodationCustomer.php?accomodationID=$accomodationID&type=$type&addCustomer=true&customerType=2\" method=\"post\">
         <div class=\"form-group\">
             <label for=\"name\" class=\"col-sm-2 control-label\">First name</label>
             <div class=\"col-sm-9\">
@@ -164,7 +217,7 @@
 
             echo "<div class=\"row\">
                     <div class=\"col-md-6\">
-                        <h4 style='color: limegreen'>Data succesfully entered.</h4>
+                        <h4 style='color: limegreen'>Data succesfully entered. Your customer ID is: <b>$idKupac</b></h4>
                         <br>
                         <h4>Please press the button below to continue: </h4><br></div></div>";
 

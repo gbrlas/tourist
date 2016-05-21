@@ -113,7 +113,7 @@
     if (!isset($_GET) || empty($_GET)) {
         include './admin/spajanje_na_bazu.php';
         include './admin/funkcije.php';
-        $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM LOKACIJA";
+        $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM lokacija";
         $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
         while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
@@ -126,12 +126,12 @@
                 continue;
             }
 
-            $upit2 = "SELECT idSlika FROM SLIKE_LOKACIJA WHERE idLokacija = $lokacija";
+            $upit2 = "SELECT idSlika FROM slike_lokacija WHERE idLokacija = $lokacija";
             $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
             $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
             $idSlika = $redak2['idSlika'];
 
-            $upit3 = "SELECT url FROM SLIKA WHERE idSlika = $idSlika";
+            $upit3 = "SELECT url FROM slika WHERE idSlika = $idSlika";
             $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
             $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
             $url = $redak3['url'];
@@ -140,7 +140,7 @@
             echo "
                     <div class=\"col-md-6\">
                         <a href=\"#\">
-                            <img class=\"img-responsive\" src=\"$url\" width=\"600\" height=\"300\" alt=\"\">
+                            <img class=\"img-responsive\" src=\"./images/$url\" width=\"600\" height=\"300\" alt=\"\">
                         </a>
                     </div>";
 
