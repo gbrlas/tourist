@@ -146,9 +146,14 @@
         }
 
         if ($test) {
+            $upit3 = "SELECT idSmjestajRezervacija FROM smjestaj_rezervacija WHERE tipRezervacije = 2 AND idRezervirano = $roomID AND datumOd = '$date' AND brojDana = $number AND ukupnaCijena = $totalPrice AND idSmjestaj = $apartmentID AND idKupac = $customerID";
+            $rezultat3 = mysqli_query ($veza, $upit3) or die ("3" . mysqli_error($veza));
+            $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
+            $id = $redak3['idSmjestajRezervacija'];
+
             echo "<div class=\"row\">
                     <div class=\"col-md-6\">
-                        <h4 style='color: limegreen'>Room successfully reserved.</h4>
+                        <h4 style='color: limegreen'>Room successfully reserved. Your order ID is: <b>$id</b></h4>
                         <br>
                         <h4>Please press the button below to return to the hotel page: </h4><br></div></div>";
 
