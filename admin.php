@@ -348,12 +348,6 @@
         <!-- /.row -->
         <form class="form-horizontal" action="./admin/addAccomodations.php" method="post">
             <div class="form-group">
-                <label for="type" class="col-sm-2 control-label">Address</label>
-                <div class="col-sm-9">
-                    <input name="type" class="form-control" id="type" placeholder="Accomodation address">
-                </div>
-            </div>
-            <div class="form-group">
                 <label for="description" class="col-sm-2 control-label">Description</label>
                 <div class="col-sm-9">
                     <textarea name="description" class="form-control" rows="4" placeholder="Accomodation description"></textarea>
@@ -667,6 +661,30 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button name='saveForm' type="submit" class="btn btn-success">Uredi izlet</button>
+                    <button name='reset' type="reset" class="btn btn-danger">Poništi</button>
+                </div>
+            </div>
+        </form>
+    <?php endif; ?>
+
+    <?php if($test === "editAccomodation") : ?>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Uredi smještaj</h1>
+            </div>
+        </div>
+        <!-- /.row -->
+        <form class="form-horizontal" action="./admin/editAccomodations.php" method='post'>
+            <div class="form-group">
+                <label for="action" class="col-sm-2 control-label">ID</label>
+                <div class="col-sm-4">
+                    <input id="id" name="id" type="text" class="form-control" placeholder="ID smještaja">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button name='saveForm' type="submit" class="btn btn-success">Uredi smještaj</button>
                     <button name='reset' type="reset" class="btn btn-danger">Poništi</button>
                 </div>
             </div>
