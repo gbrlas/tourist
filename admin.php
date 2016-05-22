@@ -55,47 +55,47 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Locations
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">LOKACIJE
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="./admin.php?value=addLocation&logged=true">Add locations</a></li>
-                        <li><a href="./admin.php?value=removeLocation&logged=true">Remove locations</a></li>
-                        <li><a href="./admin.php?value=editLocation&logged=true">Edit locations</a></li>
+                        <li><a href="./admin.php?value=addLocation&logged=true">Dodaj lokaciju</a></li>
+                        <li><a href="./admin.php?value=removeLocation&logged=true">Obriši lokaciju</a></li>
+                        <li><a href="./admin.php?value=editLocation&logged=true">Uredi lokaciju</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Accomodations
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">SMJEŠTAJ
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="./admin.php?value=addAccomodation&logged=true">Add accomodations</a></li>
-                        <li><a href="./admin.php?value=removeAccomodation&logged=true">Remove accomodations</a></li>
-                        <li><a href="./admin.php?value=editAccomodation&logged=true">Edit accomodations</a></li>
+                        <li><a href="./admin.php?value=addAccomodation&logged=true">Dodaj smještaj</a></li>
+                        <li><a href="./admin.php?value=removeAccomodation&logged=true">Obriši smještaj</a></li>
+                        <li><a href="./admin.php?value=editAccomodation&logged=true">Uredi smještaj</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tours
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">IZLETI
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="./admin.php?value=addTour&logged=true">Add tours</a></li>
-                        <li><a href="./admin.php?value=removeTour&logged=true">Remove tours</a></li>
-                        <li><a href="./admin.php?value=editTour&logged=true">Edit tours</a></li>
+                        <li><a href="./admin.php?value=addTour&logged=true">Dodaj izlet</a></li>
+                        <li><a href="./admin.php?value=removeTour&logged=true">Obriši izlet</a></li>
+                        <li><a href="./admin.php?value=editTour&logged=true">Uredi izlet</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Other
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">OSTALO
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="./admin.php?value=addImage&logged=true">Add image</a></li>
-                        <li><a href="./admin.php?value=addRoom&logged=true">Add room</a></li>
-                        <li><a href="./admin.php?value=addHotelContent&logged=true">Add hotel content</a></li>
-                        <li><a href="./admin.php?value=addAction&logged=true">Add discount</a></li>
-                        <li><a href="./admin.php?value=addCustomer&logged=true">Add customer</a></li>
-                        <li><a href="./admin.php?value=addCountry&logged=true">Add country</a></li>
+                        <li><a href="./admin.php?value=addImage&logged=true">Dodaj sliku</a></li>
+                        <li><a href="./admin.php?value=addRoom&logged=true">Dodaj sobu</a></li>
+                        <li><a href="./admin.php?value=addHotelContent&logged=true">Dodaj hotelski sadržaj</a></li>
+                        <li><a href="./admin.php?value=addAction&logged=true">Dodaj popust</a></li>
+                        <li><a href="./admin.php?value=addCustomer&logged=true">Dodaj korisnika</a></li>
+                        <li><a href="./admin.php?value=addCountry&logged=true">Dodaj državu</a></li>
 
                     </ul>
                 </li>
                 <li>
-                    <a href="./index.php">Web-page</a>
+                    <a href="./index.php">WEB-STRANICA</a>
                 </li>
             </ul>
         </div>
@@ -116,22 +116,20 @@
         <div class=\"col-md-4\"></div>
 
       <div class=\"col-md-4\"> <form class=\"form-signin\" method='post' action='./admin.php?logged=true'>
-        <h2 class=\"form-signin-heading\">Please sign in</h2>
-        <label for=\"name\" class=\"sr-only\">Username</label>
+        <h2 class=\"form-signin-heading\">Prijavite se</h2>
+        <label for=\"name\" class=\"sr-only\">Korisničko ime</label>
         <input type=\"name\" id=\"name\" class=\"form-control\" placeholder=\"Username\" required autofocus>
-        <label for=\"inputPassword\" class=\"sr-only\">Password</label>
+        <label for=\"inputPassword\" class=\"sr-only\">Lozinke</label>
         <input type=\"password\" id=\"inputPassword\" class=\"form-control\" placeholder=\"Password\" required>
         <div class=\"checkbox\">
           <label>
-            <input type=\"checkbox\" value=\"remember-me\"> Remember me
+            <input type=\"checkbox\" value=\"remember-me\"> Zapamti me
         </label>
         </div>
-        <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Sign in</button>
+        <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Prijava</button>
       </form></div>
     <div class=\"col-md-4\"></div>
     </div> <!-- /container -->";
-
-        $i++;
 
     } else if ($_GET['logged'] == "true" && count($_GET) == 1) {
             include './admin/spajanje_na_bazu.php';
@@ -170,8 +168,8 @@
                 echo "<div class=\"col-md-6\">
                         <h3>$ime</h3>
                             <p>$opis</p>
-                        <a class=\"btn btn-warning\" href=\"./admin/editLocations.php?value=$lokacija\">Edit location <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
-                         <a style='margin-left: 25px' class=\"btn btn-danger\" href=\"./admin/removeLocations.php?value=$lokacija\">Remove location <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a class=\"btn btn-warning\" href=\"./admin/editLocations.php?value=$lokacija\">Uredi lokaciju <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                         <a style='margin-left: 25px' class=\"btn btn-danger\" href=\"./admin/removeLocations.php?value=$lokacija\">Obriši lokaciju <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                    </div>";
 
                 echo "</div>";
@@ -266,12 +264,17 @@
         </div>
         <form class="form-horizontal" action="./admin/addTours.php" method="post">
             <div class="form-group">
+                <label for="starting" class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-9">
+                    <input name="name" class="form-control" id="name" placeholder="Name">
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="description" class="col-sm-2 control-label">Description</label>
                 <div class="col-sm-9">
                     <textarea name="description" class="form-control" rows="4" placeholder="Tour description"></textarea>
                 </div>
-            </div>
-            <div class="form-group">
+            </div><div class="form-group">
                 <label for="starting" class="col-sm-2 control-label">Starting time</label>
                 <div class="col-sm-9">
                     <input name="starting" class="form-control" id="starting" placeholder="Starting time">
@@ -620,6 +623,51 @@
                 <div class="col-sm-offset-2 col-sm-10">
                     <button name='saveForm' type="submit" class="btn btn-success">Add discount</button>
                     <button name='reset' type="reset" class="btn btn-danger">Reset</button>
+                </div>
+            </div>
+        </form>
+    <?php endif; ?>
+    <?php if($test === "editLocation") : ?>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Uredi lokaciju</h1>
+            </div>
+        </div>
+        <form class="form-horizontal" action="./admin/editLocations.php" method='post'>
+            <div class="form-group">
+                <label for="action" class="col-sm-2 control-label">ID</label>
+                <div class="col-sm-4">
+                    <input id="id" name="id" type="text" class="form-control" placeholder="ID lokacije">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button name='saveForm' type="submit" class="btn btn-success">Uredi lokaciju</button>
+                    <button name='reset' type="reset" class="btn btn-danger">Poništi</button>
+                </div>
+            </div>
+        </form>
+    <?php endif; ?>
+
+    <?php if($test === "editTour") : ?>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Uredi izlet</h1>
+            </div>
+        </div>
+        <form class="form-horizontal" action="./admin/editTours.php" method='post'>
+            <div class="form-group">
+                <label for="action" class="col-sm-2 control-label">ID</label>
+                <div class="col-sm-4">
+                    <input id="id" name="id" type="text" class="form-control" placeholder="ID izleta">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button name='saveForm' type="submit" class="btn btn-success">Uredi izlet</button>
+                    <button name='reset' type="reset" class="btn btn-danger">Poništi</button>
                 </div>
             </div>
         </form>

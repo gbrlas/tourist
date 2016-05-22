@@ -114,8 +114,9 @@
                     $guide = $_POST['guide'];
                     $meal = $_POST['meal'];
                     $tickets = $_POST['tickets'];
+                    $naziv = $_POST['name'];
 
-                    $upit = "INSERT INTO izlet (opis, vrijemePolaska, trajanje, cijenaPoOsobi, ukljucenVodic, ukljucenObrok, ukljuceneUlaznice, nazivKompanije, idLokacija, idAkcija) VALUES ($description, $starting, $duration, $price, $guide, $meal, $tickets, $company, $location, $discount)";
+                    $upit = "INSERT INTO izlet (naziv, opis, trajanje, cijenaPoOsobi, ukljucenVodic, ukljucenObrok, ukljuceneUlaznice, nazivKompanije, idLokacija, idAkcija) VALUES ($naziv, $description, $starting, $duration, $price, $guide, $meal, $tickets, $company, $location, $discount)";
                     mysqli_query ($veza, $upit) or die (mysqli_error($veza));
                     echo "
                     <div class=\"col-md-6\">
