@@ -185,19 +185,19 @@
             echo "
             <div class=\"row\">
                 <div class=\"col-lg-12\">
-                    <h1 class=\"page-header\">Remove location</h1>
+                    <h1 class=\"page-header\">Brisanje lokacije</h1>
                 </div>
             </div>
             <form class=\"form-horizontal\" action=\"./admin/removeLocations.php\" method=\"post\">
                 <div class=\"form-group\">
-                    <label for=\"locationid\" class=\"col-sm-2 control-label\">Location id</label>
+                    <label for=\"locationid\" class=\"col-sm-2 control-label\">ID lokacije</label>
                     <div class=\"col-sm-9\">
-                        <input name=\"locationid\" class=\"form-control\" id=\"loctionid\" placeholder=\"Location ID\">
+                        <input name=\"locationid\" class=\"form-control\" id=\"loctionid\" placeholder=\"ID lokacije\">
                     </div>
                 </div>
                 <div class=\"form-group\">
                     <div class=\"col-sm-offset-2 col-sm-10\">
-                    <button type=\"submit\" class=\"btn btn-danger\">Remove location</button>
+                    <button type=\"submit\" class=\"btn btn-danger\">Obriši lokaciju</button>
                     </div>
                 </div>
              </form>
@@ -206,19 +206,19 @@
             echo "
             <div class=\"row\">
                 <div class=\"col-lg-12\">
-                    <h1 class=\"page-header\">Remove accomodation</h1>
+                    <h1 class=\"page-header\">Brisanje smještaja</h1>
                 </div>
             </div>
             <form class=\"form-horizontal\" action=\"./admin/removeAccomodations.php\" method=\"post\">
                 <div class=\"form-group\">
-                    <label for=\"accomodationId\" class=\"col-sm-2 control-label\">Accomodation id</label>
+                    <label for=\"accomodationId\" class=\"col-sm-2 control-label\">ID smještaja</label>
                     <div class=\"col-sm-9\">
-                        <input name=\"accomodationId\" class=\"form-control\" id=\"accomodationId\" placeholder=\"Accomodation ID\">
+                        <input name=\"accomodationId\" class=\"form-control\" id=\"accomodationId\" placeholder=\"ID smještaja\">
                     </div>
                 </div>
                 <div class=\"form-group\">
                     <div class=\"col-sm-offset-2 col-sm-10\">
-                    <button type=\"submit\" class=\"btn btn-danger\">Remove accomodation</button>
+                    <button type=\"submit\" class=\"btn btn-danger\">Obriši smještaj</button>
                     </div>
                 </div>
             </form>
@@ -227,19 +227,19 @@
             echo "   
             <div class=\"row\">
                 <div class=\"col-lg-12\">
-                    <h1 class=\"page-header\">Remove tour</h1>
+                    <h1 class=\"page-header\">Brisanje izleta</h1>
                 </div>
             </div>
             <form class=\"form-horizontal\" action=\"./admin/removeTours.php\" method=\"post\">
                 <div class=\"form-group\">
-                    <label for=\"tourId\" class=\"col-sm-2 control-label\">Tour id</label>
+                    <label for=\"tourId\" class=\"col-sm-2 control-label\">ID izleta</label>
                     <div class=\"col-sm-9\">
-                        <input name=\"tourId\" class=\"form-control\" id=\"tourId\" placeholder=\"Tour ID\">
+                        <input name=\"tourId\" class=\"form-control\" id=\"tourId\" placeholder=\"ID izleta\">
                     </div>
                 </div>
                 <div class=\"form-group\">
                     <div class=\"col-sm-offset-2 col-sm-10\">
-                    <button type=\"submit\" class=\"btn btn-danger\">Remove tour</button>
+                    <button type=\"submit\" class=\"btn btn-danger\">Obriši izlet</button>
                     </div>
                 </div>
             </form>
@@ -259,49 +259,44 @@
     <?php if($test === "addTour") : ?>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Add new tour</h1>
+                <h1 class="page-header">Dodaj novi izlet</h1>
             </div>
         </div>
         <form class="form-horizontal" action="./admin/addTours.php" method="post">
             <div class="form-group">
-                <label for="starting" class="col-sm-2 control-label">Name</label>
+                <label for="starting" class="col-sm-2 control-label">Naziv</label>
                 <div class="col-sm-9">
-                    <input name="name" class="form-control" id="name" placeholder="Name">
+                    <input name="name" class="form-control" id="name" placeholder="Naziv">
                 </div>
             </div>
             <div class="form-group">
-                <label for="description" class="col-sm-2 control-label">Description</label>
+                <label for="description" class="col-sm-2 control-label">Opis</label>
                 <div class="col-sm-9">
-                    <textarea name="description" class="form-control" rows="4" placeholder="Tour description"></textarea>
+                    <textarea name="description" class="form-control" rows="4" placeholder="Opis izleta"></textarea>
                 </div>
-            </div><div class="form-group">
-                <label for="starting" class="col-sm-2 control-label">Starting time</label>
+             </div>
+            <div class="form-group">
+                <label for="duration" class="col-sm-2 control-label">Trajanje</label>
                 <div class="col-sm-9">
-                    <input name="starting" class="form-control" id="starting" placeholder="Starting time">
+                    <input name="duration" class="form-control" id="duration" placeholder="Trajanje izleta">
                 </div>
             </div>
             <div class="form-group">
-                <label for="duration" class="col-sm-2 control-label">Tour duration</label>
+                <label for="price" class="col-sm-2 control-label">Cijena</label>
                 <div class="col-sm-9">
-                    <input name="duration" class="form-control" id="duration" placeholder="Tour duration">
+                    <input name="price" class="form-control" id="price" placeholder="Cijena po osobi">
                 </div>
             </div>
             <div class="form-group">
-                <label for="price" class="col-sm-2 control-label">Price</label>
+                <label for="company" class="col-sm-2 control-label">Kompanija</label>
                 <div class="col-sm-9">
-                    <input name="price" class="form-control" id="price" placeholder="Price per person">
+                    <input name="company" class="form-control" id="company" placeholder="Naziv kompanije">
                 </div>
             </div>
             <div class="form-group">
-                <label for="company" class="col-sm-2 control-label">Company</label>
-                <div class="col-sm-9">
-                    <input name="company" class="form-control" id="company" placeholder="Company name">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="location" class="col-sm-2 control-label">Location</label>
+                <label for="location" class="col-sm-2 control-label">Lokacija</label>
                 <div class="col-sm-2">
-                    <input name="location" class="form-control" id="location" placeholder="Location ID">
+                    <input name="location" class="form-control" id="location" placeholder="ID lokacije">
                 </div>
             </div>
             <div class="form-group">
@@ -311,28 +306,28 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="guide" class="col-sm-2 control-label">Guide</label>
+                <label for="guide" class="col-sm-2 control-label">Vodič</label>
                 <div class="col-sm-1">
-                    <input name="guide" class="form-control" id="guide" placeholder="Guide">
+                    <input name="guide" class="form-control" id="guide" placeholder="Vodič">
                 </div>
             </div>
             <div class="form-group">
-                <label for="meal" class="col-sm-2 control-label">Meal</label>
+                <label for="meal" class="col-sm-2 control-label">Obrok</label>
                 <div class="col-sm-1">
-                    <input name="meal" class="form-control" id="meal" placeholder="Meal">
+                    <input name="meal" class="form-control" id="meal" placeholder="Obrok">
                 </div>
             </div>
             <div class="form-group">
-                <label for="tickets" class="col-sm-2 control-label">Tickets</label>
+                <label for="tickets" class="col-sm-2 control-label">Ulaznice</label>
                 <div class="col-sm-1">
-                    <input name="tickets" class="form-control" id="tickets" placeholder="Tickets">
+                    <input name="tickets" class="form-control" id="tickets" placeholder="Ulaznice">
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button name="saveForm" type="submit" class="btn btn-success">Add Tour</button>
-                    <button name='reset' type="reset" class="btn btn-danger">Reset</button>
+                    <button name="saveForm" type="submit" class="btn btn-success">Dodaj izlet</button>
+                    <button name='reset' type="reset" class="btn btn-danger">Poništi</button>
                 </div>
             </div>
 
@@ -342,46 +337,52 @@
     <?php if($test === "addAccomodation") : ?>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Add new accomodation</h1>
+                <h1 class="page-header">Dodaj novi smještaj</h1>
             </div>
         </div>
         <!-- /.row -->
         <form class="form-horizontal" action="./admin/addAccomodations.php" method="post">
             <div class="form-group">
-                <label for="description" class="col-sm-2 control-label">Description</label>
+                <label for="type" class="col-sm-2 control-label">Tip</label>
+                <div class="col-sm-2">
+                    <input name="type" class="form-control" id="type" placeholder="Tip">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description" class="col-sm-2 control-label">Opis</label>
                 <div class="col-sm-9">
-                    <textarea name="description" class="form-control" rows="4" placeholder="Accomodation description"></textarea>
+                    <textarea name="description" class="form-control" rows="4" placeholder="Opis smještaja"></textarea>
                 </div>
             </div>
             <div class="form-group">
-                <label for="address" class="col-sm-2 control-label">Address</label>
+                <label for="address" class="col-sm-2 control-label">Adresa</label>
                 <div class="col-sm-9">
-                    <input name="address" class="form-control" id="address" placeholder="Accomodation address">
+                    <input name="address" class="form-control" id="address" placeholder="Adresa smještaja">
                 </div>
             </div>
             <div class="form-group">
-                <label for="classification" class="col-sm-2 control-label">Clasification</label>
+                <label for="classification" class="col-sm-2 control-label">Klasifikacija</label>
                 <div class="col-sm-2">
-                    <input name="classification" class="form-control" id="classification" placeholder="Classification">
+                    <input name="classification" class="form-control" id="classification" placeholder="Klasifikacija">
                 </div>
             </div>
             <div class="form-group">
-                <label for="location" class="col-sm-2 control-label">Location</label>
+                <label for="location" class="col-sm-2 control-label">Lokacija</label>
                 <div class="col-sm-2">
-                    <input name="location" class="form-control" id="location" placeholder="Location ID">
+                    <input name="location" class="form-control" id="location" placeholder="ID lokacije">
                 </div>
             </div>
             <div class="form-group">
-                <label for="discount" class="col-sm-2 control-label">Discount</label>
+                <label for="discount" class="col-sm-2 control-label">Akcija</label>
                 <div class="col-sm-2">
-                    <input name="discount" class="form-control" id="discount" placeholder="Discount ID">
+                    <input name="discount" class="form-control" id="discount" placeholder="ID akcije">
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button name="saveForm" type="submit" class="btn btn-success">Add accomodation</button>
-                    <button name='reset' type="reset" class="btn btn-danger">Reset</button>
+                    <button name="saveForm" type="submit" class="btn btn-success">Dodaj smještaj</button>
+                    <button name='reset' type="reset" class="btn btn-danger">Poništi</button>
                 </div>
             </div>
 
@@ -391,39 +392,39 @@
     <?php if($test === "addLocation") : ?>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Add new location</h1>
+                <h1 class="page-header">Dodaj novu lokaciju</h1>
             </div>
         </div>
         <!-- /.row -->
         <form class="form-horizontal" action="./admin/addLocations.php" method="post">
             <div class="form-group">
-                <label for="name" class="col-sm-2 control-label">Name</label>
+                <label for="name" class="col-sm-2 control-label">Naziv</label>
                 <div class="col-sm-9">
-                    <input name="name" class="form-control" id="name" placeholder="Location name">
+                    <input name="name" class="form-control" id="name" placeholder="Naziv lokacije">
                 </div>
             </div>
             <div class="form-group">
-                <label for="description" class="col-sm-2 control-label">Description</label>
+                <label for="description" class="col-sm-2 control-label">Opis</label>
                 <div class="col-sm-9">
-                    <textarea name="description" class="form-control" rows="4" placeholder="Location description"></textarea>
+                    <textarea name="description" class="form-control" rows="4" placeholder="Opis lokacije"></textarea>
                 </div>
             </div>
             <div class="form-group">
-                <label for="state" class="col-sm-2 control-label">State ID</label>
+                <label for="state" class="col-sm-2 control-label">Država</label>
                 <div class="col-sm-2">
-                    <input name="state" class="form-control" id="state" placeholder="StateID">
+                    <input name="state" class="form-control" id="state" placeholder="ID države">
                 </div>
             </div>
             <div class="form-group">
-                <label for="type" class="col-sm-2 control-label">Type</label>
+                <label for="type" class="col-sm-2 control-label">Tip</label>
                 <div class="col-sm-1">
-                    <input name="type" class="form-control" id="type" placeholder="Type">
+                    <input name="type" class="form-control" id="type" placeholder="Tip">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button name="saveForm" type="submit" class="btn btn-success">Add location</button>
-                    <button name='reset' type="reset" class="btn btn-danger">Reset</button>
+                    <button name="saveForm" type="submit" class="btn btn-success">Dodaj lokaciju</button>
+                    <button name='reset' type="reset" class="btn btn-danger">Poništi</button>
                 </div>
             </div>
 
@@ -433,51 +434,51 @@
     <?php if($test === "addRoom") : ?>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Add room</h1>
+                <h1 class="page-header">Dodaj novu sobu</h1>
             </div>
         </div>
         <form class="form-horizontal" action="./admin/addRooms.php" method="post">
             <div class="form-group">
-                <label for="number" class="col-sm-2 control-label">Number</label>
+                <label for="size" class="col-sm-2 control-label">Veličina</label>
                 <div class="col-sm-4">
-                    <input name="number" class="form-control" id="number" placeholder="Room number">
+                    <input name="size" class="form-control" id="size" placeholder="Veličina sobe">
                 </div>
             </div>
             <div class="form-group">
-                <label for="size" class="col-sm-2 control-label">Size</label>
+                <label for="type" class="col-sm-2 control-label">Tip</label>
                 <div class="col-sm-4">
-                    <input name="size" class="form-control" id="size" placeholder="Room size">
+                    <input name="type" class="form-control" id="type" placeholder="Tip">
                 </div>
             </div>
             <div class="form-group">
-                <label for="price" class="col-sm-2 control-label">Price</label>
+                <label for="price" class="col-sm-2 control-label">Cijena</label>
                 <div class="col-sm-4">
-                    <input name="price" class="form-control" id="price" placeholder="Price per day">
+                    <input name="price" class="form-control" id="price" placeholder="Cijena po danu">
                 </div>
             </div>
             <div class="form-group">
-                <label for="accomodation" class="col-sm-2 control-label">Accomodation</label>
+                <label for="free" class="col-sm-2 control-label">Broj</label>
+                <div class="col-sm-4">
+                    <input name="free" class="form-control" id="free" placeholder="Broj slobodnih">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="osobe" class="col-sm-2 control-label">Size</label>
+                <div class="col-sm-4">
+                    <input name="osobe" class="form-control" id="osobe" placeholder="Broj osoba">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="accomodation" class="col-sm-2 control-label">Smještaj</label>
                 <div class="col-sm-2">
-                    <input name="accomodation" class="form-control" id="accomodation" placeholder="Accomodation ID">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="type" class="col-sm-2 control-label">Type</label>
-                <div class="col-sm-1">
-                    <input name="type" class="form-control" id="type" placeholder="Room type">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="free" class="col-sm-2 control-label">Free</label>
-                <div class="col-sm-1">
-                    <input name="free" class="form-control" id="free" placeholder="Free">
+                    <input name="accomodation" class="form-control" id="accomodation" placeholder="ID smještaj">
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button name="saveForm" type="submit" class="btn btn-success">Add room</button>
-                    <button name='reset' type="reset" class="btn btn-danger">Reset</button>
+                    <button name="saveForm" type="submit" class="btn btn-success">Dodaj sobu</button>
+                    <button name='reset' type="reset" class="btn btn-danger">Poništi</button>
                 </div>
             </div>
         </form>
@@ -486,21 +487,21 @@
     <?php if($test === "addHotelContent") : ?>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Add hotel content</h1>
+                <h1 class="page-header">Dodaj novi sadržaj</h1>
             </div>
         </div>
         <form class="form-horizontal" action="./admin/addHotelContent.php" method="post">
             <div class="form-group">
-                <label for="content" class="col-sm-2 control-label">Content</label>
+                <label for="content" class="col-sm-2 control-label">Sadržaj</label>
                 <div class="col-sm-4">
-                    <input name="content" class="form-control" id="content" placeholder="Hotel content name">
+                    <input name="content" class="form-control" id="content" placeholder="Naziv sadržaja">
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button name="saveForm" type="submit" class="btn btn-success">Add hotel content</button>
-                    <button name='reset' type="reset" class="btn btn-danger">Reset</button>
+                    <button name="saveForm" type="submit" class="btn btn-success">Dodaj sadržaj</button>
+                    <button name='reset' type="reset" class="btn btn-danger">Poništi</button>
                 </div>
             </div>
         </form>
@@ -509,21 +510,21 @@
     <?php if($test === "addImage") : ?>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Add image</h1>
+                <h1 class="page-header">Dodaj novu sliku</h1>
             </div>
         </div>
         <form class="form-horizontal" action="./admin/addImages.php" method='post'>
             <div class="form-group">
-                <label for="slika1" class="col-sm-2 control-label">Image</label>
+                <label for="slika1" class="col-sm-2 control-label">Slika</label>
                 <div class="col-sm-9">
-                    <input id="slika1" name="slika1" type="text" class="form-control" placeholder="Image URL">
+                    <input id="slika1" name="slika1" type="text" class="form-control" placeholder="URL slike">
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button name='saveForm' type="submit" class="btn btn-success">Add image</button>
-                    <button name='reset' type="reset" class="btn btn-danger">Reset</button>
+                    <button name='saveForm' type="submit" class="btn btn-success">Dodaj sliku</button>
+                    <button name='reset' type="reset" class="btn btn-danger">Poništi</button>
                 </div>
             </div>
         </form>
@@ -532,21 +533,21 @@
     <?php if($test === "addCountry") : ?>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Add country</h1>
+                <h1 class="page-header">Dodaj novu državu</h1>
             </div>
         </div>
         <form class="form-horizontal" action="./admin/addCountry.php" method='post'>
             <div class="form-group">
-                <label for="country" class="col-sm-2 control-label">Image</label>
+                <label for="country" class="col-sm-2 control-label">Država</label>
                 <div class="col-sm-4">
-                    <input id="country" name="country" type="text" class="form-control" placeholder="Country name">
+                    <input id="country" name="country" type="text" class="form-control" placeholder="Naziv države">
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button name='saveForm' type="submit" class="btn btn-success">Add country</button>
-                    <button name='reset' type="reset" class="btn btn-danger">Reset</button>
+                    <button name='saveForm' type="submit" class="btn btn-success">Dodaj državu</button>
+                    <button name='reset' type="reset" class="btn btn-danger">Poništi</button>
                 </div>
             </div>
         </form>
@@ -555,20 +556,20 @@
     <?php if($test === "addCustomer") : ?>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Add customer</h1>
+                <h1 class="page-header">Dodaj korisnika</h1>
             </div>
         </div>
         <form class="form-horizontal" action="./admin/addCustomers.php" method="post">
             <div class="form-group">
-                <label for="name" class="col-sm-2 control-label">First name</label>
+                <label for="name" class="col-sm-2 control-label">Ime</label>
                 <div class="col-sm-9">
-                    <input name="name" class="form-control" id="name" placeholder="First name">
+                    <input name="name" class="form-control" id="name" placeholder="Ime">
                 </div>
             </div>
             <div class="form-group">
-                <label for="surname" class="col-sm-2 control-label">Last name</label>
+                <label for="surname" class="col-sm-2 control-label">Prezime</label>
                 <div class="col-sm-9">
-                    <input name="surname" class="form-control" id="surname" placeholder="Last name">
+                    <input name="surname" class="form-control" id="surname" placeholder="Prezime">
                 </div>
             </div>
             <div class="form-group">
@@ -578,22 +579,22 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="year" class="col-sm-2 control-label">Year</label>
+                <label for="year" class="col-sm-2 control-label">Godina</label>
                 <div class="col-sm-3">
-                    <input name="year" class="form-control" id="year" placeholder="Year of birth">
+                    <input name="year" class="form-control" id="year" placeholder="Godina rođenja">
                 </div>
             </div>
             <div class="form-group">
-                <label for="number" class="col-sm-2 control-label">Number</label>
+                <label for="number" class="col-sm-2 control-label">Broj</label>
                 <div class="col-sm-3">
-                    <input name="number" class="form-control" id="number" placeholder="Phone number">
+                    <input name="number" class="form-control" id="number" placeholder="Broj mobitela">
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button name="saveForm" type="submit" class="btn btn-success">Add customer</button>
-                    <button name='reset' type="reset" class="btn btn-danger">Reset</button>
+                    <button name="saveForm" type="submit" class="btn btn-success">Dodaj korisnika</button>
+                    <button name='reset' type="reset" class="btn btn-danger">Poništi</button>
                 </div>
             </div>
         </form>
@@ -602,21 +603,21 @@
     <?php if($test === "addAction") : ?>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Add country</h1>
+                <h1 class="page-header">Dodaj popust</h1>
             </div>
         </div>
         <form class="form-horizontal" action="./admin/addActions.php" method='post'>
             <div class="form-group">
-                <label for="action" class="col-sm-2 control-label">Image</label>
+                <label for="action" class="col-sm-2 control-label">Popust</label>
                 <div class="col-sm-4">
-                    <input id="action" name="action" type="text" class="form-control" placeholder="Discount percentage">
+                    <input id="action" name="action" type="text" class="form-control" placeholder="Postotak popusta">
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button name='saveForm' type="submit" class="btn btn-success">Add discount</button>
-                    <button name='reset' type="reset" class="btn btn-danger">Reset</button>
+                    <button name='saveForm' type="submit" class="btn btn-success">Dodaj popust</button>
+                    <button name='reset' type="reset" class="btn btn-danger">Poništi</button>
                 </div>
             </div>
         </form>

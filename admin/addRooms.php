@@ -108,16 +108,16 @@
                 include 'funkcije.php';
 
                 if (isset($_POST['saveForm'])) {
-                    $number = navodnici($_POST['number']);
-                    $size = navodnici($_POST['size']);
-                    $type = navodnici($_POST['type']);
-                    $price = $_POST['price'];
-                    $accomodation = $_POST['accomodation'];
-                    $free = $_POST['free'];
+                    $velicina = $_POST['size'];
+                    $tip = navodnici($_POST['type']);
+                    $cijenaPoDanu = $_POST['price'];
+                    $brojSlobodnih = $_POST['free'];
+                    $brojOsoba = $_POST['osobe'];
+                    $idSmjestaj = $_POST['accomodation'];
 
 
 
-                    $upit = "INSERT INTO soba (broj, velicina, tip, cijenaPoDanu, slobodna, idSmjestaj) VALUES ($number, $size, $type, $price, $accomodation, $free)";
+                    $upit = "INSERT INTO soba (velicina, tip, cijenaPoDanu, brojSlobodnih, brojOsoba, idSmjestaj) VALUES ($velicina, $tip, $cijenaPoDanu, $brojSlobodnih, $brojOsoba, $idSmjestaj)";
                     mysqli_query ($veza, $upit) or die (mysqli_error($veza));
                     echo "
                     <div class=\"col-md-6\">
