@@ -29,7 +29,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tourist Agency - Learn More About Accomodations</title>
+    <title>Tourist Agency - Saznajte više o smještaju</title>
     <link rel="icon" href="./images/holiday.jpg">
 
     <link href="css/custom.css" rel="stylesheet">
@@ -67,19 +67,19 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./destinations.php?type=summer&page=1">SUMMER DESTINATIONS</a>
+                    <a href="./destinations.php?type=summer&page=1">LJETOVANJA</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=winter&page=1">WINTER RESORTS</a>
+                    <a href="./destinations.php?type=winter&page=1">ZIMSKE IDILE</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=cities&page=1">CITY-BREAKS</a>
+                    <a href="./destinations.php?type=cities&page=1">GRADSKI ODMORI</a>
                 </li>
                 <li>
-                    <a href="./tours.php?page=1">TOURS</a>
+                    <a href="./tours.php?page=1">IZLETI</a>
                 </li>
                 <li>
-                    <a href="./accomodations.php">ACCOMODATIONS</a>
+                    <a href="./accomodations.php">SMJEŠTAJI</a>
                 </li>
             </ul>
         </div>
@@ -156,11 +156,11 @@
                 </div>
                 
                 <div class=\"col-md-6\">
-            <h2>Description: </h2>
+            <h2>Opis: </h2>
             <p>$opis</p>
             
             <p>
-            <a style='margin-left: 160px; margin-top: 25px' class=\"btn btn-success\" href=\"./addAccomodationCustomer.php?accomodationID=$id&type=Hotel\">Book your room<span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+            <a style='margin-left: 160px; margin-top: 25px' class=\"btn btn-success\" href=\"./addAccomodationCustomer.php?value=$id&accomodationID=$id&type=Hotel\">Rezervirajte vašu sobu <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
 </p>
         </div>";
 
@@ -175,7 +175,7 @@
 
         echo "
         <div class=\"col-lg-4\">
-            <h2 class=\"page-header\">Hotel offers: </h2>";
+            <h2 class=\"page-header\">Hotel nudi: </h2>";
 
         while ($redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC)) {
             $idSadrzaj = $redak6['idSadrzaj'];
@@ -199,9 +199,9 @@
         $kapacitet = $redak6['slobodne'];
 
         echo "<div class=\"col-lg-4\">
-            <h2 class=\"page-header\">Additional info: </h2>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Hotel capacity: $kapacitet rooms</p>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Number of meals: $brojObroka</p>";
+            <h2 class=\"page-header\">Dodatne informacije: </h2>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Kapacitet hotela: $kapacitet rooms</p>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Broj obroka: $brojObroka</p>";
 
         $upit6 = "SELECT idAkcija FROM smjestaj WHERE idSmjestaj = $id";
         $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
@@ -217,7 +217,7 @@
 
             $popust = 100 - $redak6['popust'] * 100;
 
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Discount: $popust %</span></p>";
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Popust: $popust %</span></p>";
 
         }
 
@@ -229,7 +229,7 @@
 
         echo "
         <div class=\"col-lg-4\">
-            <h2 class=\"page-header\">Room types: </h2>";
+            <h2 class=\"page-header\">Vrste soba: </h2>";
 
         while ($redak6 = mysqli_fetch_array($rezultat6, MYSQLI_ASSOC)) {
             $roomType = $redak6['tip'];
@@ -242,7 +242,7 @@
 
         echo "<div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Additional photos: </h2>";
+            <h2 class=\"page-header\">Dodatne slike: </h2>";
             $upit2 = "SELECT idSlika FROM slike_smjestaj WHERE idSMJESTAJ = $id";
             $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
 
@@ -305,20 +305,20 @@
                 </div>
                 
                 <div class=\"col-md-6\">
-            <h2>Description: </h2>
+            <h2>Opis: </h2>
             <p>$opis</p>
             
             <p>
-            <a style='margin-left: 160px; margin-top: 25px' class=\"btn btn-success\" href=\"./addAccomodationCustomer.php?accomodationID=$id&type=Apartment\">Reserve your room<span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+            <a style='margin-left: 160px; margin-top: 25px' class=\"btn btn-success\" href=\"./addAccomodationCustomer.php?accomodationID=$id&type=Apartment\">Rezervirajte vašu sobu <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
 </p>
         </div></div>";
 
         echo "<div class=\"row\">
         <div class=\"col-lg-6\">
-            <h2 class=\"page-header\">Additional information: </h2>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of rooms:</b> $brojSoba</p>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Max. people per room:</b> $brojOsoba </p>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Price per day:</b> $cijenaPoDanu </p>";
+            <h2 class=\"page-header\">Dodatne informacije: </h2>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Broj soba:</b> $brojSoba</p>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Max. broj osoba po sobi:</b> $brojOsoba </p>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Cijena po danu:</b> $cijenaPoDanu </p>";
 
         $upit6 = "SELECT idAkcija FROM smjestaj WHERE idSmjestaj = $id";
         $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
@@ -334,7 +334,7 @@
 
             $popust = 100 - $redak6['popust'] * 100;
 
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Discount: $popust %</span></p>";
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Popust: $popust %</span></p>";
 
         }
 
@@ -343,7 +343,7 @@
 
         echo "<div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Additional photos: </h2>";
+            <h2 class=\"page-header\">Dodatne slike: </h2>";
             $upit2 = "SELECT idSlika FROM slike_smjestaj WHERE idSMJESTAJ = $id";
             $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
 

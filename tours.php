@@ -21,7 +21,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tourist Agency - Tours</title>
+    <title>Tourist Agency - Izleti</title>
     <link rel="icon" href="./images/holiday.jpg">
 
     <link href="css/custom.css" rel="stylesheet">
@@ -59,19 +59,19 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./destinations.php?type=summer&page=1">SUMMER DESTINATIONS</a>
+                    <a href="./destinations.php?type=summer&page=1">LJETOVANJA</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=winter&page=1">WINTER RESORTS</a>
+                    <a href="./destinations.php?type=winter&page=1">ZIMSKE IDILE</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=cities&page=1">CITY-BREAKS</a>
+                    <a href="./destinations.php?type=cities&page=1">GRADSKI ODMORI</a>
                 </li>
                 <li>
-                    <a href="./tours.php?page=1">TOURS</a>
+                    <a href="./tours.php?page=1">IZLETI</a>
                 </li>
                 <li>
-                    <a href="./accomodations.php">ACCOMODATIONS</a>
+                    <a href="./accomodations.php">SMJEŠTAJI</a>
                 </li>
             </ul>
         </div>
@@ -86,7 +86,7 @@
     <!-- Page Heading -->
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="page-header">TOURS</h2>
+            <h2 class="page-header">IZLETI</h2>
         </div>
     </div>
     <!-- /.row -->
@@ -140,8 +140,8 @@
         echo "<div class=\"col-md-6\">
                         <h3>$ime</h3>
                             <p>$opis</p>
-                        <a class=\"btn btn-primary\" href=\"./learnMoreTour.php?value=$izlet\">Learn more <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
-                        <a style='margin-left: 25px' class=\"btn btn-success\" href=\"./addTourCustomer.php?value=$izlet\">Reserve tour <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a class=\"btn btn-primary\" href=\"./learnMoreTour.php?value=$izlet\">Saznajte više <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a style='margin-left: 25px' class=\"btn btn-success\" href=\"./addTourCustomer.php?value=$izlet\">Rezervirajte vaše mjesto <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                    </div>";
         echo "</div>";
         echo "<hr>";

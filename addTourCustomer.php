@@ -21,7 +21,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tourist Agency - Add Customer</title>
+    <title>Tourist Agency - Dodavanje korisnika</title>
     <link rel="icon" href="./images/holiday.jpg">
 
     <link href="css/custom.css" rel="stylesheet">
@@ -59,19 +59,19 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./destinations.php?type=summer&page=1">SUMMER DESTINATIONS</a>
+                    <a href="./destinations.php?type=summer&page=1">LJETOVANJA</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=winter&page=1">WINTER RESORTS</a>
+                    <a href="./destinations.php?type=winter&page=1">ZIMSKE IDILE</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=cities&page=1">CITY-BREAKS</a>
+                    <a href="./destinations.php?type=cities&page=1">GRADSKI ODMORI</a>
                 </li>
                 <li>
-                    <a href="./tours.php?page=1">TOURS</a>
+                    <a href="./tours.php?page=1">IZLETI</a>
                 </li>
                 <li>
-                    <a href="./accomodations.php">ACCOMODATIONS</a>
+                    <a href="./accomodations.php">SMJEŠTAJI</a>
                 </li>
             </ul>
         </div>
@@ -98,19 +98,19 @@
         echo "
                 <div class=\"row\">
         <div class=\"col-lg-6\">
-        <h4>If you are a new customer, press the following button:</h4>
+        <h4>Ako ste novi korisnik, pritisnite sljedeći gumb:</h4>
             
             <div class=\"col-md-4\">
             </div>
            <div class=\"col-md-6\">
-            <a class=\"btn btn-success\" href=\"./addTourCustomer.php?value=$tourId&customerType=2\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+            <a class=\"btn btn-success\" href=\"./addTourCustomer.php?value=$tourId&customerType=2\">Nastavi <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
            </div>
         </div>
         </div><br>";
 
         echo "<div class=\"row\">
         <div class=\"col-lg-12\">
-        <h4>Otherwise, enter your customer ID:</h4>
+        <h4>Inače, ako ste već postojeći korisnik, unesite vaš ID:</h4>
         <br>
         
         
@@ -123,7 +123,7 @@
         </div>
         <div class=\"form-group\">
             <div class=\"col-sm-offset-2 col-sm-10\">
-                <button name=\"saveForm\" type=\"submit\" class=\"btn btn-success\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></button>
+                <button name=\"saveForm\" type=\"submit\" class=\"btn btn-success\">Nastavi <span class=\"glyphicon glyphicon-chevron-right\"></span></button>
             </div>
         </div>
     </form></div></div>";
@@ -134,13 +134,13 @@
 
         echo "<div class=\"row\">
                     <div class=\"col-md-6\">
-                        <h4 style='color: limegreen'>Data succesfully entered.</h4>
+                        <h4 style='color: limegreen'>Podatci uspješno uneseni.</h4>
                         <br>
-                        <h4>Please press the button below to continue: </h4><br></div></div>";
+                        <h4>Pritisnite sljedeći gumb za nastavak rezervacije: </h4><br></div></div>";
 
         echo "<div class=\"row\">
                         <div class=\"col-md-6\">
-                        <a class=\"btn btn-success\" href=\"./reserveTour.php?value=$tourId&customerID=$id\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a class=\"btn btn-success\" href=\"./reserveTour.php?value=$tourId&customerID=$id\">Nastavi <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                    </div></div>";
 
     } else if (! isset($_GET['addCustomer'])) {
@@ -148,20 +148,20 @@
             echo "
                 <div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Please provide your information</h2>
+            <h2 class=\"page-header\">Unesite vaše podatke: </h2>
         </div>
     </div>
     <form class=\"form-horizontal\" action=\"./addTourCustomer.php?value=$tourId&addCustomer=true&customerType=2\" method=\"post\">
         <div class=\"form-group\">
-            <label for=\"name\" class=\"col-sm-2 control-label\">First name</label>
+            <label for=\"name\" class=\"col-sm-2 control-label\">Ime</label>
             <div class=\"col-sm-9\">
-                <input name=\"name\" class=\"form-control\" id=\"name\" placeholder=\"First name\" required=\"true\">
+                <input name=\"name\" class=\"form-control\" id=\"name\" placeholder=\"Ime\" required=\"true\">
             </div>
         </div>
         <div class=\"form-group\">
-            <label for=\"surname\" class=\"col-sm-2 control-label\">Last name</label>
+            <label for=\"surname\" class=\"col-sm-2 control-label\">Prezime</label>
             <div class=\"col-sm-9\">
-                <input name=\"surname\" class=\"form-control\" id=\"surname\" placeholder=\"Last name\" required=\"true\">
+                <input name=\"surname\" class=\"form-control\" id=\"surname\" placeholder=\"Prezime\" required=\"true\">
             </div>
         </div>
         <div class=\"form-group\">
@@ -171,22 +171,22 @@
             </div>
         </div>
         <div class=\"form-group\">
-            <label for=\"year\" class=\"col-sm-2 control-label\">Year</label>
+            <label for=\"year\" class=\"col-sm-2 control-label\">Godina</label>
             <div class=\"col-sm-3\">
-                <input name=\"year\" class=\"form-control\" id=\"year\" placeholder=\"Year of birth\" required=\"true\">
+                <input name=\"year\" class=\"form-control\" id=\"year\" placeholder=\"Godina rođenja\" required=\"true\">
             </div>
         </div>
         <div class=\"form-group\">
-            <label for=\"number\" class=\"col-sm-2 control-label\">Number</label>
+            <label for=\"number\" class=\"col-sm-2 control-label\">Broj</label>
             <div class=\"col-sm-3\">
-                <input name=\"number\" class=\"form-control\" id=\"number\" placeholder=\"Phone number\" required=\"true\"> 
+                <input name=\"number\" class=\"form-control\" id=\"number\" placeholder=\"Broj mobitela\" required=\"true\"> 
             </div>
         </div>
 
         <div class=\"form-group\">
             <div class=\"col-sm-offset-2 col-sm-10\">
-                <button name=\"saveForm\" type=\"submit\" class=\"btn btn-success\">Continue</button>
-                <button name='reset' type=\"reset\" class=\"btn btn-danger\">Reset</button>
+                <button name=\"saveForm\" type=\"submit\" class=\"btn btn-success\">Nastavi</button>
+                <button style='margin-left: 10px' name='reset' type=\"reset\" class=\"btn btn-danger\">Poništi</button>
             </div>
         </div>
     </form>

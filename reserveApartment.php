@@ -29,7 +29,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tourist Agency - Reserve Apartments</title>
+    <title>Tourist Agency - Rezervacija Apartmana</title>
     <link rel="icon" href="./images/holiday.jpg">
 
     <link href="css/custom.css" rel="stylesheet">
@@ -67,19 +67,19 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./destinations.php?type=summer&page=1">SUMMER DESTINATIONS</a>
+                    <a href="./destinations.php?type=summer&page=1">LJETOVANJA</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=winter&page=1">WINTER RESORTS</a>
+                    <a href="./destinations.php?type=winter&page=1">ZIMSKE IDILE</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=cities&page=1">CITY-BREAKS</a>
+                    <a href="./destinations.php?type=cities&page=1">GRADSKI ODMORI</a>
                 </li>
                 <li>
-                    <a href="./tours.php?page=1">TOURS</a>
+                    <a href="./tours.php?page=1">IZLETI</a>
                 </li>
                 <li>
-                    <a href="./accomodations.php">ACCOMODATIONS</a>
+                    <a href="./accomodations.php">SMJEŠTAJI</a>
                 </li>
             </ul>
         </div>
@@ -153,24 +153,24 @@
 
             echo "<div class=\"row\">
                     <div class=\"col-md-6\">
-                        <h4 style='color: limegreen'>Room successfully reserved. Your order ID is: <b>$id</b></h4>
+                        <h4 style='color: limegreen'>Soba je uspješno rezervirana. Vaš ID rezervacije je: <b>$id</b></h4>
                         <br>
-                        <h4>Please press the button below to return to the hotel page: </h4><br></div></div>";
+                        <h4>Pritisnite gumb ispod za povratak na početnu stranicu apartmana: </h4><br></div></div>";
 
             echo "<div class=\"row\">
                         <div class=\"col-md-6\">
-                        <a class=\"btn btn-success\" href=\"./learnMoreAccomodation.php?value=$apartmentID\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a class=\"btn btn-success\" href=\"./learnMoreAccomodation.php?value=$apartmentID\">Nastavi <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                    </div></div>";
         } else {
             echo "<div class=\"row\">
                     <div class=\"col-md-6\">
-                        <h4 style='color: red'>No available rooms of that type during selected period.</h4>
+                        <h4 style='color: red'>Nažalost, vaša rezervacija nije uspjela./h4>
                         <br>
-                        <h4>Please press the button below to return to the apartment page and try another room or date: </h4><br></div></div>";
+                        <h4>Molimo vas stisnite gumb ispod i pokušajte ponovno, ili odaberite drugi tip sobe: </h4><br></div></div>";
 
             echo "<div class=\"row\">
                         <div class=\"col-md-6\">
-                        <a class=\"btn btn-success\" href=\"./learnMoreAccomodation.php?value=$apartmentID\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a class=\"btn btn-success\" href=\"./learnMoreAccomodation.php?value=$apartmentID\">Nastavi <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                    </div></div>";
         }
 
@@ -241,43 +241,43 @@
             echo "<div class='col-md-6'>
             <form class=\"form-horizontal\" action=\"reserveApartment.php?value=$id&customerID=$customerID&selectedDate=true\" method=\"post\">
         <div class=\"form-group\">
-            <label style='margin-top: 15px;' for=\"date\" class=\"col-sm-2 control-label\">Date</label>
+            <label style='margin-top: 15px;' for=\"date\" class=\"col-sm-2 control-label\">Datum</label>
             <div style='margin-top: 15px;' class=\"col-sm-6\">
-                <input name=\"date\" class=\"form-control\" id=\"date\" placeholder=\"yyyy-mm-dd\" required=\"true\"> 
+                <input name=\"date\" class=\"form-control\" id=\"date\" placeholder=\"gggg-mm-dd\" required=\"true\"> 
             </div>
         </div>
         
         <div class=\"form-group\">
-            <label for=\"number\" class=\"col-sm-2 control-label\">Days</label>
+            <label for=\"number\" class=\"col-sm-2 control-label\">Dani</label>
             <div class=\"col-sm-6\">
-                <input name=\"number\" class=\"form-control\" id=\"number\" placeholder=\"Number of days - max. 10\" required=\"true\"> 
+                <input name=\"number\" class=\"form-control\" id=\"number\" placeholder=\"Broj dana - max. 10\" required=\"true\"> 
             </div>
         </div>
         
         <div class=\"form-group\">
-            <label for=\"people\" class=\"col-sm-2 control-label\">People</label>
+            <label for=\"people\" class=\"col-sm-2 control-label\">Osobe</label>
             <div class=\"col-sm-6\">
-                <input name=\"people\" class=\"form-control\" id=\"people\" placeholder=\"Number of people - max. 2\" required=\"true\"> 
+                <input name=\"people\" class=\"form-control\" id=\"people\" placeholder=\"Broj osoba - max. 2\" required=\"true\"> 
             </div>
         </div>
 
         <div class=\"form-group\">
             <div class=\"col-sm-offset-2 col-sm-10\">
-                <button name=\"saveForm\" type=\"submit\" class=\"btn btn-success\">Continue</button>
+                <button name=\"saveForm\" type=\"submit\" class=\"btn btn-success\">Nastavite</button>
             </div>
         </div>
     </form></div></div>";
 
             echo "<div class=\"row\">
         <div class='col-lg-6'>
-        <h2 class=\"page-header\">Description: </h2>
+        <h2 class=\"page-header\">Opis: </h2>
             <p>$opis</p>
 </div>
         <div class=\"col-lg-6\">
-            <h2 class=\"page-header\">Additional information: </h2>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of rooms:</b> $brojSoba</p>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Max. people per room:</b> $brojOsoba </p>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Price per day:</b> $cijenaPoDanu </p>";
+            <h2 class=\"page-header\">Dodatne informacije: </h2>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Broj soba:</b> $brojSoba</p>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Max. osoba po sobi:</b> $brojOsoba </p>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Cijena po danu:</b> $cijenaPoDanu </p>";
 
             $upit6 = "SELECT idAkcija FROM smjestaj WHERE idSmjestaj = $id";
             $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
@@ -293,7 +293,7 @@
 
                 $popust = 100 - $redak6['popust'] * 100;
 
-                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Discount: $popust %</span></p>";
+                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Popust: $popust %</span></p>";
 
             }
 
@@ -302,7 +302,7 @@
 
             echo "<div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Additional photos: </h2>
+            <h2 class=\"page-header\">Dodatne slike: </h2>
         </div>
     </div>
     <hr>";
@@ -352,18 +352,18 @@
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of days:</b> $number</p>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of people:</b> $people</p>
                 <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Total price:</b> $totalPrice €</p><br>
-                <p><b>If you wish to make a reservation press CONTINUE, otherwise press CANCEL.</b></p>
-                <a style='margin-left: 120px; margin-top: 25px' class=\"btn btn-success\" href=\"./reserveApartment.php?reserved=true&apartmentID=$apartmentID&number=$number&date=$startingDate&customerID=$customerID&totalPrice=$totalPrice&roomID=$roomID\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
-                <a style='margin-left: 20px; margin-top: 25px' class=\"btn btn-danger\" href=\"./learnMoreAccomodation.php?value=$apartmentID\">Cancel <span class=\"glyphicon glyphicon-chevron-right\"></span></a></div>
+                <p><b>Ukoliko želite rezervirati ovu sobu, pritisnite NASTAVI, inače pritisnite ODUSTANI.</b></p>
+                <a style='margin-left: 120px; margin-top: 25px' class=\"btn btn-success\" href=\"./reserveApartment.php?reserved=true&apartmentID=$apartmentID&number=$number&date=$startingDate&customerID=$customerID&totalPrice=$totalPrice&roomID=$roomID\">Nastavi <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                <a style='margin-left: 20px; margin-top: 25px' class=\"btn btn-danger\" href=\"./learnMoreAccomodation.php?value=$apartmentID\">Odustani <span class=\"glyphicon glyphicon-chevron-right\"></span></a></div>
                 </div>";
 
             echo "<div class=\"row\">
         <div class='col-lg-6'>
-        <h2 class=\"page-header\">Description: </h2>
+        <h2 class=\"page-header\">Opis: </h2>
             <p>$opis</p>
 </div>
         <div class=\"col-lg-6\">
-            <h2 class=\"page-header\">Additional information: </h2>
+            <h2 class=\"page-header\">Dodatne informacije </h2>
             <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of rooms:</b> $brojSoba</p>
             <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Max. people per room:</b> $brojOsoba </p>
             <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Price per day:</b> $cijenaPoDanu </p>";
@@ -382,7 +382,7 @@
 
                 $popust = 100 - $redak6['popust'] * 100;
 
-                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Discount: $popust %</span></p>";
+                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Popust: $popust %</span></p>";
 
             }
 
@@ -391,7 +391,7 @@
 
             echo "<div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Additional photos: </h2>
+            <h2 class=\"page-header\">Dodatne slike: </h2>
         </div>
     </div>
     <hr>";
@@ -405,7 +405,7 @@
 
             echo "<div class='col-md-6' align='center'> <div class=\"dropdown\">
             <button style='margin-top: 100px;' class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">
-  Select preferred room type</button>
+  Odaberite željeni tip sobe</button>
   <ul style='margin-left: 180px;' class=\"dropdown-menu\">";
 
             $upit = "SELECT idSoba, tip, cijenaPoDanu, brojOsoba FROM soba WHERE idSmjestaj = $id AND brojOsoba >= $people ORDER BY cijenaPoDanu ASC";
@@ -420,7 +420,7 @@
                 $test = true;
 
                 for ($i = 0; $i < $number; $i++) {
-                    $upit2 = "SELECT slobodno FROM soba_rezervacija WHERE idSoba = $idSoba";
+                    $upit2 = "SELECT slobodno FROM soba_rezervacija WHERE idSoba = $idSoba AND datum = DATE(DATE_ADD('$startingDate', INTERVAL $i DAY))";
                     $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
                     $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
                     $temp = $redak2['slobodno'];
@@ -446,11 +446,11 @@
 
             echo "<div class=\"row\">
         <div class='col-lg-6'>
-        <h2 class=\"page-header\">Description: </h2>
+        <h2 class=\"page-header\">Opis: </h2>
             <p>$opis</p>
 </div>
         <div class=\"col-lg-6\">
-            <h2 class=\"page-header\">Additional information: </h2>
+            <h2 class=\"page-header\">Dodatne informacije: </h2>
             <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of rooms:</b> $brojSoba</p>
             <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Max. people per room:</b> $brojOsoba </p>
             <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Price per day:</b> $cijenaPoDanu </p>";
@@ -470,7 +470,7 @@
 
                 $popust = 100 - $redak6['popust'] * 100;
 
-                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Discount: $popust %</span></p>";
+                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Popust: $popust %</span></p>";
 
             }
 
@@ -479,7 +479,7 @@
 
             echo "<div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Additional photos: </h2>
+            <h2 class=\"page-header\">Dodatne slike: </h2>
         </div>
     </div>
     <hr>";

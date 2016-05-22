@@ -21,7 +21,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tourist Agency - Reserve Tour</title>
+    <title>Tourist Agency - Rezervacija izleta</title>
     <link rel="icon" href="./images/holiday.jpg">
 
     <link href="css/custom.css" rel="stylesheet">
@@ -59,19 +59,19 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./destinations.php?type=summer&page=1">SUMMER DESTINATIONS</a>
+                    <a href="./destinations.php?type=summer&page=1">LJETOVANJA</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=winter&page=1">WINTER RESORTS</a>
+                    <a href="./destinations.php?type=winter&page=1">ZIMSKE IDILE</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=cities&page=1">CITY-BREAKS</a>
+                    <a href="./destinations.php?type=cities&page=1">GRADSKI ODMORI</a>
                 </li>
                 <li>
-                    <a href="./tours.php?page=1">TOURS</a>
+                    <a href="./tours.php?page=1">IZLETI</a>
                 </li>
                 <li>
-                    <a href="./accomodations.php">ACCOMODATIONS</a>
+                    <a href="./accomodations.php">SMJEŠTAJI</a>
                 </li>
             </ul>
         </div>
@@ -111,9 +111,9 @@
         if ($temp - $number < 0) {
             echo "<div class=\"row\">
                     <div class=\"col-md-6\">
-                        <h4 style='color: red'>The number of selected seats is greater than possible, please try another starting date or lower the number.</h4>
+                        <h4 style='color: red'>Broj odabranih mjesta je veći od dostupnih, molimo odaberite manji broj mjesta ili drugo vrijeme polaska.</h4>
                         <br>
-                        <h4>Please press the button below to return to the tour page: </h4><br></div></div>";
+                        <h4>Pritisnite gumb za povratak na početnu stranicu izleta: </h4><br></div></div>";
 
             echo "<div class=\"row\">
                         <div class=\"col-md-6\">
@@ -130,13 +130,13 @@
 
             echo "<div class=\"row\">
                 <div class=\"col-md-6\">
-                    <h4 style='color: limegreen'>Seats successfully reserved. Your order ID is: <b>$id</b></h4>
+                    <h4 style='color: limegreen'>Mjesta uspješno rezervirana. Vaš ID rezervacije je: <b>$id</b></h4>
                     <br>
-                    <h4>Please press the button below to return to the tour page: </h4><br></div></div>";
+                    <h4>Pritisnite gumb ispod za povratak na početnu stranicu izleta: </h4><br></div></div>";
 
             echo "<div class=\"row\">
                     <div class=\"col-md-6\">
-                    <a class=\"btn btn-success\" href=\"./learnMoreTour.php?value=$idIzlet\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                    <a class=\"btn btn-success\" href=\"./learnMoreTour.php?value=$idIzlet\">Nastavi <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                </div></div>";
         }
 
@@ -194,7 +194,7 @@
         if (! isset($_GET['selectedDate']) && ! isset($_GET['selectedPeople'])) {
             echo "<div class='col-md-6' align='center'> <div class=\"dropdown\">
             <button style='margin-top: 100px;' class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">
-  Select starting date and time</button>
+  Odaberite datum i vrijeme polaska</button>
   <ul style='margin-left: 175px;' class=\"dropdown-menu\">";
 
             $upit = "SELECT idIzletPolazak, vrijemePolazak, slobodnoMjesta FROM izlet_polazak WHERE idIzlet = $id AND slobodnoMjesta > 0";
@@ -205,7 +205,7 @@
                 $vrijemePolazak = $redak['vrijemePolazak'];
                 $slobodnoMjesta = $redak['slobodnoMjesta'];
 
-                echo "<li><a href=\"reserveTour.php?value=$id&customerID=$customerID&polazak=$idIzletPolazak&selectedDate=true\">$vrijemePolazak, $slobodnoMjesta seats available</a></li>";
+                echo "<li><a href=\"reserveTour.php?value=$id&customerID=$customerID&polazak=$idIzletPolazak&selectedDate=true\">$vrijemePolazak, $slobodnoMjesta mjesta slobodno</a></li>";
             }
 
             echo "  </ul>
@@ -215,7 +215,7 @@
 
             echo "
         <div class=\"col-lg-6\">
-            <h2 class=\"page-header\">Additional info: </h2>";
+            <h2 class=\"page-header\">Dodatne informacije: </h2>";
 
             if ($ukljucenVodic == 1) {
                 $vodic = "<span class=\"glyphicon glyphicon-ok\"></span>";
@@ -235,12 +235,12 @@
                 $ulaznice = "<span class=\"glyphicon glyphicon-remove\"></span>";
             }
 
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Duration:</b> $trajanje hours</p>";
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Price per person:</b> $cijenaPoOsobi €</p>";
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Tour Guide included:</b> $vodic</p>";
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Meal included:</b> $obrok</p>";
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>All tickets included:</b> $ulaznice</p>";
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Company name:</b> $nazivKompanije</p>";
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Trajanje:</b> $trajanje hours</p>";
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Cijena po osobi:</b> $cijenaPoOsobi €</p>";
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Vodič uključen u cijenu:</b> $vodic</p>";
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Obrok uključen u cijenu:</b> $obrok</p>";
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Ulaznice uključene u cijenu:</b> $ulaznice</p>";
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Naziv kompanije:</b> $nazivKompanije</p>";
 
             $upit6 = "SELECT idAkcija FROM izlet WHERE idIzlet = $id";
             $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
@@ -256,20 +256,20 @@
 
                 $popust = 100 - $redak6['popust'] * 100;
 
-                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Discount: $popust %</span></p>";
+                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Popust: $popust %</span></p>";
 
             }
 
             echo "</div>
         <div class=\"col-lg-6\">
-        <h2 class=\"page-header\">Description: </h2>
+        <h2 class=\"page-header\">Opis: </h2>
             <p>$opis</p>
         </div>
         </div>";
 
             echo "<div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Additional photos: </h2>";
+            <h2 class=\"page-header\">Dodatne slike: </h2>";
             $upit2 = "SELECT idSlika FROM slike_izlet WHERE idIzlet = $id";
             $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
 
@@ -312,20 +312,20 @@
             $slobodnoMjesta = $redak['slobodnoMjesta'];
 
             echo "<div class='col-md-6'>
-                <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Starting date and time:</b> $vrijemePolazak</p>
-                <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Available seats:</b> $slobodnoMjesta</p>";
+                <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Vrijeme polaska:</b> $vrijemePolazak</p>
+                <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Dostupno mjesta:</b> $slobodnoMjesta</p>";
 
             echo "<form class=\"form-horizontal\" action=\"reserveTour.php?value=$id&customerID=$customerID&polazak=$idIzletPolazak&selectedPeople=true\" method=\"post\">
         <div class=\"form-group\">
-            <label style='margin-top: 15px;' for=\"number\" class=\"col-sm-2 control-label\">Number</label>
+            <label style='margin-top: 15px;' for=\"number\" class=\"col-sm-2 control-label\">Broj</label>
             <div style='margin-top: 15px;' class=\"col-sm-6\">
-                <input name=\"number\" class=\"form-control\" id=\"number\" placeholder=\"Number of people - max. 4\" required=\"true\"> 
+                <input name=\"number\" class=\"form-control\" id=\"number\" placeholder=\"Broj osoba - max. 4\" required=\"true\"> 
             </div>
         </div>
 
         <div class=\"form-group\">
             <div class=\"col-sm-offset-2 col-sm-10\">
-                <button name=\"saveForm\" type=\"submit\" class=\"btn btn-success\">Continue</button>
+                <button name=\"saveForm\" type=\"submit\" class=\"btn btn-success\">Nastavi</button>
             </div>
         </div>
     </form></div></div>";
@@ -334,7 +334,7 @@
 
             echo "
         <div class=\"col-lg-6\">
-            <h2 class=\"page-header\">Additional info: </h2>";
+            <h2 class=\"page-header\">Dodatne informacije: </h2>";
 
             if ($ukljucenVodic == 1) {
                 $vodic = "<span class=\"glyphicon glyphicon-ok\"></span>";
@@ -354,12 +354,12 @@
                 $ulaznice = "<span class=\"glyphicon glyphicon-remove\"></span>";
             }
 
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Duration:</b> $trajanje hours</p>";
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Price per person:</b> $cijenaPoOsobi €</p>";
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Tour Guide included:</b> $vodic</p>";
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Meal included:</b> $obrok</p>";
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>All tickets included:</b> $ulaznice</p>";
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Company name:</b> $nazivKompanije</p>";
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Trajanje:</b> $trajanje hours</p>";
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Cijena po osobi:</b> $cijenaPoOsobi €</p>";
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>TVodič uključen u cijenu:</b> $vodic</p>";
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Obrok uključen u cijenu:</b> $obrok</p>";
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Ulaznice uključene u cijenu:</b> $ulaznice</p>";
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Naziv kompanije:</b> $nazivKompanije</p>";
 
             $upit6 = "SELECT idAkcija FROM izlet WHERE idIzlet = $id";
             $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
@@ -375,20 +375,20 @@
 
                 $popust = 100 - $redak6['popust'] * 100;
 
-                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Discount: $popust %</span></p>";
+                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Popust: $popust %</span></p>";
 
             }
 
             echo "</div>
         <div class=\"col-lg-6\">
-        <h2 class=\"page-header\">Description: </h2>
+        <h2 class=\"page-header\">Opis: </h2>
             <p>$opis</p>
         </div>
         </div>";
 
             echo "<div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Additional photos: </h2>";
+            <h2 class=\"page-header\">Dodatne slike: </h2>";
             $upit2 = "SELECT idSlika FROM slike_izlet WHERE idIzlet = $id";
             $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
 
@@ -453,12 +453,12 @@
 
 
                 echo "<div class='col-md-6'>
-                <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Starting date and time:</b> $vrijemePolazak</p>
-                <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Number of reserved seats:</b> $number</p>
-                <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Total price:</b> $totalPrice €</p><br>
-                <p><b>If you wish to make a reservation press CONTINUE, otherwise press CANCEL.</b></p>
-                <a style='margin-left: 120px; margin-top: 25px' class=\"btn btn-success\" href=\"./reserveTour.php?reserved=true&tourID=$idIzlet&number=$number&polazak=$idIzletPolazak&customerID=$customerID&totalPrice=$totalPrice\">Continue <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
-                <a style='margin-left: 20px; margin-top: 25px' class=\"btn btn-danger\" href=\"./learnMoreTour.php?value=$id\">Cancel <span class=\"glyphicon glyphicon-chevron-right\"></span></a></div>
+                <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Vrijeme polaska:</b> $vrijemePolazak</p>
+                <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Broj rezerviranih mjesta:</b> $number</p>
+                <p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Ukupna cijena:</b> $totalPrice €</p><br>
+                <p><b>Ukoliko želite rezervirati ovaj izlet, pritisnite NASTAVI, inače pritisnite ODUSTANI.</b></p>
+                <a style='margin-left: 120px; margin-top: 25px' class=\"btn btn-success\" href=\"./reserveTour.php?reserved=true&tourID=$idIzlet&number=$number&polazak=$idIzletPolazak&customerID=$customerID&totalPrice=$totalPrice\">Nastavi <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                <a style='margin-left: 20px; margin-top: 25px' class=\"btn btn-danger\" href=\"./learnMoreTour.php?value=$id\">Odustani <span class=\"glyphicon glyphicon-chevron-right\"></span></a></div>
                 </div>
                 ";
 
@@ -466,7 +466,7 @@
 
                 echo "
         <div class=\"col-lg-6\">
-            <h2 class=\"page-header\">Additional info: </h2>";
+            <h2 class=\"page-header\">Dodatne informacije: </h2>";
 
                 if ($ukljucenVodic == 1) {
                     $vodic = "<span class=\"glyphicon glyphicon-ok\"></span>";
@@ -486,12 +486,12 @@
                     $ulaznice = "<span class=\"glyphicon glyphicon-remove\"></span>";
                 }
 
-                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Duration:</b> $trajanje hours</p>";
-                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Price per person:</b> $cijenaPoOsobi €</p>";
-                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Tour Guide included:</b> $vodic</p>";
-                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Meal included:</b> $obrok</p>";
-                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>All tickets included:</b> $ulaznice</p>";
-                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Company name:</b> $nazivKompanije</p>";
+                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Trajanje:</b> $trajanje hours</p>";
+                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Cijena po osobi:</b> $cijenaPoOsobi €</p>";
+                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Vodič uključen u cijenu:</b> $vodic</p>";
+                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Obrok uključen u cijenu:</b> $obrok</p>";
+                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Ulaznice uključene u cijenu:</b> $ulaznice</p>";
+                echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Naziv kompanije:</b> $nazivKompanije</p>";
 
                 $upit6 = "SELECT idAkcija FROM izlet WHERE idIzlet = $id";
                 $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
@@ -507,20 +507,20 @@
 
                     $popust = 100 - $redak6['popust'] * 100;
 
-                    echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Discount: $popust %</span></p>";
+                    echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <span style='color: limegreen;'> Popust: $popust %</span></p>";
 
                 }
 
                 echo "</div>
         <div class=\"col-lg-6\">
-        <h2 class=\"page-header\">Description: </h2>
+        <h2 class=\"page-header\">Opis: </h2>
             <p>$opis</p>
         </div>
         </div>";
 
           echo "<div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Additional photos: </h2>";
+            <h2 class=\"page-header\">Dodatne slike: </h2>";
             $upit2 = "SELECT idSlika FROM slike_izlet WHERE idIzlet = $id";
             $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
 

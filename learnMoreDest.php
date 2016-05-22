@@ -39,7 +39,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tourist Agency - Learn More About Destinations</title>
+    <title>Tourist Agency - Saznajte više o destinaciji</title>
     <link rel="icon" href="./images/holiday.jpg">
 
     <link href="css/custom.css" rel="stylesheet">
@@ -77,19 +77,19 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./destinations.php?type=summer&page=1">SUMMER DESTINATIONS</a>
+                    <a href="./destinations.php?type=summer&page=1">LJETOVANJA</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=winter&page=1">WINTER RESORTS</a>
+                    <a href="./destinations.php?type=winter&page=1">ZIMSKE IDILE</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=cities&page=1">CITY-BREAKS</a>
+                    <a href="./destinations.php?type=cities&page=1">GRADSKI ODMORI</a>
                 </li>
                 <li>
-                    <a href="./tours.php?page=1">TOURS</a>
+                    <a href="./tours.php?page=1">IZLETI</a>
                 </li>
                 <li>
-                    <a href="./accomodations.php">ACCOMODATIONS</a>
+                    <a href="./accomodations.php">SMJEŠTAJI</a>
                 </li>
             </ul>
         </div>
@@ -160,7 +160,7 @@
 
     echo "<div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Description: </h2>
+            <h2 class=\"page-header\">Opis: </h2>
             <p>$opis</p>
         </div>
     </div>";
@@ -172,7 +172,7 @@
 
     echo "<div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Available accomodations: </h2>
+            <h2 class=\"page-header\">Dostupni smještaji: </h2>
         </div>
     </div>";
 
@@ -220,15 +220,15 @@
                 </div>
                 <div class=\"col-md-3\">
                     <h3>$ime</h3>
-                        <p>Type: $tip</p>
-                        <p>Rating: ";
+                        <p>Tip: $tip</p>
+                        <p>Ocjena: ";
 
                 for ($j = 0; $j < $klasifikacija; $j++) {
                     echo "<span class=\"glyphicon glyphicon-star\"></span>";
                 }
 
                 echo "</p>
-                    <a class=\"btn btn-primary\" href=\"./learnMoreAccomodation.php?value=$idSmjestaj\">Learn more <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                    <a class=\"btn btn-primary\" href=\"./learnMoreAccomodation.php?value=$idSmjestaj\">Saznajte više <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                </div>";
 
         $i++;
@@ -242,7 +242,7 @@
 
     echo "<div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">Additional photos: </h2>";
+            <h2 class=\"page-header\">Dodatne slike: </h2>";
 
     $upit2 = "SELECT idSlika FROM slike_lokacija WHERE idLokacija = $id";
     $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));

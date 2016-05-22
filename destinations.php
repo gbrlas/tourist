@@ -68,19 +68,19 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./destinations.php?type=summer&page=1">SUMMER DESTINATIONS</a>
+                    <a href="./destinations.php?type=summer&page=1">LJETOVANJA</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=winter&page=1">WINTER RESORTS</a>
+                    <a href="./destinations.php?type=winter&page=1">ZIMSKE IDILE</a>
                 </li>
                 <li>
-                    <a href="./destinations.php?type=cities&page=1">CITY-BREAKS</a>
+                    <a href="./destinations.php?type=cities&page=1">GRADSKI ODMORI</a>
                 </li>
                 <li>
-                    <a href="./tours.php?page=1">TOURS</a>
+                    <a href="./tours.php?page=1">IZLETI</a>
                 </li>
                 <li>
-                    <a href="./accomodations.php">ACCOMODATIONS</a>
+                    <a href="./accomodations.php">SMJEŠTAJI</a>
                 </li>
             </ul>
         </div>
@@ -103,7 +103,7 @@
                 echo "
                     <div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">SUMMER DESTINATIONS</h2>
+            <h2 class=\"page-header\">LJETNE DESTINACIJE</h2>
         </div>
     </div>";
                 $type = 1;
@@ -111,7 +111,7 @@
                 echo "
                     <div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">WINTER DESTINATIONS</h2>
+            <h2 class=\"page-header\">ZIMSKE DESTINACIJE</h2>
         </div>
     </div>";
                 $type = 2;
@@ -119,7 +119,7 @@
                 echo "
                     <div class=\"row\">
         <div class=\"col-lg-12\">
-            <h2 class=\"page-header\">CITY DESTINATIONS</h2>
+            <h2 class=\"page-header\">GRADSKE DESTINACIJE</h2>
         </div>
     </div>";
                 $type = 3;
@@ -180,7 +180,7 @@
                 echo "<div class=\"col-md-6\">
                         <h3>$ime</h3>
                             <p>$opis</p>
-                        <a class=\"btn btn-primary\" href=\"./learnMoreDest.php?value=$lokacija\">Learn more <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a class=\"btn btn-primary\" href=\"./learnMoreDest.php?value=$lokacija\">Saznajte više <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                    </div>";
 
                 echo "</div>";
