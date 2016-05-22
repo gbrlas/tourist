@@ -107,7 +107,7 @@
             
             <div class=\"dropdown\">
             <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">
-  Select location</button>
+  Odaberi lokaciju</button>
   <ul class=\"dropdown-menu scrollable-menu\">";
             include './admin/spajanje_na_bazu.php';
             include './admin/funkcije.php';
