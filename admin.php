@@ -110,49 +110,71 @@
 
 
     <?php
-    if (!isset($_GET) || empty($_GET)) {
-        include './admin/spajanje_na_bazu.php';
-        include './admin/funkcije.php';
-        $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM lokacija";
-        $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
+    if (! isset($_GET['logged'])) {
+        echo "<div class=\"container\">
+        <div class=\"col-md-4\"></div>
 
-        while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
-            $lokacija = $redak['idLokacija'];
-            $ime = $redak['ime'];
-            $opis = $redak['opis'];
-            $tip = $redak['tip'];
+      <div class=\"col-md-4\"> <form class=\"form-signin\" method='post' action='./admin.php?logged=true'>
+        <h2 class=\"form-signin-heading\">Please sign in</h2>
+        <label for=\"name\" class=\"sr-only\">Username</label>
+        <input type=\"name\" id=\"name\" class=\"form-control\" placeholder=\"Username\" required autofocus>
+        <label for=\"inputPassword\" class=\"sr-only\">Password</label>
+        <input type=\"password\" id=\"inputPassword\" class=\"form-control\" placeholder=\"Password\" required>
+        <div class=\"checkbox\">
+          <label>
+            <input type=\"checkbox\" value=\"remember-me\"> Remember me
+        </label>
+        </div>
+        <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Sign in</button>
+      </form></div>
+    <div class=\"col-md-4\"></div>
+    </div> <!-- /container -->";
 
-            if ($tip == 5) {
-                continue;
-            }
+    } else if ($_GET['logged'] == "true") {
+            include './admin/spajanje_na_bazu.php';
+            include './admin/funkcije.php';
+            $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM lokacija";
+            $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
-            $upit2 = "SELECT idSlika FROM slike_lokacija WHERE idLokacija = $lokacija";
-            $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
-            $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
-            $idSlika = $redak2['idSlika'];
+            while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {
+                $lokacija = $redak['idLokacija'];
+                $ime = $redak['ime'];
+                $opis = $redak['opis'];
+                $tip = $redak['tip'];
 
-            $upit3 = "SELECT url FROM slika WHERE idSlika = $idSlika";
-            $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
-            $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
-            $url = $redak3['url'];
+                if ($tip == 5) {
+                    continue;
+                }
 
-            echo "<div class=\"row\">";
-            echo "
+                $upit2 = "SELECT idSlika FROM slike_lokacija WHERE idLokacija = $lokacija";
+                $rezultat2 = mysqli_query($veza, $upit2) or die (mysqli_error($veza));
+                $redak2 = mysqli_fetch_array($rezultat2, MYSQLI_ASSOC);
+                $idSlika = $redak2['idSlika'];
+
+                $upit3 = "SELECT url FROM slika WHERE idSlika = $idSlika";
+                $rezultat3 = mysqli_query($veza, $upit3) or die (mysqli_error($veza));
+                $redak3 = mysqli_fetch_array($rezultat3, MYSQLI_ASSOC);
+                $url = $redak3['url'];
+
+                echo "<div class=\"row\">";
+                echo "
                     <div class=\"col-md-6\">
                         <a href=\"#\">
                             <img class=\"img-responsive\" src=\"./images/$url\" width=\"600\" height=\"300\" alt=\"\">
                         </a>
                     </div>";
 
-            echo "<div class=\"col-md-6\">
+                echo "<div class=\"col-md-6\">
                         <h3>$ime</h3>
                             <p>$opis</p>
-                        <a class=\"btn btn-primary\" href=\"./learnMore.php?#value=$lokacija\">Learn more <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                        <a class=\"btn btn-warning\" href=\"./admin/editLocations.php?value=$lokacija\">Edit location <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
+                         <a style='margin-left: 25px' class=\"btn btn-danger\" href=\"./admin/removeLocations.php?value=$lokacija\">Remove location <span class=\"glyphicon glyphicon-chevron-right\"></span></a>
                    </div>";
 
-            echo "</div>";
-            echo "<hr>";
-        };
+                echo "</div>";
+                echo "<hr>";
+            };
+
     }
 
     if (isset($_GET['value'])) {
