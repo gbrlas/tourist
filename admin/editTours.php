@@ -224,6 +224,8 @@
         $tickets = $_POST['tickets'];
         $naziv = navodnici($_POST['name']);
 
+        $discount = !empty($discount) ? "$discount" : "NULL";
+
         $upit = "UPDATE izlet SET naziv = $naziv, opis = $description, trajanje = $starting, cijenaPoOsobi = $price, ukljucenVodic = $guide, ukljucenObrok = $meal, ukljuceneUlaznice = $tickets, nazivKompanije = $company, idLokacija = $location, idAkcija = $discount WHERE idIzlet = $id";
         mysqli_query($veza, $upit) or die ("2" . mysqli_error($veza));
 

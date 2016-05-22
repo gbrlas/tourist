@@ -47,45 +47,47 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Locations
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">LOKACIJE
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="../admin.php?value=addLocation">Add locations</a></li>
-                        <li><a href="../admin.php?value=removeLocation">Remove locations</a></li>
-                        <li><a href="../admin.php?value=editLocation">Edit locations</a></li>
+                        <li><a href="../admin.php?value=addLocation&logged=true">Dodaj lokaciju</a></li>
+                        <li><a href="../admin.php?value=removeLocation&logged=true">Obriši lokaciju</a></li>
+                        <li><a href="../admin.php?value=editLocation&logged=true">Uredi lokaciju</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Accomodations
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">SMJEŠTAJ
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="../admin.php?value=addAccomodation">Add accomodations</a></li>
-                        <li><a href="../admin.php?value=removeAccomodation">Remove accomodations</a></li>
-                        <li><a href="../admin.php?value=editAccomodation">Edit accomodations</a></li>
+                        <li><a href="../admin.php?value=addAccomodation&logged=true">Dodaj smještaj</a></li>
+                        <li><a href="../admin.php?value=removeAccomodation&logged=true">Obriši smještaj</a></li>
+                        <li><a href="../admin.php?value=editAccomodation&logged=true">Uredi smještaj</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tours
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">IZLETI
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="../admin.php?value=addTour">Add tours</a></li>
-                        <li><a href="../admin.php?value=removeTour">Remove tours</a></li>
-                        <li><a href="../admin.php?value=editTour">Edit tours</a></li>
+                        <li><a href="../admin.php?value=addTour&logged=true">Dodaj izlet</a></li>
+                        <li><a href="../admin.php?value=removeTour&logged=true">Obriši izlet</a></li>
+                        <li><a href="../admin.php?value=editTour&logged=true">Uredi izlet</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Other
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">OSTALO
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="../tourist/admin.php?value=addImage">Add image</a></li>
-                        <li><a href="../admin.php?value=addRoom">Add room</a></li>
-                        <li><a href="../admin.php?value=addHotelContent">Add hotel content</a></li>
-                        <li><a href="../admin.php?value=addAction">Add discount</a></li>
-                        <li><a href="../admin.php?value=addCustomer">Add customer</a></li>
+                        <li><a href="../admin.php?value=addImage&logged=true">Dodaj sliku</a></li>
+                        <li><a href="../admin.php?value=addRoom&logged=true">Dodaj sobu</a></li>
+                        <li><a href="../admin.php?value=addHotelContent&logged=true">Dodaj hotelski sadržaj</a></li>
+                        <li><a href="../admin.php?value=addAction&logged=true">Dodaj popust</a></li>
+                        <li><a href="../admin.php?value=addCustomer&logged=true">Dodaj korisnika</a></li>
+                        <li><a href="../admin.php?value=addCountry&logged=true">Dodaj državu</a></li>
+
                     </ul>
                 </li>
                 <li>
-                    <a href="./index.php">Web-page</a>
+                    <a href="../index.php">WEB-STRANICA</a>
                 </li>
             </ul>
         </div>
