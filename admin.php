@@ -191,7 +191,7 @@
             <form class=\"form-horizontal\" action=\"./admin/removeLocations.php\" method=\"post\">
                 <div class=\"form-group\">
                     <label for=\"locationid\" class=\"col-sm-2 control-label\">ID lokacije</label>
-                    <div class=\"col-sm-9\">
+                    <div class=\"col-sm-3\">
                         <input name=\"locationid\" class=\"form-control\" id=\"loctionid\" placeholder=\"ID lokacije\">
                     </div>
                 </div>
@@ -212,7 +212,7 @@
             <form class=\"form-horizontal\" action=\"./admin/removeAccomodations.php\" method=\"post\">
                 <div class=\"form-group\">
                     <label for=\"accomodationId\" class=\"col-sm-2 control-label\">ID smještaja</label>
-                    <div class=\"col-sm-9\">
+                    <div class=\"col-sm-3\">
                         <input name=\"accomodationId\" class=\"form-control\" id=\"accomodationId\" placeholder=\"ID smještaja\">
                     </div>
                 </div>
@@ -233,7 +233,7 @@
             <form class=\"form-horizontal\" action=\"./admin/removeTours.php\" method=\"post\">
                 <div class=\"form-group\">
                     <label for=\"tourId\" class=\"col-sm-2 control-label\">ID izleta</label>
-                    <div class=\"col-sm-9\">
+                    <div class=\"col-sm-3\">
                         <input name=\"tourId\" class=\"form-control\" id=\"tourId\" placeholder=\"ID izleta\">
                     </div>
                 </div>
