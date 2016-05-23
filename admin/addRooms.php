@@ -121,7 +121,7 @@
                     mysqli_query ($veza, $upit) or die (mysqli_error($veza));
                     echo "
                     <div class=\"col-md-6\">
-                        <h4>Room added:</h4>
+                        <h4>Soba uspješno dodana:</h4>
                     $number <br>
                     $size <br>
                     $type <br>

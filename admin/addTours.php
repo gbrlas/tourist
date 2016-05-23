@@ -124,9 +124,9 @@
                     mysqli_query ($veza, $upit) or die (mysqli_error($veza));
                     echo "
                     <div class=\"col-md-6\">
-                        <h4>Tour added:</h4>
+                        <h4>Izlet uspješno dodan:</h4>
+                    $naziv <br>
                     $description <br>
-                    $starting <br>
                     $duration <br>
                     $price <br>
                     $guide <br>

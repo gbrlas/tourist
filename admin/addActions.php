@@ -113,7 +113,7 @@
                     mysqli_query ($veza, $upit) or die (mysqli_error($veza));
                     echo "
                     <div class=\"col-md-6\">
-                        <h4>Discount added: $discount</h4>
+                        <h4>Popust uspješno dodan: $discount</h4>
                     </div>
                     ";
                 }

@@ -120,7 +120,7 @@
                     mysqli_query ($veza, $upit) or die (mysqli_error($veza));
                     echo "
                     <div class=\"col-md-6\">
-                        <h4>Customer added:</h4>
+                        <h4>Korisnik uspješno dodan:</h4>
                     $name <br>
                     $surname <br>
                     $email <br>

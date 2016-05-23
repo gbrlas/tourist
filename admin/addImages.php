@@ -108,16 +108,16 @@
                 include 'funkcije.php';
 
                 echo $_POST['slika1'];
-                /*if (isset($_POST['saveForm'])) {
+                if (isset($_POST['saveForm'])) {
                     $img = navodnici($_POST['slika1']);
                     $upit = "INSERT INTO slika (url) VALUES ($img)";
                     mysqli_query ($veza, $upit) or die (mysqli_error($veza));
                     echo "
                     <div class=\"col-md-6\">
-                        <h4>Image added: $img</h4>
+                        <h4>Slika uspješno dodana: $img</h4>
                     </div>
                     ";
-                }*/
+                }
                 ?>
             </h4>
         </div>

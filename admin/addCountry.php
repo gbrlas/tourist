@@ -113,7 +113,7 @@
                     mysqli_query ($veza, $upit) or die (mysqli_error($veza));
                     echo "
                     <div class=\"col-md-6\">
-                        <h4>Country added: $country</h4>
+                        <h4>Zemlja uspješno dodana: $country</h4>
                     </div>
                     ";
                 }
