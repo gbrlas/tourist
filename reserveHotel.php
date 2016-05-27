@@ -524,7 +524,7 @@
                     }
 
                     if ($test) {
-                        echo "<li><a href=\"reserveHotel.php?value=$id&customerID=$customerID&idSoba=$idSoba&number=$number&date=$startingDate&people=$people&selectedRoom=true\">$tipSobe, $cijenaPoDanu € po noći, za $brojOsoba osoba</a></li>";
+                        echo "<li><a href=\"reserveHotel.php?value=$id&customerID=$customerID&idSoba=$idSoba&number=$number&date=$startingDate&people=$people&selectedRoom=true\">$tipSobe, $cijenaPoDanu € po danu, za $brojOsoba osoba</a></li>";
                     }
                 }
 

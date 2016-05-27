@@ -118,7 +118,7 @@
         <div class=\"form-group\">
             <label for=\"number\" class=\"col-sm-2 control-label\">ID</label>
             <div class=\"col-sm-3\">
-                <input name=\"number\" class=\"form-control\" id=\"number\" placeholder=\"Customer ID\" required=\"true\"> 
+                <input name=\"number\" class=\"form-control\" id=\"number\" placeholder=\"Korisnički ID\" required=\"true\"> 
             </div>
         </div>
         <div class=\"form-group\">

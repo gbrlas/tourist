@@ -17,7 +17,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tourist Agency</title>
+    <title>Tourist Agency - Admin stranica</title>
+    <link rel="icon" href="./images/holiday.jpg">
 
     <link href="css/custom.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
@@ -134,7 +135,7 @@
     } else if ($_GET['logged'] == "true" && count($_GET) == 1) {
             include './admin/spajanje_na_bazu.php';
             include './admin/funkcije.php';
-            $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM lokacija";
+            $upit = "SELECT idLokacija, ime, opis, tip, idDrzava FROM lokacija ORDER BY ime ASC";
             $rezultat = mysqli_query($veza, $upit) or die (mysqli_error($veza));
 
             while ($redak = mysqli_fetch_array($rezultat, MYSQLI_ASSOC)) {

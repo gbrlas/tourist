@@ -152,7 +152,7 @@
             <div class=\"form-group\">
                 <label for=\"description\" class=\"col-sm-2 control-label\">Opis</label>
                 <div class=\"col-sm-9\">
-                    <textarea name=\"description\" class=\"form-control\" rows=\"6\" >$opis</textarea>
+                    <textarea name=\"description\" class=\"form-control\" rows=\"8\" >$opis</textarea>
                 </div>
             </div>
             <div class=\"form-group\">

@@ -180,7 +180,7 @@
             $ulaznice = "<span class=\"glyphicon glyphicon-remove\"></span>";
         }
 
-        echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Trajanje:</b> $trajanje hours</p>";
+        echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Trajanje:</b> $trajanje sati</p>";
         echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Cijena po osobi:</b> $cijenaPoOsobi €</p>";
         echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Vodič uključen u cijenu:</b> $vodic</p>";
         echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> <b>Obrok uključen u cijenu:</b> $obrok</p>";

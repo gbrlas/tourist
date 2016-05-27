@@ -200,7 +200,7 @@
 
         echo "<div class=\"col-lg-4\">
             <h2 class=\"page-header\">Dodatne informacije: </h2>
-            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Kapacitet hotela: $kapacitet rooms</p>
+            <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Kapacitet hotela: $kapacitet soba</p>
             <p><span class=\"glyphicon glyphicon-triangle-right\"></span> Broj obroka: $brojObroka</p>";
 
         $upit6 = "SELECT idAkcija FROM smjestaj WHERE idSmjestaj = $id";
@@ -235,7 +235,7 @@
             $roomType = $redak6['tip'];
             $cijenaPoDanu = $redak6['cijenaPoDanu'];
 
-            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $roomType, $cijenaPoDanu € per night</p>";
+            echo "<p><span class=\"glyphicon glyphicon-triangle-right\"></span> $roomType, $cijenaPoDanu € po danu</p>";
         }
 
         echo " </div>";

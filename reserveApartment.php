@@ -436,7 +436,7 @@
                 }
 
                 if ($test) {
-                    echo "<li><a href=\"reserveApartment.php?value=$id&customerID=$customerID&idSoba=$idSoba&number=$number&date=$startingDate&people=$people&selectedRoom=true\">$tipSobe, $cijenaPoDanu € per night, for $brojOsoba persons</a></li>";
+                    echo "<li><a href=\"reserveApartment.php?value=$id&customerID=$customerID&idSoba=$idSoba&number=$number&date=$startingDate&people=$people&selectedRoom=true\">$tipSobe, $cijenaPoDanu € po danu, za $brojOsoba osobe</a></li>";
                 }
             }
 
