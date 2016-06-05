@@ -491,6 +491,18 @@
                 $people = $_POST['people'];
                 $hotelID = $_GET['value'];
 
+                if ($number > 10) {
+                    $number = 10;
+                } else if ($number < 0) {
+                    $number = 1;
+                }
+
+                if ($people > $max) {
+                    $people = $max;
+                } else if ($people < 0) {
+                    $people = 1;
+                }
+
                 echo "<div class='col-md-6' align='center'> <div class=\"dropdown\">
             <button style='margin-top: 100px;' class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">
   Odaberite željeni tip sobe</button>

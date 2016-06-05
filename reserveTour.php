@@ -422,7 +422,13 @@
 
         if (isset($_GET['selectedPeople'])) {
             if (isset($_POST['saveForm'])) {
-                $number = $_POST['number'];
+                $number = ceil($_POST['number']);
+
+                if ($number > 4) {
+                    $number = 4;
+                } else if ($number < 0) {
+                    $number = 1;
+                }
 
                 $upit6 = "SELECT idAkcija FROM izlet WHERE idIzlet = $id";
                 $rezultat6 = mysqli_query($veza, $upit6) or die (mysqli_error($veza));
